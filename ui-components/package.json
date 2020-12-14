@@ -1,5 +1,5 @@
 {
-  "name": "@as/sten-components",
+  "name": "@ai/ui-components",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
@@ -9,7 +9,7 @@
   "types": "dist/custom-elements/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/sten-components/sten-components.js",
+  "unpkg": "dist/ui-components/ui-components.js",
   "files": [
     "dist/",
     "loader/"

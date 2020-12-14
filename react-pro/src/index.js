@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { applyPolyfills, defineCustomElements } from '@as/sten-components/loader';
+import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
 import './index.css';
 import App from './App';
 

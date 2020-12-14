@@ -1,6 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { defineCustomElements, applyPolyfills } from '@as/sten-components/loader';
+import { defineCustomElements, applyPolyfills } from '@ai/ui-components/loader';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';

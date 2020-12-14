@@ -1,17 +1,30 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, Event, EventEmitter, h } from '@stencil/core';
 
 @Component({
   tag: 'my-button',
   styleUrl: 'my-button.css',
 })
 export class MyButton {
-  @Prop() text: string = '点击'
+  @Prop() text: string;
+
+  // @Event() click: EventEmitter<any>;
+
+  // private handleclick = (event) => {
+  //   this.click.emit(event)
+  // }
 
   render() {
     return (
       <Host>
-        <button class={'btn'}>{this.text}</button>
-        <slot></slot>
+        <button
+          class={'btn'}
+        // onClick={this.handleclick}
+        >
+          <slot name={'btn-icon'} />
+          {
+            this.text ? this.text : <slot></slot>
+          }
+        </button>
       </Host>
     );
   }

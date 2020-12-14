@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default |
-| -------- | --------- | ----------- | -------- | ------- |
-| `text`   | `text`    |             | `string` | `'点击'`  |
+| Property | Attribute | Description | Type     | Default     |
+| -------- | --------- | ----------- | -------- | ----------- |
+| `text`   | `text`    |             | `string` | `undefined` |
 
 
 ----------------------------------------------

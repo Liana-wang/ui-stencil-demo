@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+.btn {
+  width: 120px;
+  height: 30px;
+  border: 1px solid #999;
+  border-radius: 2px;
+  background: #fff;
+}

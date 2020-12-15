@@ -23,6 +23,12 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MyInput {
+        "defaultValue": string;
+        "placeholder": string;
+        "type": string;
+        "value": string;
+    }
 }
 declare global {
     interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {
@@ -37,9 +43,16 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyInputElement extends Components.MyInput, HTMLStencilElement {
+    }
+    var HTMLMyInputElement: {
+        prototype: HTMLMyInputElement;
+        new (): HTMLMyInputElement;
+    };
     interface HTMLElementTagNameMap {
         "my-button": HTMLMyButtonElement;
         "my-component": HTMLMyComponentElement;
+        "my-input": HTMLMyInputElement;
     }
 }
 declare namespace LocalJSX {
@@ -60,9 +73,18 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MyInput {
+        "defaultValue"?: string;
+        "onAiChange"?: (event: CustomEvent<any>) => void;
+        "onAiInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "placeholder"?: string;
+        "type"?: string;
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "my-button": MyButton;
         "my-component": MyComponent;
+        "my-input": MyInput;
     }
 }
 export { LocalJSX as JSX };
@@ -71,6 +93,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-button": LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-input": LocalJSX.MyInput & JSXBase.HTMLAttributes<HTMLMyInputElement>;
         }
     }
 }

@@ -1,17 +1,35 @@
+import * as React from 'react'
 import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <div className={'logo'}>
-        <img src="logo192.png" alt="" />
-      </div>
-      <my-button onClick={(event) => console.log(event)}>
-        <span slot="btn-icon">@</span>
-        点击
-      </my-button>
-    </div>
-  );
-}
+export default class App extends React.Component {
+  state = {
+    value: '',
+  }
 
-export default App;
+  changeValue = (event) => {
+    console.log(event)
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className={'logo'}>
+          <img src="logo192.png" alt="" />
+        </div>
+        <my-button
+          className={'btn'}
+          onClick={(event) => console.log(event)}
+        >
+          <span slot="btn-icon">@</span>
+          点击
+        </my-button>
+        <my-input
+          defaultValue={'223'}
+          placeholder={'请输入...'}
+          value={this.state.value}
+          onAiChange={this.changeValue}
+        />
+      </div>
+    );
+  }
+}

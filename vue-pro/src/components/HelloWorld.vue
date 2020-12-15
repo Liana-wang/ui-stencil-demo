@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <my-button />
+    <span>{{msg}}</span>
+    <my-button @click="onClick">vue-Click</my-button>
   </div>
 </template>
 
@@ -12,6 +13,11 @@ export default {
       msg: "Welcome to Your Vue.js App",
     };
   },
+  methods: {
+    onClick: function(event){
+      console.log(event)
+    }
+  }
 };
 </script>
 

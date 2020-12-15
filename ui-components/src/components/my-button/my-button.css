@@ -3,9 +3,25 @@
 }
 
 .btn {
-  width: 120px;
   height: 30px;
-  border: 1px solid #999;
-  border-radius: 3px;
-  background: #fff;
+  padding: 0 8px;
+  border: 1px solid #d3d4db;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #505050;
+  box-shadow: none;
+  line-height: normal;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn:hover {
+  border-color: #d3d4db;
+  background-color: rgba(228, 230, 237, 0.25);
+}
+
+.btn:active {
+  background-color: rgba(228, 230, 237, 0.45);
 }

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-test';
+
+  onClick(event: any) {
+    console.log(event)
+  }
 }

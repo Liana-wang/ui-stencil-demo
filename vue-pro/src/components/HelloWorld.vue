@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
-    <span>{{msg}}</span>
+    <span>{{ msg }}</span>
     <my-button @click="onClick">vue-Click</my-button>
+    <my-input placeholder="请输入..." @aiInput="onAiInput" />
   </div>
 </template>
 
@@ -14,10 +15,13 @@ export default {
     };
   },
   methods: {
-    onClick: function(event){
-      console.log(event)
-    }
-  }
+    onClick: function (event) {
+      console.log(event);
+    },
+    onAiInput: function (event) {
+      console.log("input", event);
+    },
+  },
 };
 </script>
 

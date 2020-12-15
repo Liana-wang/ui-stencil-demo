@@ -1,6 +1,6 @@
 # ui-stencil-demo
 
-> A UI deom
+> A UI demo
 
 ## Build Setup
 

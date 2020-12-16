@@ -19,6 +19,7 @@
 
 | Event      | Description | Type                         |
 | ---------- | ----------- | ---------------------------- |
+| `aiBlur`   |             | `CustomEvent<any>`           |
 | `aiChange` |             | `CustomEvent<any>`           |
 | `aiInput`  |             | `CustomEvent<KeyboardEvent>` |
 

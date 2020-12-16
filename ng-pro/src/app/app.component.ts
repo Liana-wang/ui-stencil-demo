@@ -11,4 +11,8 @@ export class AppComponent {
   onClick(event: any) {
     console.log(event)
   }
+
+  onAiInput(event: any) {
+    console.log('input', event)
+  }
 }

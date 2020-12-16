@@ -35,19 +35,19 @@ declare global {
     }
     var HTMLMyButtonElement: {
         prototype: HTMLMyButtonElement;
-        new (): HTMLMyButtonElement;
+        new(): HTMLMyButtonElement;
     };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+        new(): HTMLMyComponentElement;
     };
     interface HTMLMyInputElement extends Components.MyInput, HTMLStencilElement {
     }
     var HTMLMyInputElement: {
         prototype: HTMLMyInputElement;
-        new (): HTMLMyInputElement;
+        new(): HTMLMyInputElement;
     };
     interface HTMLElementTagNameMap {
         "my-button": HTMLMyButtonElement;
@@ -75,6 +75,7 @@ declare namespace LocalJSX {
     }
     interface MyInput {
         "defaultValue"?: string;
+        "onAiBlur"?: (event: CustomEvent<any>) => void;
         "onAiChange"?: (event: CustomEvent<any>) => void;
         "onAiInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         "placeholder"?: string;

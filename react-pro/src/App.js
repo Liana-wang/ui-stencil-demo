@@ -27,7 +27,8 @@ export default class App extends React.Component {
           defaultValue={'223'}
           placeholder={'请输入...'}
           value={this.state.value}
-          onAiChange={this.changeValue}
+          onAiInput={this.changeValue}
+          onAiBlur={(event) => console.log(event)}
         />
       </div>
     );

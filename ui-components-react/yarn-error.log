@@ -1,0 +1,67 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Users\wang.lianyan\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\wang.lianyan\bin;D:\software\Python37\Scripts;D:\software\Python37;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;D:\software\Microsoft VS Code\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Users\wang.lianyan\AppData\Roaming\npm;C:\Program Files\TortoiseGit\bin;D:\software\AISHU AnyShare;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\wang.lianyan\AppData\Local\Microsoft\WindowsApps;C:\Users\wang.lianyan\AppData\Local\BypassRuntm;C:\Users\wang.lianyan\AppData\Roaming\npm;C:\Users\wang.lianyan\.deno\bin;C:\Users\wang.lianyan\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  12.16.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/ui-component: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66096:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140748:22)
+      at Request.emit (events.js:310:20)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141720:10)
+      at Request.emit (events.js:310:20)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141642:12)
+      at Object.onceWrapper (events.js:416:28)
+      at IncomingMessage.emit (events.js:322:22)
+      at endReadableNT (_stream_readable.js:1187:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+
+npm manifest: 
+  {
+      "name": "ui-component-react",
+      "sideEffects": false,
+      "version": "0.0.1",
+      "description": "React specific wrapper for component-library",
+      "scripts": {
+          "build": "npm run clean && npm run compile",
+          "clean": "rm -rf dist",
+          "compile": "npm run tsc",
+          "tsc": "tsc -p ."
+      },
+      "main": "./dist/index.js",
+      "module": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "files": [
+          "dist/"
+      ],
+      "devDependencies": {
+          "react": "^16.8.6",
+          "react-dom": "^16.8.6",
+          "rollup": "^1.21.2",
+          "rollup-plugin-node-resolve": "^5.2.0",
+          "typescript": "^3.3.4"
+      },
+      "dependencies": {
+          "ui-component": "^0.0.1"
+      },
+      "peerDependencies": {
+          "react": ">=16.8.6",
+          "react-dom": ">=16.8.6"
+      }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

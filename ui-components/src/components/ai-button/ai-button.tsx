@@ -1,10 +1,11 @@
 import { Component, Host, Prop, h } from '@stencil/core';
+import './ai-button.css'
 
 @Component({
-  tag: 'my-button',
-  styleUrl: 'my-button.css',
+  tag: 'ai-button',
+  styleUrl: 'ai-button.css',
 })
-export class MyButton {
+export class AiButton {
   @Prop() text: string;
 
   render() {

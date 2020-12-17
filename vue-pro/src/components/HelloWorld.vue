@@ -1,12 +1,14 @@
 <template>
   <div class="hello">
     <span>{{ msg }}</span>
-    <my-button @click="onClick">vue-Click</my-button>
-    <my-input placeholder="请输入..." @aiInput="onAiInput" />
+    <ai-button @click="onClick">Vue-Click</ai-button>
+    <ai-input placeholder="请输入..." @aiInput="onAiInput" />
   </div>
 </template>
 
 <script>
+import { AiButton, AiInput } from "@ai/ui-components-vue";
+
 export default {
   name: "HelloWorld",
   data() {

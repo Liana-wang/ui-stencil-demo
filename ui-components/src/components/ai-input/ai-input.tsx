@@ -1,15 +1,15 @@
 import { Component, Host, Prop, Watch, Event, EventEmitter, h } from '@stencil/core';
 
 @Component({
-  tag: 'my-input',
-  styleUrl: 'my-input.css',
+  tag: 'ai-input',
+  styleUrl: 'ai-input.css',
   shadow: false,
 })
-export class MyInput {
+export class AiInput {
   @Prop() defaultValue: string;
   @Prop() placeholder: string = '';
   @Prop() type: string = 'text';
-  @Prop({ mutable: true }) value: string = ''
+  @Prop({ mutable: true }) value: string = '';
 
   @Event() aiChange!: EventEmitter<any>;
 

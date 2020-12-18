@@ -22,11 +22,15 @@ export const config: Config = {
     }),
     reactOutputTarget({
       componentCorePackage: '@ai/ui-components',
-      proxiesFile: '../ui-components-react/src/components.ts'
+      proxiesFile: '../ui-components-react/src/components.ts',
+      includePolyfills: true,
+      includeDefineCustomElements: true,
     }),
     vueOutputTarget({
       componentCorePackage: '@ai/ui-components',
       proxiesFile: '../ui-components-vue/src/proxies.ts',
+      includePolyfills: true,
+      includeDefineCustomElements: true,
       componentModels: [
         {
           elements: ['ai-input'],

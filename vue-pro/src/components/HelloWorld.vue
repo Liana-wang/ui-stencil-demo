@@ -1,8 +1,9 @@
 <template>
   <div class="hello">
-    <span>{{ msg }}</span>
-    <ai-button @click="onClick">Vue-Click</ai-button>
+    <span>姓名：</span>
     <ai-input placeholder="请输入..." @aiInput="onAiInput" />
+    <ai-button @aiClick="onClick" :disabled="!name">确定</ai-button>
+    <p v-if="isConfirm && name">Welcome! {{ name }}</p>
   </div>
 </template>
 
@@ -13,15 +14,22 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
+      name: "",
+      isConfirm: false,
     };
   },
   methods: {
     onClick: function (event) {
       console.log(event);
+      this.isConfirm = true;
     },
     onAiInput: function (event) {
       console.log("input", event);
+      this.name = event.target.value;
+
+      if (this.isConfirm) {
+        this.isConfirm = false;
+      }
     },
   },
 };

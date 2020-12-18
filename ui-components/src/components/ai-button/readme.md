@@ -7,9 +7,17 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `text`   | `text`    |             | `string` | `undefined` |
+| Property   | Attribute  | Description | Type      | Default     |
+| ---------- | ---------- | ----------- | --------- | ----------- |
+| `disabled` | `disabled` |             | `boolean` | `false`     |
+| `text`     | `text`     |             | `string`  | `undefined` |
+
+
+## Events
+
+| Event     | Description | Type                      |
+| --------- | ----------- | ------------------------- |
+| `aiClick` |             | `CustomEvent<MouseEvent>` |
 
 
 ----------------------------------------------

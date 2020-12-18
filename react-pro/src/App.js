@@ -1,32 +1,45 @@
 import * as React from 'react'
+import { useState } from 'react'
 import { AiButton, AiInput } from '@ai/ui-components-react'
 import './App.css'
 
-export default class App extends React.Component {
-  state = {
-    value: '',
+export default function App() {
+  const [name, setName] = useState('')
+  const [isConfirm, setIsConfirm] = useState(false)
+
+  const changeName = (event) => {
+    setName(event.target.value)
+
+    if (isConfirm) {
+      setIsConfirm(false)
+    }
   }
 
-  changeValue = (event) => {
-    console.log(event)
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <div className={'logo'}>
-          <img src="logo192.png" alt="" />
-        </div>
+  return (
+    <div className="App">
+      <div className={'logo'}>
+        <img src="logo192.png" alt="" />
+      </div>
+      <div>
+        <span>姓名: </span>
+        <AiInput
+          placeholder={'请输入...'}
+          onAiChange={changeName}
+        />
         <AiButton
-          onClick={(event) => console.log(event)}
+          disabled={!name}
+          className={'ai-btn'}
+          onAiClick={(event) => setIsConfirm(true)}
         >
           <span slot="btn-icon">@</span>
-          点击
+          确定
         </AiButton>
-        <AiInput
-          onAiChange={this.changeValue}
-        />
+        {
+          isConfirm ?
+            <p>Welcome! {name}</p>
+            : null
+        }
       </div>
-    );
-  }
+    </div>
+  );
 }

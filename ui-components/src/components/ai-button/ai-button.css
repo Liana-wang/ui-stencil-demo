@@ -25,3 +25,11 @@
 .btn:active {
   background-color: rgba(228, 230, 237, 0.45);
 }
+
+
+.btn-disabled {
+  border-color: rgba(211, 212, 219, 0.8);
+  background-color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+}

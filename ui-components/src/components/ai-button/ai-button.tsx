@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, Event, EventEmitter, h } from '@stencil/core';
 import './ai-button.css'
 
 @Component({
@@ -7,12 +7,27 @@ import './ai-button.css'
 })
 export class AiButton {
   @Prop() text: string;
+  @Prop({ mutable: true }) disabled: boolean = false;
+
+  @Event() aiClick: EventEmitter<MouseEvent>;
+
+  private handleClick = (event) => {
+    if (this.disabled) {
+      event.preventDefault()
+    } else {
+      this.aiClick.emit(event)
+    }
+  }
 
   render() {
     return (
       <Host>
         <button
-          class={'btn'}
+          class={{
+            'btn': true,
+            'btn-disabled': this.disabled,
+          }}
+          onClick={this.handleClick}
         >
           <slot name={'btn-icon'} />
           {

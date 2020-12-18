@@ -6,8 +6,9 @@ import { createCommonRender, createCommonMethod } from './vue-component-lib/util
 
 import type { Components } from '@ai/ui-components';
 
+import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
 
-
+applyPolyfills().then(() => defineCustomElements());
 
 const customElementTags: string[] = [
  'ai-button',
@@ -20,40 +21,19 @@ export const AiButton = /*@__PURE__*/ Vue.extend({
 
   props: {
     text: {} as PropOptions<Components.AiButton['text']>,
+    disabled: {} as PropOptions<Components.AiButton['disabled']>,
   },
 
 
-  render: createCommonRender('ai-button', []),
+  render: createCommonRender('ai-button', ['aiClick']),
 });
 
 
 export const AiInput = /*@__PURE__*/ Vue.extend({
 
   props: {
-    color: {} as PropOptions<Components.AiInput['color']>,
-    accept: {} as PropOptions<Components.AiInput['accept']>,
-    autocapitalize: {} as PropOptions<Components.AiInput['autocapitalize']>,
-    autocomplete: {} as PropOptions<Components.AiInput['autocomplete']>,
-    autocorrect: {} as PropOptions<Components.AiInput['autocorrect']>,
-    autofocus: {} as PropOptions<Components.AiInput['autofocus']>,
-    clearInput: {} as PropOptions<Components.AiInput['clearInput']>,
-    clearOnEdit: {} as PropOptions<Components.AiInput['clearOnEdit']>,
-    disabled: {} as PropOptions<Components.AiInput['disabled']>,
-    enterkeyhint: {} as PropOptions<Components.AiInput['enterkeyhint']>,
-    inputmode: {} as PropOptions<Components.AiInput['inputmode']>,
-    max: {} as PropOptions<Components.AiInput['max']>,
-    maxlength: {} as PropOptions<Components.AiInput['maxlength']>,
-    min: {} as PropOptions<Components.AiInput['min']>,
-    minlength: {} as PropOptions<Components.AiInput['minlength']>,
-    multiple: {} as PropOptions<Components.AiInput['multiple']>,
-    name: {} as PropOptions<Components.AiInput['name']>,
-    pattern: {} as PropOptions<Components.AiInput['pattern']>,
+    defaultValue: {} as PropOptions<Components.AiInput['defaultValue']>,
     placeholder: {} as PropOptions<Components.AiInput['placeholder']>,
-    readonly: {} as PropOptions<Components.AiInput['readonly']>,
-    required: {} as PropOptions<Components.AiInput['required']>,
-    spellcheck: {} as PropOptions<Components.AiInput['spellcheck']>,
-    step: {} as PropOptions<Components.AiInput['step']>,
-    size: {} as PropOptions<Components.AiInput['size']>,
     type: {} as PropOptions<Components.AiInput['type']>,
     value: {} as PropOptions<Components.AiInput['value']>,
   },
@@ -63,10 +43,6 @@ export const AiInput = /*@__PURE__*/ Vue.extend({
     event: 'aiChange'
   },
 
-  methods: {
-    setFocus: createCommonMethod('setFocus') as Components.AiInput['setFocus'],
-    getInputElement: createCommonMethod('getInputElement') as Components.AiInput['getInputElement'],
-  },
-  render: createCommonRender('ai-input', ['myInput', 'myChange', 'myBlur', 'myFocus']),
+  render: createCommonRender('ai-input', ['aiChange', 'aiInput', 'aiBlur']),
 });
 

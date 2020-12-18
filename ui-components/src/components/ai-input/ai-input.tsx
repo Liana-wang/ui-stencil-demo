@@ -37,13 +37,16 @@ export class AiInput {
   render() {
     return (
       <Host>
-        <input
-          type={this.type}
-          placeholder={this.placeholder}
-          onInput={this.onInput}
-          value={this.defaultValue && !this.value ? this.defaultValue : this.value}
-          onBlur={this.onBlur}
-        />
+        <div class={'box'}>
+          <input
+            class={'ai-input'}
+            type={this.type}
+            placeholder={this.placeholder}
+            onInput={this.onInput}
+            value={this.defaultValue && !this.value ? this.defaultValue : this.value}
+            onBlur={this.onBlur}
+          />
+        </div>
       </Host>
     );
   }

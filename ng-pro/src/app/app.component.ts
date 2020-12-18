@@ -7,12 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-test';
+  name = ''
+
+  isConfirm = false
 
   onClick(event: any) {
     console.log(event)
+    this.isConfirm = true
   }
 
   onAiInput(event: any) {
-    console.log('input', event)
+    console.log('input', event.target.value)
+    this.name = event.target.value
+
+    if (this.isConfirm) {
+      this.isConfirm = false
+    }
   }
 }

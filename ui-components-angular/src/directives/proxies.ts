@@ -5,51 +5,52 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
 import { Components } from '@ai/ui-components';
 
-
+import { AiButton as IAiButton } from '@ai/ui-components/dist/types/components/ai-button/ai-button';
 export declare interface AiButton extends Components.AiButton {}
 @ProxyCmp({
-  inputs: ['text']
+  inputs: ['disabled', 'text']
 })
 @Component({
   selector: 'ai-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['text']
+  inputs: ['disabled', 'text'],
+  outputs: ['aiClick']
 })
 export class AiButton {
+  /**  */
+  aiClick!: IAiButton['aiClick'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['aiClick']);
   }
 }
 
 import { AiInput as IAiInput } from '@ai/ui-components/dist/types/components/ai-input/ai-input';
 export declare interface AiInput extends Components.AiInput {}
 @ProxyCmp({
-  inputs: ['accept', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearInput', 'clearOnEdit', 'color', 'disabled', 'enterkeyhint', 'inputmode', 'max', 'maxlength', 'min', 'minlength', 'mode', 'multiple', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'type', 'value'],
-  methods: ['setFocus', 'getInputElement']
+  inputs: ['defaultValue', 'placeholder', 'type', 'value']
 })
 @Component({
   selector: 'ai-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['accept', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearInput', 'clearOnEdit', 'color', 'disabled', 'enterkeyhint', 'inputmode', 'max', 'maxlength', 'min', 'minlength', 'mode', 'multiple', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'type', 'value'],
-  outputs: ['myInput', 'myChange', 'myBlur', 'myFocus']
+  inputs: ['defaultValue', 'placeholder', 'type', 'value'],
+  outputs: ['aiChange', 'aiInput', 'aiBlur']
 })
 export class AiInput {
-  /** Emitted when a keyboard input occurred. */
-  myInput!: IAiInput['myInput'];
-  /** Emitted when the value has changed. */
-  myChange!: IAiInput['myChange'];
-  /** Emitted when the input loses focus. */
-  myBlur!: IAiInput['myBlur'];
-  /** Emitted when the input has focus. */
-  myFocus!: IAiInput['myFocus'];
+  /**  */
+  aiChange!: IAiInput['aiChange'];
+  /**  */
+  aiInput!: IAiInput['aiInput'];
+  /**  */
+  aiBlur!: IAiInput['aiBlur'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['myInput', 'myChange', 'myBlur', 'myFocus']);
+    proxyOutputs(this, this.el, ['aiChange', 'aiInput', 'aiBlur']);
   }
 }

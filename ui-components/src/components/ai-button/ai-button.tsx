@@ -22,18 +22,20 @@ export class AiButton {
   render() {
     return (
       <Host>
-        <button
-          class={{
-            'btn': true,
-            'btn-disabled': this.disabled,
-          }}
-          onClick={this.handleClick}
-        >
-          <slot name={'btn-icon'} />
-          {
-            this.text ? this.text : <slot></slot>
-          }
-        </button>
+        <ai-control>
+          <button
+            class={{
+              'btn': true,
+              'btn-disabled': this.disabled,
+            }}
+            onClick={this.handleClick}
+          >
+            <slot name={'btn-icon'} />
+            {
+              this.text ? this.text : <slot></slot>
+            }
+          </button>
+        </ai-control>
       </Host>
     );
   }

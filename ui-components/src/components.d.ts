@@ -10,6 +10,8 @@ export namespace Components {
         "disabled": boolean;
         "text": string;
     }
+    interface AiControl {
+    }
     interface AiInput {
         "defaultValue": string;
         "placeholder": string;
@@ -24,6 +26,12 @@ declare global {
         prototype: HTMLAiButtonElement;
         new (): HTMLAiButtonElement;
     };
+    interface HTMLAiControlElement extends Components.AiControl, HTMLStencilElement {
+    }
+    var HTMLAiControlElement: {
+        prototype: HTMLAiControlElement;
+        new (): HTMLAiControlElement;
+    };
     interface HTMLAiInputElement extends Components.AiInput, HTMLStencilElement {
     }
     var HTMLAiInputElement: {
@@ -32,6 +40,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "ai-button": HTMLAiButtonElement;
+        "ai-control": HTMLAiControlElement;
         "ai-input": HTMLAiInputElement;
     }
 }
@@ -40,6 +49,8 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "onAiClick"?: (event: CustomEvent<MouseEvent>) => void;
         "text"?: string;
+    }
+    interface AiControl {
     }
     interface AiInput {
         "defaultValue"?: string;
@@ -52,6 +63,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "ai-button": AiButton;
+        "ai-control": AiControl;
         "ai-input": AiInput;
     }
 }
@@ -60,6 +72,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "ai-button": LocalJSX.AiButton & JSXBase.HTMLAttributes<HTMLAiButtonElement>;
+            "ai-control": LocalJSX.AiControl & JSXBase.HTMLAttributes<HTMLAiControlElement>;
             "ai-input": LocalJSX.AiInput & JSXBase.HTMLAttributes<HTMLAiInputElement>;
         }
     }

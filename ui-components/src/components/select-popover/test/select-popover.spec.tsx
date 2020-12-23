@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { AiInput } from '../ai-input';
+import { SelectPopover } from '../select-popover';
 
-describe('ai-input', () => {
+describe('select-popover', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [AiInput],
-      html: `<ai-input></ai-input>`,
+      components: [SelectPopover],
+      html: `<select-popover></select-popover>`,
     });
     expect(page.root).toEqualHtml(`
-      <ai-input>
+      <select-popover>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </ai-input>
+      </select-popover>
     `);
   });
 });

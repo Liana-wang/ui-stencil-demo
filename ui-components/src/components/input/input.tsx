@@ -2,19 +2,43 @@ import { Component, Host, Prop, Watch, Event, EventEmitter, h } from '@stencil/c
 
 @Component({
   tag: 'ai-input',
-  styleUrl: 'ai-input.css',
+  styleUrl: 'input.css',
   shadow: false,
 })
 export class AiInput {
+  /**
+   * 默认值
+   */
   @Prop() defaultValue: string;
+
+  /**
+   * 预设文案
+   */
   @Prop() placeholder: string = '';
+
+  /**
+   * 类型
+   */
   @Prop() type: string = 'text';
+
+  /**
+   * 输入值
+   */
   @Prop({ mutable: true }) value: string = '';
 
+  /**
+   * 值改变
+   */
   @Event() aiChange!: EventEmitter<any>;
 
+  /**
+   * 改变值
+   */
   @Event() aiInput!: EventEmitter<KeyboardEvent>;
 
+  /**
+   * 失焦
+   */
   @Event() aiBlur;
 
   @Watch('value')
@@ -43,7 +67,7 @@ export class AiInput {
             type={this.type}
             placeholder={this.placeholder}
             onInput={this.onInput}
-            value={this.defaultValue && !this.value ? this.defaultValue : this.value}
+            value={this.value}
             onBlur={this.onBlur}
           />
         </div>

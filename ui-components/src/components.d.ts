@@ -5,18 +5,91 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ComponentProps, ComponentRef } from "./interface";
 export namespace Components {
     interface AiButton {
+        /**
+          * 是否禁用
+         */
         "disabled": boolean;
+        /**
+          * 文字
+         */
         "text": string;
     }
     interface AiControl {
     }
     interface AiInput {
+        /**
+          * 默认值
+         */
         "defaultValue": string;
+        /**
+          * 预设文案
+         */
         "placeholder": string;
+        /**
+          * 类型
+         */
         "type": string;
+        /**
+          * 输入值
+         */
         "value": string;
+    }
+    interface AiPopover {
+        /**
+          * 点击背景时关闭
+         */
+        "backdropDismiss": boolean;
+        /**
+          * 在popover中显示的组件
+         */
+        "component": ComponentRef;
+        /**
+          * 传递给弹出窗的数据
+         */
+        "componentProps"?: ComponentProps;
+        "dismiss": (data?: any, role?: string) => Promise<boolean>;
+        "onDidDismiss": () => Promise<any>;
+        "onWillDismiss": () => Promise<any>;
+        "overlayIndex": number;
+        "present": () => Promise<void>;
+    }
+    interface AiSelect {
+        /**
+          * 选中之后做对比的条件
+         */
+        "compareWith"?: string | Function | null;
+        /**
+          * 是否禁用
+         */
+        "disabled": boolean;
+        "open": (event?: UIEvent) => Promise<any>;
+        /**
+          * 预设文案
+         */
+        "placeholder"?: string | null;
+        /**
+          * 选中的值
+         */
+        "value"?: any | null;
+    }
+    interface AiSelectOption {
+        /**
+          * 是否禁用
+         */
+        "disabled": boolean;
+        /**
+          * 选项的value
+         */
+        "value"?: any | null;
+    }
+    interface AiSelectPopover {
+        /**
+          * 选项
+         */
+        "options": ReadonlyArray<any>;
     }
 }
 declare global {
@@ -38,33 +111,180 @@ declare global {
         prototype: HTMLAiInputElement;
         new (): HTMLAiInputElement;
     };
+    interface HTMLAiPopoverElement extends Components.AiPopover, HTMLStencilElement {
+    }
+    var HTMLAiPopoverElement: {
+        prototype: HTMLAiPopoverElement;
+        new (): HTMLAiPopoverElement;
+    };
+    interface HTMLAiSelectElement extends Components.AiSelect, HTMLStencilElement {
+    }
+    var HTMLAiSelectElement: {
+        prototype: HTMLAiSelectElement;
+        new (): HTMLAiSelectElement;
+    };
+    interface HTMLAiSelectOptionElement extends Components.AiSelectOption, HTMLStencilElement {
+    }
+    var HTMLAiSelectOptionElement: {
+        prototype: HTMLAiSelectOptionElement;
+        new (): HTMLAiSelectOptionElement;
+    };
+    interface HTMLAiSelectPopoverElement extends Components.AiSelectPopover, HTMLStencilElement {
+    }
+    var HTMLAiSelectPopoverElement: {
+        prototype: HTMLAiSelectPopoverElement;
+        new (): HTMLAiSelectPopoverElement;
+    };
     interface HTMLElementTagNameMap {
         "ai-button": HTMLAiButtonElement;
         "ai-control": HTMLAiControlElement;
         "ai-input": HTMLAiInputElement;
+        "ai-popover": HTMLAiPopoverElement;
+        "ai-select": HTMLAiSelectElement;
+        "ai-select-option": HTMLAiSelectOptionElement;
+        "ai-select-popover": HTMLAiSelectPopoverElement;
     }
 }
 declare namespace LocalJSX {
     interface AiButton {
+        /**
+          * 是否禁用
+         */
         "disabled"?: boolean;
+        /**
+          * 点击
+         */
         "onAiClick"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * 文字
+         */
         "text"?: string;
     }
     interface AiControl {
     }
     interface AiInput {
+        /**
+          * 默认值
+         */
         "defaultValue"?: string;
+        /**
+          * 失焦
+         */
         "onAiBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * 值改变
+         */
         "onAiChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * 改变值
+         */
         "onAiInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * 预设文案
+         */
         "placeholder"?: string;
+        /**
+          * 类型
+         */
         "type"?: string;
+        /**
+          * 输入值
+         */
         "value"?: string;
+    }
+    interface AiPopover {
+        /**
+          * 点击背景时关闭
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * 在popover中显示的组件
+         */
+        "component": ComponentRef;
+        /**
+          * 传递给弹出窗的数据
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * 派发弹出层已销毁事件
+         */
+        "onAiPopoverDidDismiss"?: (event: CustomEvent<any>) => void;
+        /**
+          * 派发完成事件
+         */
+        "onAiPopoverDidPresent"?: (event: CustomEvent<void>) => void;
+        /**
+          * 派发弹出窗口关闭之前事件
+         */
+        "onAiPopoverWillDismiss"?: (event: CustomEvent<any>) => void;
+        /**
+          * 派发弹出之前事件
+         */
+        "onAiPopoverWillPresent"?: (event: CustomEvent<void>) => void;
+        "overlayIndex": number;
+    }
+    interface AiSelect {
+        /**
+          * 选中之后做对比的条件
+         */
+        "compareWith"?: string | Function | null;
+        /**
+          * 是否禁用
+         */
+        "disabled"?: boolean;
+        /**
+          * 派发失焦事件
+         */
+        "onAiBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * 派发取消选择的事件
+         */
+        "onAiCancel"?: (event: CustomEvent<void>) => void;
+        /**
+          * 派发选中项改变事件
+         */
+        "onAiChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * 派发聚焦事件
+         */
+        "onAiFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * 派发样式改变
+         */
+        "onAiStyle"?: (event: CustomEvent<any>) => void;
+        /**
+          * 预设文案
+         */
+        "placeholder"?: string | null;
+        /**
+          * 选中的值
+         */
+        "value"?: any | null;
+    }
+    interface AiSelectOption {
+        /**
+          * 是否禁用
+         */
+        "disabled"?: boolean;
+        /**
+          * 选项的value
+         */
+        "value"?: any | null;
+    }
+    interface AiSelectPopover {
+        /**
+          * 选项
+         */
+        "options"?: ReadonlyArray<any>;
     }
     interface IntrinsicElements {
         "ai-button": AiButton;
         "ai-control": AiControl;
         "ai-input": AiInput;
+        "ai-popover": AiPopover;
+        "ai-select": AiSelect;
+        "ai-select-option": AiSelectOption;
+        "ai-select-popover": AiSelectPopover;
     }
 }
 export { LocalJSX as JSX };
@@ -74,6 +294,10 @@ declare module "@stencil/core" {
             "ai-button": LocalJSX.AiButton & JSXBase.HTMLAttributes<HTMLAiButtonElement>;
             "ai-control": LocalJSX.AiControl & JSXBase.HTMLAttributes<HTMLAiControlElement>;
             "ai-input": LocalJSX.AiInput & JSXBase.HTMLAttributes<HTMLAiInputElement>;
+            "ai-popover": LocalJSX.AiPopover & JSXBase.HTMLAttributes<HTMLAiPopoverElement>;
+            "ai-select": LocalJSX.AiSelect & JSXBase.HTMLAttributes<HTMLAiSelectElement>;
+            "ai-select-option": LocalJSX.AiSelectOption & JSXBase.HTMLAttributes<HTMLAiSelectOptionElement>;
+            "ai-select-popover": LocalJSX.AiSelectPopover & JSXBase.HTMLAttributes<HTMLAiSelectPopoverElement>;
         }
     }
 }

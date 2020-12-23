@@ -9,7 +9,7 @@
 
 ### Used by
 
- - [ai-button](../ai-button)
+ - [ai-button](../button)
 
 ### Graph
 ```mermaid

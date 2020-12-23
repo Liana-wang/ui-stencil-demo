@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { AiControl } from '../ai-control';
+import { AiControl } from '../control';
 
 describe('ai-control', () => {
   it('renders', async () => {

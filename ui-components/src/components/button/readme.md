@@ -9,22 +9,22 @@
 
 | Property   | Attribute  | Description | Type      | Default     |
 | ---------- | ---------- | ----------- | --------- | ----------- |
-| `disabled` | `disabled` |             | `boolean` | `false`     |
-| `text`     | `text`     |             | `string`  | `undefined` |
+| `disabled` | `disabled` | 是否禁用        | `boolean` | `false`     |
+| `text`     | `text`     | 文字          | `string`  | `undefined` |
 
 
 ## Events
 
 | Event     | Description | Type                      |
 | --------- | ----------- | ------------------------- |
-| `aiClick` |             | `CustomEvent<MouseEvent>` |
+| `aiClick` | 点击          | `CustomEvent<MouseEvent>` |
 
 
 ## Dependencies
 
 ### Depends on
 
-- [ai-control](../ai-control)
+- [ai-control](../control)
 
 ### Graph
 ```mermaid

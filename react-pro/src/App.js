@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useState } from 'react'
 import { AiButton, AiInput } from '@ai/ui-components-react'
 import './App.css'
+import SelectExm from './SelectExm'
 
 export default function App() {
   const [name, setName] = useState('')
@@ -39,6 +40,9 @@ export default function App() {
             <p>Welcome! {name}</p>
             : null
         }
+        <div className={'select'}>
+          <SelectExm />
+        </div>
       </div>
     </div>
   );

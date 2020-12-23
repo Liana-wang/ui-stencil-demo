@@ -6,12 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
   <title>Stencil Component Starter</title>
 
-  <script type="module" src="/build/sten-components.esm.js"></script>
-  <script nomodule src="/build/sten-components.js"></script>
+  <script type="module" src="/build/ui-components.esm.js"></script>
+  <script nomodule src="/build/ui-components.js"></script>
 </head>
 
 <body>
-  <my-button />
+  <ai-button onclick="handleclick(event)">aaa</ai-button>
+  <ai-input oninput="handleInput(event)"></ai-input>
+  <ai-select options="options"></ai-select>
 </body>
+<script type="text/javascript">
+  const options = [
+    'react',
+    'vue',
+    'angular'
+  ]
+  function handleclick(event) {
+    console.log(event)
+  }
+
+  function handleInput(event) {
+    console.log(event)
+  }
+
+  const select = document.getElementsByTagName('ai-select')[0]
+  console.log(select)
+  select.setAttribute('options', options)
+  select.addEventListener('optionRenderer', (option) => option)
+  select.addEventListener('initializer', (options) => 'React')
+  select.addEventListener('selection', (ev) => console.log(ev.detail))
+
+  function renderOption(option) {
+    return option
+  }
+
+  function initOption() {
+    return React
+  }
+
+  function selectChange(ev) { 
+    console.log(ev.detail)
+   }
+</script>
 
 </html>

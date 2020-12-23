@@ -1,14 +1,23 @@
 import { Component, Host, Prop, Event, EventEmitter, h } from '@stencil/core';
-import './ai-button.css'
 
 @Component({
   tag: 'ai-button',
-  styleUrl: 'ai-button.css',
+  styleUrl: 'button.css',
 })
 export class AiButton {
+  /**
+   * 文字
+   */
   @Prop() text: string;
+
+  /**
+   * 是否禁用
+   */
   @Prop({ mutable: true }) disabled: boolean = false;
 
+  /**
+   * 点击
+   */
   @Event() aiClick: EventEmitter<MouseEvent>;
 
   private handleClick = (event) => {

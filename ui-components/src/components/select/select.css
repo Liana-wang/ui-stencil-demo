@@ -1,12 +1,21 @@
 :host {
   --placeholder-color: currentColor;
   --placeholder-opacity: 0.33;
-  padding: 6px 6px;
+  padding: 6px;
   display: flex;
   position: relative;
+  height: 30px;
+  border: 1px solid #d3d4db;
+  border-radius: 4px;
+  background-color: #fff;
+  box-sizing: border-box;
   align-items: center;
   overflow: hidden;
   z-index: 2;
+}
+
+:host(:hover) {
+  border: 1px solid #779eea;
 }
 
 :host(.select-disabled) {
@@ -14,8 +23,9 @@
   pointer-events: none;
 }
 
-:host(.ai-focused) button {
-  border: 2px solid #5e9ed6;
+:host(.ai-focused) {
+  border: 1px solid #779eea;
+  box-shadow: 0 0 0 2px rgba(119, 158, 234, .35);
 }
 
 .select-placeholder {
@@ -47,14 +57,15 @@ button {
 .select-icon {
   position: relative;
   opacity: .33;
-  width: 19px;
-  height: 19px;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
 }
 
 .select-text {
   flex: 1;
   min-width: 16px;
-  font-size: inherit;
+  font-size: 13px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -62,7 +73,7 @@ button {
 
 .select-icon-inner {
   position: absolute;
-  left: 5px;
+  left: 3px;
   top: 50%;
   margin-top: -2px;
   width: 0px;

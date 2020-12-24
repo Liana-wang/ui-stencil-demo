@@ -11,6 +11,7 @@ import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
 applyPolyfills().then(() => defineCustomElements());
 
 const customElementTags: string[] = [
+ 'ai-backdrop',
  'ai-button',
  'ai-control',
  'ai-input',
@@ -20,6 +21,19 @@ const customElementTags: string[] = [
  'ai-select-popover',
 ];
 Vue.config.ignoredElements = [...Vue.config.ignoredElements, ...customElementTags];
+
+
+export const AiBackdrop = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    visible: {} as PropOptions<Components.AiBackdrop['visible']>,
+    tappable: {} as PropOptions<Components.AiBackdrop['tappable']>,
+    stopPropagation: {} as PropOptions<Components.AiBackdrop['stopPropagation']>,
+  },
+
+
+  render: createCommonRender('ai-backdrop', ['aiBackdropTap']),
+});
 
 
 export const AiButton = /*@__PURE__*/ Vue.extend({
@@ -67,6 +81,7 @@ export const AiPopover = /*@__PURE__*/ Vue.extend({
     component: {} as PropOptions<Components.AiPopover['component']>,
     componentProps: {} as PropOptions<Components.AiPopover['componentProps']>,
     backdropDismiss: {} as PropOptions<Components.AiPopover['backdropDismiss']>,
+    event: {} as PropOptions<Components.AiPopover['event']>,
   },
 
 

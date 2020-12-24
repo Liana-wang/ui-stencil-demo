@@ -7,6 +7,20 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ComponentProps, ComponentRef } from "./interface";
 export namespace Components {
+    interface AiBackdrop {
+        /**
+          * If `true`, the backdrop will stop propagation on tap.
+         */
+        "stopPropagation": boolean;
+        /**
+          * If `true`, the backdrop will can be clicked and will emit the `aiBackdropTap` event.
+         */
+        "tappable": boolean;
+        /**
+          * If `true`, the backdrop will be visible.
+         */
+        "visible": boolean;
+    }
     interface AiButton {
         /**
           * 是否禁用
@@ -51,6 +65,10 @@ export namespace Components {
          */
         "componentProps"?: ComponentProps;
         "dismiss": (data?: any, role?: string) => Promise<boolean>;
+        /**
+          * 触发动画的事件
+         */
+        "event": any;
         "onDidDismiss": () => Promise<any>;
         "onWillDismiss": () => Promise<any>;
         "overlayIndex": number;
@@ -93,6 +111,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAiBackdropElement extends Components.AiBackdrop, HTMLStencilElement {
+    }
+    var HTMLAiBackdropElement: {
+        prototype: HTMLAiBackdropElement;
+        new (): HTMLAiBackdropElement;
+    };
     interface HTMLAiButtonElement extends Components.AiButton, HTMLStencilElement {
     }
     var HTMLAiButtonElement: {
@@ -136,6 +160,7 @@ declare global {
         new (): HTMLAiSelectPopoverElement;
     };
     interface HTMLElementTagNameMap {
+        "ai-backdrop": HTMLAiBackdropElement;
         "ai-button": HTMLAiButtonElement;
         "ai-control": HTMLAiControlElement;
         "ai-input": HTMLAiInputElement;
@@ -146,6 +171,24 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface AiBackdrop {
+        /**
+          * Emitted when the backdrop is tapped.
+         */
+        "onAiBackdropTap"?: (event: CustomEvent<void>) => void;
+        /**
+          * If `true`, the backdrop will stop propagation on tap.
+         */
+        "stopPropagation"?: boolean;
+        /**
+          * If `true`, the backdrop will can be clicked and will emit the `aiBackdropTap` event.
+         */
+        "tappable"?: boolean;
+        /**
+          * If `true`, the backdrop will be visible.
+         */
+        "visible"?: boolean;
+    }
     interface AiButton {
         /**
           * 是否禁用
@@ -205,6 +248,10 @@ declare namespace LocalJSX {
           * 传递给弹出窗的数据
          */
         "componentProps"?: ComponentProps;
+        /**
+          * 触发动画的事件
+         */
+        "event"?: any;
         /**
           * 派发弹出层已销毁事件
          */
@@ -278,6 +325,7 @@ declare namespace LocalJSX {
         "options"?: ReadonlyArray<any>;
     }
     interface IntrinsicElements {
+        "ai-backdrop": AiBackdrop;
         "ai-button": AiButton;
         "ai-control": AiControl;
         "ai-input": AiInput;
@@ -291,6 +339,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "ai-backdrop": LocalJSX.AiBackdrop & JSXBase.HTMLAttributes<HTMLAiBackdropElement>;
             "ai-button": LocalJSX.AiButton & JSXBase.HTMLAttributes<HTMLAiButtonElement>;
             "ai-control": LocalJSX.AiControl & JSXBase.HTMLAttributes<HTMLAiControlElement>;
             "ai-input": LocalJSX.AiInput & JSXBase.HTMLAttributes<HTMLAiInputElement>;

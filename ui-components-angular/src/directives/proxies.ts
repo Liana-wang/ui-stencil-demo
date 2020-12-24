@@ -5,6 +5,29 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
 import { Components } from '@ai/ui-components';
 
+import { AiBackdrop as IAiBackdrop } from '@ai/ui-components/dist/types/components/backdrop/backdrop';
+export declare interface AiBackdrop extends Components.AiBackdrop {}
+@ProxyCmp({
+  inputs: ['stopPropagation', 'tappable', 'visible']
+})
+@Component({
+  selector: 'ai-backdrop',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['stopPropagation', 'tappable', 'visible'],
+  outputs: ['aiBackdropTap']
+})
+export class AiBackdrop {
+  /** Emitted when the backdrop is tapped. */
+  aiBackdropTap!: IAiBackdrop['aiBackdropTap'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['aiBackdropTap']);
+  }
+}
+
 import { AiButton as IAiButton } from '@ai/ui-components/dist/types/components/button/button';
 export declare interface AiButton extends Components.AiButton {}
 @ProxyCmp({
@@ -74,14 +97,14 @@ export class AiInput {
 import { AiPopover as IAiPopover } from '@ai/ui-components/dist/types/components/popover/popover';
 export declare interface AiPopover extends Components.AiPopover {}
 @ProxyCmp({
-  inputs: ['backdropDismiss', 'component', 'componentProps'],
+  inputs: ['backdropDismiss', 'component', 'componentProps', 'event'],
   methods: ['present', 'dismiss', 'onDidDismiss', 'onWillDismiss']
 })
 @Component({
   selector: 'ai-popover',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['backdropDismiss', 'component', 'componentProps'],
+  inputs: ['backdropDismiss', 'component', 'componentProps', 'event'],
   outputs: ['aiPopoverDidPresent', 'aiPopoverWillPresent', 'aiPopoverWillDismiss', 'aiPopoverDidDismiss']
 })
 export class AiPopover {

@@ -1,5 +1,6 @@
 import { HTMLAiOverlayElement } from './overlays-interface'
 import { removeEventListener, addEventListener } from './helper'
+
 let lastId = 0;
 
 export const activeAnimations = new WeakMap<any, Animation[]>();
@@ -77,6 +78,8 @@ export const getOverlay = (doc: Document, overlayTag?: string, id?: string): any
  */
 export const present = async (
     overlay: any,
+    enterAnimation: any,
+    opts?: any,
 ) => {
     if (overlay.presented) {
         return
@@ -85,6 +88,12 @@ export const present = async (
     overlay.presented = true
 
     overlay.willPresent.emit()
+
+    const completed = await overlayAnimation(overlay, enterAnimation, overlay.el, opts);
+
+    if (completed) {
+        overlay.didPresent.emit();
+    }
 
     overlay.didPresent.emit()
 };
@@ -96,6 +105,8 @@ export const dismiss = async (
     overlay: any,
     data: any | undefined,
     role: string | undefined,
+    leaveAnimation: any,
+    opts?: any,
 ): Promise<boolean> => {
     if (!overlay.presented) {
         return false;
@@ -106,6 +117,8 @@ export const dismiss = async (
         overlay.el.style.setProperty('pointer-events', 'none')
 
         overlay.willDismiss.emit({ data, role })
+
+        await overlayAnimation(overlay, leaveAnimation, overlay.el, opts);
 
         overlay.didDismiss.emit({ data, role })
 
@@ -118,6 +131,35 @@ export const dismiss = async (
     overlay.el.remove()
 
     return true
+};
+
+const overlayAnimation = async (
+    overlay: any,
+    animationBuilder: any,
+    baseEl: any,
+    opts: any
+): Promise<boolean> => {
+    // Make overlay visible in case it's hidden
+    baseEl.classList.remove('overlay-hidden');
+
+    const aniRoot = baseEl.shadowRoot || overlay.el;
+    const animation = animationBuilder(aniRoot, opts);
+
+    if (overlay.keyboardClose) {
+        animation.beforeAddWrite(() => {
+            const activeElement = baseEl.ownerDocument!.activeElement as HTMLElement;
+            if (activeElement && activeElement.matches('input, ion-input, ion-textarea')) {
+                activeElement.blur();
+            }
+        });
+    }
+
+    const activeAni = activeAnimations.get(overlay) || [];
+    activeAnimations.set(overlay, [...activeAni, animation]);
+
+    await animation.play();
+
+    return true;
 };
 
 export const eventMethod = <T>(element: HTMLElement, eventName: string): Promise<T> => {

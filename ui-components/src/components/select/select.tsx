@@ -84,7 +84,6 @@ export class AiSelect implements ComponentInterface {
   }
 
   async connectedCallback() {
-    console.log('开始', this.value)
     this.updateOverlayOptions()
 
     this.emitStyle()
@@ -105,7 +104,6 @@ export class AiSelect implements ComponentInterface {
   componentDidLoad() {
     this.didInit = true;
   }
-
 
   @Method()
   async open(event?: UIEvent): Promise<any> {
@@ -153,14 +151,10 @@ export class AiSelect implements ComponentInterface {
   private createPopoverOptions(data: ReadonlyArray<any>, selectValue: any): ReadonlyArray<any> {
     const popoverOptions = data.map(option => {
       const value = getOptionValue(option)
-      console.log('value', value.toString())
-      console.log('selectValue', selectValue.toString())
 
       const copyClasses = Array.from(option.classList).filter(cls => cls !== 'hydrated').join(' ')
 
       const optClass = `${OPTION_CLASS} ${copyClasses}`
-
-      console.log('checked', isOptionSelected(value, selectValue, this.compareWith))
 
       return {
         text: option.textContent || '',
@@ -276,6 +270,7 @@ export class AiSelect implements ComponentInterface {
         aria-label={displayLabel}
         class={{
           'select-disabled': disabled,
+          'ai-focused': isExpanded,
         }}
       >
         <div aria-hidden="true" class={selectTextClasses} part={textPart}>

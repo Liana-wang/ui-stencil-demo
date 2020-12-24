@@ -12,6 +12,7 @@
 | `backdropDismiss`        | `backdrop-dismiss` | 点击背景时关闭        | `boolean`                           | `true`      |
 | `component` _(required)_ | `component`        | 在popover中显示的组件 | `Function \| HTMLElement \| string` | `undefined` |
 | `componentProps`         | --                 | 传递给弹出窗的数据      | `{ [key: string]: any; }`           | `undefined` |
+| `event`                  | `event`            | 触发动画的事件        | `any`                               | `undefined` |
 
 
 ## Events
@@ -66,6 +67,19 @@ Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [ai-backdrop](../backdrop)
+
+### Graph
+```mermaid
+graph TD;
+  ai-popover --> ai-backdrop
+  style ai-popover fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

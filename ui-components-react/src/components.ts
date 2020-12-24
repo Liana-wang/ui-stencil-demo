@@ -8,6 +8,7 @@ import type { JSX } from '@ai/ui-components';
 import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
 
 applyPolyfills().then(() => defineCustomElements());
+export const AiBackdrop = /*@__PURE__*/createReactComponent<JSX.AiBackdrop, HTMLAiBackdropElement>('ai-backdrop');
 export const AiButton = /*@__PURE__*/createReactComponent<JSX.AiButton, HTMLAiButtonElement>('ai-button');
 export const AiControl = /*@__PURE__*/createReactComponent<JSX.AiControl, HTMLAiControlElement>('ai-control');
 export const AiInput = /*@__PURE__*/createReactComponent<JSX.AiInput, HTMLAiInputElement>('ai-input');

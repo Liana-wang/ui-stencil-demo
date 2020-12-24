@@ -3,11 +3,7 @@ import { AiSelect, AiSelectOption } from '@ai/ui-components-react'
 
 export default class SelectExm extends React.Component {
     state = {
-        selected:
-        {
-            id: '11',
-            text: 'React'
-        },
+        selected: null
     }
 
     options = [
@@ -36,6 +32,16 @@ export default class SelectExm extends React.Component {
         'JavaScript',
     ]
 
+    // componentDidMount() {
+    //     this.setState({
+    //         selected: {
+    //             id: '11',
+    //             text: 'React'
+    //         }
+    //     })
+    // }
+
+
     changeSelect = (ev) => {
         console.log(ev)
         this.setState({
@@ -43,19 +49,26 @@ export default class SelectExm extends React.Component {
         })
     }
 
+    compare = (value, compareValue) => {
+        return value && compareValue ? value.id === compareValue.id : value === compareValue
+    }
+
     render() {
         return (
             <div>
-                <p>selected: {this.state.selected.text}</p>
-                <AiSelect
-                    value={this.state.selected}
-                    onAiChange={this.changeSelect}
-                    compareWith={'id'}
-                >
-                    {
-                        this.options.map((option, index) => (<AiSelectOption value={option} key={index}>{option.text}</AiSelectOption>))
-                    }
-                </AiSelect>
+                <p>selected: {this.state.selected && this.state.selected.text}</p>
+                <div className={'select-wrapper'}>
+                    <AiSelect
+                        value={this.state.selected}
+                        placeholder={'请选择'}
+                        onAiChange={this.changeSelect}
+                        compareWith={this.compare}
+                    >
+                        {
+                            this.options.map((option, index) => (<AiSelectOption value={option} key={index}>{option.text}</AiSelectOption>))
+                        }
+                    </AiSelect>
+                </div>
             </div>
         )
     }

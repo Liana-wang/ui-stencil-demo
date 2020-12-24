@@ -17,9 +17,12 @@ export const attachComponent = async (
     if (cssClasses) {
         cssClasses.forEach(c => el.classList.add(c));
     }
+
     if (componentProps) {
         Object.assign(el, componentProps);
     }
+
+    console.log({ el })
 
     container.appendChild(el);
 

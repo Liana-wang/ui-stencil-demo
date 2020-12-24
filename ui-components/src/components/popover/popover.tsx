@@ -3,6 +3,8 @@ import { ComponentRef, ComponentProps } from '../../interface'
 import { prepareOverlay, present, dismiss, eventMethod } from '../../utils/overlays'
 import { attachComponent, detachComponent } from '../../utils/delegate'
 import { deepReady } from '../../utils/transition'
+import { enterAnimation } from './enter'
+import { leaveAnimation } from './leave'
 
 @Component({
   tag: 'ai-popover',
@@ -31,6 +33,11 @@ export class AiPopover implements ComponentInterface {
 
   /** 点击背景时关闭 */
   @Prop() backdropDismiss = true;
+
+  /**
+   * 触发动画的事件
+   */
+  @Prop() event: any;
 
   /** 派发完成事件 */
   @Event({ eventName: 'aiPopoverDidPresent' }) didPresent!: EventEmitter<void>;
@@ -67,12 +74,12 @@ export class AiPopover implements ComponentInterface {
 
     await deepReady(this.usersElement)
 
-    return present(this)
+    return present(this, enterAnimation, this.event)
   }
 
   @Method()
   async dismiss(data?: any, role?: string): Promise<boolean> {
-    const shouldDismiss = await dismiss(this, data, role)
+    const shouldDismiss = await dismiss(this, data, role, leaveAnimation, this.event)
 
     if (shouldDismiss) {
       await detachComponent(this.usersElement)
@@ -126,13 +133,15 @@ export class AiPopover implements ComponentInterface {
         style={{
           zIndex: `${20000 + this.overlayIndex}`,
         }}
-        onIonPopoverDidPresent={onLifecycle}
-        onIonPopoverWillPresent={onLifecycle}
-        onIonPopoverWillDismiss={onLifecycle}
-        onIonPopoverDidDismiss={onLifecycle}
-        onIonDismiss={this.onDismiss}
-        onIonBackdropTap={this.onBackdropTap}
+        onAiPopoverDidPresent={onLifecycle}
+        onAiPopoverWillPresent={onLifecycle}
+        onAiPopoverWillDismiss={onLifecycle}
+        onAiPopoverDidDismiss={onLifecycle}
+        onAiDismiss={this.onDismiss}
+        onAiBackdropTap={this.onBackdropTap}
       >
+        <ai-backdrop tappable={this.backdropDismiss} />
+
         <div class="popover-wrapper ai-overlay-wrapper">
           <div class="popover-arrow"></div>
           <div class="popover-content"></div>

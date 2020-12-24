@@ -25,13 +25,11 @@ export class SelectPopover implements ComponentInterface {
   render() {
     return (
       <Host>
-        <ul>
-          {
-            this.options.map(option =>
-              <li class={{ 'selected': option.checked }} onClick={() => option.handler()}>{option.text}</li>
-            )
-          }
-        </ul>
+        {
+          this.options.map(option =>
+            <div class={{ 'item': true, 'selected': option.checked, 'disabled': option.disabled }} onClick={() => option.handler()}>{option.text}</div>
+          )
+        }
       </Host>
     );
   }

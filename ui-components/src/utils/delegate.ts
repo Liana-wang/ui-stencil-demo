@@ -22,8 +22,6 @@ export const attachComponent = async (
         Object.assign(el, componentProps);
     }
 
-    console.log({ el })
-
     container.appendChild(el);
 
     if (el.componentOnReady) {

@@ -205,7 +205,7 @@ export class AiSelect implements ComponentInterface {
   }
 
   private getText(): string {
-    return generateText(this.childOpts, this.value);
+    return generateText(this.childOpts, this.value, this.compareWith);
   }
 
   private setFocus() {

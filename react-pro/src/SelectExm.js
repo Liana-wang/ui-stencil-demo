@@ -3,7 +3,10 @@ import { AiSelect, AiSelectOption } from '@ai/ui-components-react'
 
 export default class SelectExm extends React.Component {
     state = {
-        selected: null
+        selected: {
+            id: '44',
+            text: 'JavaScript'
+        }
     }
 
     options = [
@@ -35,8 +38,8 @@ export default class SelectExm extends React.Component {
     // componentDidMount() {
     //     this.setState({
     //         selected: {
-    //             id: '11',
-    //             text: 'React'
+    //             id: '44',
+    //             text: 'JavaScript'
     //         }
     //     })
     // }
@@ -62,7 +65,7 @@ export default class SelectExm extends React.Component {
                         value={this.state.selected}
                         placeholder={'请选择'}
                         onAiChange={this.changeSelect}
-                        compareWith={this.compare}
+                        compareWith={'id'}
                     >
                         {
                             this.options.map((option, index) => (<AiSelectOption value={option} key={index}>{option.text}</AiSelectOption>))

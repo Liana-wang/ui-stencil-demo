@@ -16,6 +16,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2015",
+    "skipLibCheck": true,
     "paths": {
       "@angular/*": ["node_modules/@angular/*"],
       "@ai/*": ["node_modules/@ai/*"],

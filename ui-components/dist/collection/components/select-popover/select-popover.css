@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.item {
+  padding: 5px 16px;
+  min-height: 20px;
+}
+
+.item:hover,
+.item:active {
+  background: rgba(220, 234, 249, 0.65);
+}
+
+.selected {
+  background: #f0f2f7;
+}
+
+.selected:hover,
+.selected:active {
+  background: rgba(220, 234, 249, 0.65);
+}
+
+
+.disabled {
+  color: #999;
+  background: #fff;
+  cursor: default;
+}
+
+.disabled:hover,
+.disabled:active {
+  color: #999;
+  background: #fff;
+  opacity: 1;
+}

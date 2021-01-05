@@ -30,6 +30,10 @@ export namespace Components {
           * 文字
          */
         "text": string;
+        /**
+          * value
+         */
+        "value"?: any;
     }
     interface AiControl {
     }
@@ -202,6 +206,10 @@ declare namespace LocalJSX {
           * 文字
          */
         "text"?: string;
+        /**
+          * value
+         */
+        "value"?: any;
     }
     interface AiControl {
     }

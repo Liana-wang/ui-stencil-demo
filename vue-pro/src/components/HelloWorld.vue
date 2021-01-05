@@ -1,22 +1,37 @@
 <template>
   <div class="hello">
-    <span>姓名：</span>
-    <ai-input placeholder="请输入..." @aiInput="onAiInput" :value="name" />
-    <ai-button @aiClick="onClick" :disabled="!name">确定</ai-button>
-    <p v-if="isConfirm && name">Welcome! {{ name }}</p>
-    <ai-input placeholder="请输入..." @aiInput="onAiInput" :value="name" />
-    <div>
-      <ai-select :value="selected">
-        <ai-select-option
-          v-for="option in options"
-          :value="option"
-          :key="option.id"
-          >{{ option.text }}</ai-select-option
+    <div class="item">
+      <span>姓名：</span>
+      <ai-input placeholder="请输入..." @aiInput="onAiInput" :value="name" />
+      <ai-button
+        @aiClick="onClick"
+        :disabled="!name"
+        :value="{ id: '11', text: 'assdas' }"
+        >确定</ai-button
+      >
+      <p v-if="isConfirm && name">Welcome! {{ name }}</p>
+      <div style="margin-top: 20px">
+        <span>联动：</span>
+        <ai-input placeholder="请输入..." @aiInput="onAiInput" :value="name" />
+      </div>
+    </div>
+    <div class="item">
+      <p>选中项为：{{ selected ? selected.text : "" }}</p>
+      <div class="select">
+        <ai-select
+          :value="selected"
+          @aiChange="onSelectChange"
+          compare-with="id"
         >
-        <!-- <ai-select-option value="blonde">Blonde</ai-select-option>
-        <ai-select-option value="black">Black</ai-select-option>
-        <ai-select-option value="aa">aa</ai-select-option> -->
-      </ai-select>
+          <ai-select-option
+            v-for="option in options"
+            :value="option"
+            :key="option.id"
+          >
+            {{ option.text }}
+          </ai-select-option>
+        </ai-select>
+      </div>
     </div>
   </div>
 </template>
@@ -72,6 +87,9 @@ export default {
         this.isConfirm = false;
       }
     },
+    onSelectChange: function (Event) {
+      console.log(event);
+    },
   },
   watch: {
     name: function (newName, oldName) {
@@ -83,4 +101,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.item {
+  padding: 10px;
+  text-align: center;
+}
+
+.select {
+  width: 200px;
+  height: 30px;
+  margin-left: 45%;
+}
 </style>

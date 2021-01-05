@@ -9,6 +9,30 @@ export class AppComponent {
   title = 'ng-test';
   name = ''
 
+  options = [
+    {
+      id: "11",
+      text: "React",
+    },
+    {
+      id: "22",
+      text: "Vue",
+    },
+    {
+      id: "33",
+      text: "Angular",
+    },
+    {
+      id: "44",
+      text: "JavaScript",
+    }
+  ]
+
+  selected = {
+    id: "44",
+    text: "JavaScript",
+  }
+
   isConfirm = false
 
   onClick(event: any) {
@@ -23,5 +47,10 @@ export class AppComponent {
     if (this.isConfirm) {
       this.isConfirm = false
     }
+  }
+
+  onSelectChange(event: any) {
+    this.selected = event.detail.value
+    console.log('event', event)
   }
 }

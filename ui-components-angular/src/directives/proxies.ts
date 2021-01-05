@@ -31,13 +31,13 @@ export class AiBackdrop {
 import { AiButton as IAiButton } from '@ai/ui-components/dist/types/components/button/button';
 export declare interface AiButton extends Components.AiButton {}
 @ProxyCmp({
-  inputs: ['disabled', 'text']
+  inputs: ['disabled', 'text', 'value']
 })
 @Component({
   selector: 'ai-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'text'],
+  inputs: ['disabled', 'text', 'value'],
   outputs: ['aiClick']
 })
 export class AiButton {

@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.btn {
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid #d3d4db;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #505050;
+  box-shadow: none;
+  line-height: normal;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn:hover {
+  border-color: #d3d4db;
+  background-color: rgba(228, 230, 237, 0.25);
+}
+
+.btn:active {
+  background-color: rgba(228, 230, 237, 0.45);
+}
+
+
+.btn-disabled {
+  border-color: rgba(211, 212, 219, 0.8);
+  background-color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+}

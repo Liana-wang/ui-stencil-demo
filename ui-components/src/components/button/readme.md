@@ -11,6 +11,7 @@
 | ---------- | ---------- | ----------- | --------- | ----------- |
 | `disabled` | `disabled` | 是否禁用        | `boolean` | `false`     |
 | `text`     | `text`     | 文字          | `string`  | `undefined` |
+| `value`    | `value`    | value       | `any`     | `undefined` |
 
 
 ## Events
@@ -19,19 +20,6 @@
 | --------- | ----------- | ------------------------- |
 | `aiClick` | 点击          | `CustomEvent<MouseEvent>` |
 
-
-## Dependencies
-
-### Depends on
-
-- [ai-control](../control)
-
-### Graph
-```mermaid
-graph TD;
-  ai-button --> ai-control
-  style ai-button fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

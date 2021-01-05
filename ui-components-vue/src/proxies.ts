@@ -41,6 +41,7 @@ export const AiButton = /*@__PURE__*/ Vue.extend({
   props: {
     text: {} as PropOptions<Components.AiButton['text']>,
     disabled: {} as PropOptions<Components.AiButton['disabled']>,
+    value: {} as PropOptions<Components.AiButton['value']>,
   },
 
 

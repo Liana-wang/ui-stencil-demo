@@ -1,0 +1,40 @@
+:host {
+  position: fixed;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  max-width: auto;
+  height: auto;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: none;
+  color: #000;
+  z-index: 1001;
+}
+
+.popover-wrapper {
+  z-index: 10;
+}
+
+
+.popover-content {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  min-width: 200px;
+  max-width: 500px;
+  min-height: 40px;
+  max-height: 500px;
+  background: #fff;
+  box-shadow: 0 2px 9px 1px rgba(0, 0, 0, .1);
+  border: 1px solid rgba(0, 0, 0, .05);
+  border-radius: 4px;
+  overflow-y: auto;
+  z-index: 10;
+  opacity: 0;
+  color: #505050;
+  transition-delay: 30ms;
+}

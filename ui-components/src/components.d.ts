@@ -113,6 +113,9 @@ export namespace Components {
          */
         "options": ReadonlyArray<any>;
     }
+    interface AiStringfy {
+        "data": any;
+    }
 }
 declare global {
     interface HTMLAiBackdropElement extends Components.AiBackdrop, HTMLStencilElement {
@@ -163,6 +166,12 @@ declare global {
         prototype: HTMLAiSelectPopoverElement;
         new (): HTMLAiSelectPopoverElement;
     };
+    interface HTMLAiStringfyElement extends Components.AiStringfy, HTMLStencilElement {
+    }
+    var HTMLAiStringfyElement: {
+        prototype: HTMLAiStringfyElement;
+        new (): HTMLAiStringfyElement;
+    };
     interface HTMLElementTagNameMap {
         "ai-backdrop": HTMLAiBackdropElement;
         "ai-button": HTMLAiButtonElement;
@@ -172,6 +181,7 @@ declare global {
         "ai-select": HTMLAiSelectElement;
         "ai-select-option": HTMLAiSelectOptionElement;
         "ai-select-popover": HTMLAiSelectPopoverElement;
+        "ai-stringfy": HTMLAiStringfyElement;
     }
 }
 declare namespace LocalJSX {
@@ -332,6 +342,9 @@ declare namespace LocalJSX {
          */
         "options"?: ReadonlyArray<any>;
     }
+    interface AiStringfy {
+        "data"?: any;
+    }
     interface IntrinsicElements {
         "ai-backdrop": AiBackdrop;
         "ai-button": AiButton;
@@ -341,6 +354,7 @@ declare namespace LocalJSX {
         "ai-select": AiSelect;
         "ai-select-option": AiSelectOption;
         "ai-select-popover": AiSelectPopover;
+        "ai-stringfy": AiStringfy;
     }
 }
 export { LocalJSX as JSX };
@@ -355,6 +369,7 @@ declare module "@stencil/core" {
             "ai-select": LocalJSX.AiSelect & JSXBase.HTMLAttributes<HTMLAiSelectElement>;
             "ai-select-option": LocalJSX.AiSelectOption & JSXBase.HTMLAttributes<HTMLAiSelectOptionElement>;
             "ai-select-popover": LocalJSX.AiSelectPopover & JSXBase.HTMLAttributes<HTMLAiSelectPopoverElement>;
+            "ai-stringfy": LocalJSX.AiStringfy & JSXBase.HTMLAttributes<HTMLAiStringfyElement>;
         }
     }
 }

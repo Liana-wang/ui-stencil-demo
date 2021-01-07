@@ -7,7 +7,8 @@
     "./components/popover/popover.js",
     "./components/select/select.js",
     "./components/select-option/select-option.js",
-    "./components/select-popover/select-popover.js"
+    "./components/select-popover/select-popover.js",
+    "./components/stringfy/ai-stringfy.js"
   ],
   "compiler": {
     "name": "@stencil/core",

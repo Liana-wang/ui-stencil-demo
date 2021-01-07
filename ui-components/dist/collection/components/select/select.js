@@ -36,6 +36,7 @@ export class AiSelect {
     }
   }
   async connectedCallback() {
+    console.log('this.value', this.value);
     this.updateOverlayOptions();
     this.emitStyle();
     this.mutationO = watchForOptions(this.el, 'ai-select-option', async () => {
@@ -116,6 +117,7 @@ export class AiSelect {
     if (!this.overlay) {
       return Promise.resolve(false);
     }
+    this.isExpanded = false;
     return this.overlay.dismiss();
   }
   hasValue() {

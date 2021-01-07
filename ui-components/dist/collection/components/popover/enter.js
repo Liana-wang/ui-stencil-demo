@@ -64,7 +64,7 @@ export const enterAnimation = (baseEl, ev) => {
   const contentAnimation = createAnimation();
   backdropAnimation
     .addElement(baseEl.querySelector('ai-backdrop'))
-    .fromTo('opacity', 0.01, 0.08)
+    .fromTo('opacity', 0.01, 0)
     .beforeStyles({
     'pointer-events': 'none'
   })

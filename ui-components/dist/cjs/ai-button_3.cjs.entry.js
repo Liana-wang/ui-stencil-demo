@@ -28,7 +28,7 @@ const AiButton = class {
     console.log('btn-value', this.value);
   }
   render() {
-    return (index.h(index.Host, null, index.h("button", { class: {
+    return (index.h(index.Host, null, index.h("span", null, this.value && this.value.text ? this.value.text : ''), index.h("button", { class: {
         'btn': true,
         'btn-disabled': this.disabled,
       }, onClick: this.handleClick }, index.h("slot", { name: 'btn-icon' }), this.text ? this.text : index.h("slot", null))));
@@ -156,6 +156,7 @@ const AiSelect = class {
     }
   }
   async connectedCallback() {
+    console.log('this.value', this.value);
     this.updateOverlayOptions();
     this.emitStyle();
     this.mutationO = watchForOptions(this.el, 'ai-select-option', async () => {
@@ -236,6 +237,7 @@ const AiSelect = class {
     if (!this.overlay) {
       return Promise.resolve(false);
     }
+    this.isExpanded = false;
     return this.overlay.dismiss();
   }
   hasValue() {

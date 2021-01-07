@@ -18,7 +18,7 @@ export class AiButton {
   /**
    * value
    */
-  @Prop({ mutable: true }) value?: any;
+  @Prop({ mutable: true, attribute: 'value' }) value?: any;
 
   /**
    * 点击
@@ -40,6 +40,7 @@ export class AiButton {
   render() {
     return (
       <Host>
+        <span>{this.value && this.value.text ? this.value.text : ''}</span>
         <button
           class={{
             'btn': true,

@@ -1,38 +1,43 @@
 <template>
   <div class="hello">
-    <div class="item">
+    <!-- <div class="item">
       <span>姓名：</span>
       <ai-input placeholder="请输入..." @aiInput="onAiInput" :value="name" />
-      <ai-button
+      <AiButton
         @aiClick="onClick"
         :disabled="!name"
-        :value="{ id: '11', text: 'assdas' }"
-        >确定</ai-button
+        :value="{ id: '111', text: 'aaa' }"
       >
+        确定
+      </AiButton>
       <p v-if="isConfirm && name">Welcome! {{ name }}</p>
       <div style="margin-top: 20px">
         <span>联动：</span>
         <ai-input placeholder="请输入..." @aiInput="onAiInput" :value="name" />
       </div>
-    </div>
+    </div> -->
     <div class="item">
       <p>选中项为：{{ selected ? selected.text : "" }}</p>
       <div class="select">
-        <ai-select
+        <AiSelect
           :value="selected"
           @aiChange="onSelectChange"
           compare-with="id"
+          placeholder="请选择"
         >
-          <ai-select-option
+          <AiSelectOption
             v-for="option in options"
             :value="option"
             :key="option.id"
           >
             {{ option.text }}
-          </ai-select-option>
-        </ai-select>
+          </AiSelectOption>
+        </AiSelect>
       </div>
     </div>
+    <!-- <div class="item">
+      <my-button :value.prop="{ id: '111', text: 'aaa' }">测试</my-button>
+    </div> -->
   </div>
 </template>
 
@@ -46,6 +51,12 @@ import {
 
 export default {
   name: "HelloWorld",
+  components: {
+    AiButton,
+    AiInput,
+    AiSelect,
+    AiSelectOption,
+  },
   data() {
     return {
       name: "",
@@ -69,8 +80,8 @@ export default {
         },
       ],
       selected: {
-        id: "11",
-        text: "React",
+        id: "44",
+        text: "JavaScript",
       },
     };
   },

@@ -19,6 +19,7 @@ export class AiButton {
   }
   render() {
     return (h(Host, null,
+      h("span", null, this.value && this.value.text ? this.value.text : ''),
       h("button", { class: {
           'btn': true,
           'btn-disabled': this.disabled,

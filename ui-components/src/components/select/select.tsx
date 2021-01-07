@@ -84,6 +84,7 @@ export class AiSelect implements ComponentInterface {
   }
 
   async connectedCallback() {
+    console.log('this.value', this.value)
     this.updateOverlayOptions()
 
     this.emitStyle()
@@ -192,6 +193,8 @@ export class AiSelect implements ComponentInterface {
     if (!this.overlay) {
       return Promise.resolve(false)
     }
+
+    this.isExpanded = false
 
     return this.overlay.dismiss()
   }

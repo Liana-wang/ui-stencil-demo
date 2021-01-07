@@ -31,6 +31,7 @@ export default function App() {
           disabled={!name}
           className={'ai-btn'}
           onAiClick={(event) => setIsConfirm(true)}
+          value={{ id: '111', text: 'hhh' }}
         >
           <span slot="btn-icon">@</span>
           确定

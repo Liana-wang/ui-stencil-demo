@@ -1,0 +1,28 @@
+{
+  "name": "vue3-pro",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@ionic/vue": "^5.5.2",
+    "core-js": "^3.6.5",
+    "elwins-test-web-components": "^0.3.5",
+    "elwins-test-web-components-vue": "^0.3.6",
+    "vue": "^3.0.0",
+    "vue-router": "^3.4.9"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

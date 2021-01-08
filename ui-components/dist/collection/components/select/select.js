@@ -4,7 +4,6 @@ import { popoverController } from '../../utils/overlays';
 export class AiSelect {
   constructor() {
     this.inputId = `ai-sel-${selectIds++}`;
-    this.didInit = false;
     /**
      * 是否处于展开状态
      */
@@ -28,15 +27,16 @@ export class AiSelect {
     this.emitStyle();
   }
   valueChanged() {
+    this.updateOptions();
     this.emitStyle();
-    if (this.didInit) {
-      this.aiChange.emit({
-        value: this.value,
-      });
-    }
+    // if (this.didInit) {
+    //   this.aiChange.emit({
+    //     selected: this.selected,
+    //   })
+    // }
   }
   async connectedCallback() {
-    console.log('this.value', this.value);
+    this.updateOptions();
     this.updateOverlayOptions();
     this.emitStyle();
     this.mutationO = watchForOptions(this.el, 'ai-select-option', async () => {
@@ -50,7 +50,7 @@ export class AiSelect {
     }
   }
   componentDidLoad() {
-    this.didInit = true;
+    // this.didInit = true;
   }
   async open(event) {
     if (this.disabled || this.isExpanded) {
@@ -75,7 +75,7 @@ export class AiSelect {
       return;
     }
     const childOpts = this.childOpts;
-    const value = this.value;
+    const value = this.selected;
     const popover = overlay.querySelector('ai-select-popover');
     if (popover) {
       popover.options = this.createPopoverOptions(childOpts, value);
@@ -89,11 +89,14 @@ export class AiSelect {
       return {
         text: option.textContent || '',
         cssClass: optClass,
-        value,
+        option: value,
         checked: isOptionSelected(value, selectValue, this.compareWith),
         disabled: option.disabled,
         handler: () => {
-          this.value = value;
+          this.selected = value;
+          this.aiChange.emit({
+            selected: value,
+          });
           this.close();
         }
       };
@@ -101,13 +104,13 @@ export class AiSelect {
     return popoverOptions;
   }
   async openPopover(ev) {
-    const value = this.value;
+    const value = this.selected;
     const popoverOpts = {
       component: 'ai-select-popover',
       cssClass: ['select-popover'],
       event: ev,
       componentProps: {
-        value,
+        selected: value,
         options: this.createPopoverOptions(this.childOpts, value)
       }
     };
@@ -120,6 +123,21 @@ export class AiSelect {
     this.isExpanded = false;
     return this.overlay.dismiss();
   }
+  updateOptions() {
+    // iterate all options, updating the selected prop
+    let canSelect = true;
+    const { selected, childOpts, compareWith } = this;
+    for (const selectOption of childOpts) {
+      const optValue = getOptionValue(selectOption);
+      const isSelected = canSelect && isOptionSelected(selected, optValue, compareWith);
+      selectOption.selected = isSelected;
+      // if current option is selected and select is single-option, we can't select
+      // any option more
+      if (isSelected) {
+        canSelect = false;
+      }
+    }
+  }
   hasValue() {
     return this.getText() !== '';
   }
@@ -127,7 +145,7 @@ export class AiSelect {
     return Array.from(this.el.querySelectorAll('ai-select-option'));
   }
   getText() {
-    return generateText(this.childOpts, this.value, this.compareWith);
+    return generateText(this.childOpts, this.selected, this.compareWith);
   }
   setFocus() {
     if (this.focusEl) {
@@ -213,7 +231,7 @@ export class AiSelect {
       "attribute": "placeholder",
       "reflect": false
     },
-    "value": {
+    "selected": {
       "type": "any",
       "mutable": true,
       "complexType": {
@@ -227,7 +245,7 @@ export class AiSelect {
         "tags": [],
         "text": "\u9009\u4E2D\u7684\u503C"
       },
-      "attribute": "value",
+      "attribute": "selected",
       "reflect": false
     },
     "compareWith": {
@@ -363,7 +381,7 @@ export class AiSelect {
       "propName": "placeholder",
       "methodName": "disabledChanged"
     }, {
-      "propName": "value",
+      "propName": "selected",
       "methodName": "valueChanged"
     }]; }
 }
@@ -379,7 +397,7 @@ const isOptionSelected = (currentValue, compareValue, compareWith) => {
   }
 };
 const getOptionValue = (el) => {
-  const value = el.value;
+  const value = el.option;
   return (value === undefined)
     ? el.textContent || ''
     : value;

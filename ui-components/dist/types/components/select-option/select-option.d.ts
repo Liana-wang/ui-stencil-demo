@@ -9,6 +9,6 @@ export declare class AiSelectOption implements ComponentInterface {
   /**
    * 选项的value
    */
-  value?: any | null;
+  option?: any | null;
   render(): any;
 }

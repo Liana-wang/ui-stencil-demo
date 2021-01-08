@@ -31,13 +31,13 @@ export class AiBackdrop {
 import { AiButton as IAiButton } from '@ai/ui-components/dist/types/components/button/button';
 export declare interface AiButton extends Components.AiButton {}
 @ProxyCmp({
-  inputs: ['disabled', 'text', 'value']
+  inputs: ['btnValue', 'disabled', 'text']
 })
 @Component({
   selector: 'ai-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'text', 'value'],
+  inputs: ['btnValue', 'disabled', 'text'],
   outputs: ['aiClick']
 })
 export class AiButton {
@@ -127,14 +127,14 @@ export class AiPopover {
 import { AiSelect as IAiSelect } from '@ai/ui-components/dist/types/components/select/select';
 export declare interface AiSelect extends Components.AiSelect {}
 @ProxyCmp({
-  inputs: ['compareWith', 'disabled', 'placeholder', 'value'],
+  inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
   methods: ['open']
 })
 @Component({
   selector: 'ai-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['compareWith', 'disabled', 'placeholder', 'value'],
+  inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
   outputs: ['aiChange', 'aiCancel', 'aiFocus', 'aiBlur', 'aiStyle']
 })
 export class AiSelect {
@@ -159,13 +159,13 @@ export class AiSelect {
 
 export declare interface AiSelectOption extends Components.AiSelectOption {}
 @ProxyCmp({
-  inputs: ['disabled', 'value']
+  inputs: ['disabled', 'option']
 })
 @Component({
   selector: 'ai-select-option',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'value']
+  inputs: ['disabled', 'option']
 })
 export class AiSelectOption {
   protected el: HTMLElement;
@@ -187,6 +187,25 @@ export declare interface AiSelectPopover extends Components.AiSelectPopover {}
   inputs: ['options']
 })
 export class AiSelectPopover {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface AiStringfy extends Components.AiStringfy {}
+@ProxyCmp({
+  inputs: ['data']
+})
+@Component({
+  selector: 'ai-stringfy',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['data']
+})
+export class AiStringfy {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

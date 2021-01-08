@@ -37,7 +37,7 @@ export class AiSelectOption {
       "reflect": false,
       "defaultValue": "false"
     },
-    "value": {
+    "option": {
       "type": "any",
       "mutable": false,
       "complexType": {
@@ -51,7 +51,7 @@ export class AiSelectOption {
         "tags": [],
         "text": "\u9009\u9879\u7684value"
       },
-      "attribute": "value",
+      "attribute": "option",
       "reflect": false
     }
   }; }

@@ -4,8 +4,8 @@ import { AiSelect, AiSelectOption } from '@ai/ui-components-react'
 export default class SelectExm extends React.Component {
     state = {
         selected: {
-            id: '44',
-            text: 'JavaScript'
+            id: '22',
+            text: 'Vue',
         }
     }
 
@@ -36,19 +36,21 @@ export default class SelectExm extends React.Component {
     ]
 
     // componentDidMount() {
-    //     this.setState({
-    //         selected: {
-    //             id: '44',
-    //             text: 'JavaScript'
-    //         }
-    //     })
+    //     setTimeout(() => {
+    //         this.setState({
+    //             selected: {
+    //                 id: '44',
+    //                 text: 'JavaScript',
+    //             }
+    //         })
+    //     }, 1000);
     // }
 
 
     changeSelect = (ev) => {
         console.log(ev)
         this.setState({
-            selected: ev.detail.value
+            selected: ev.detail.selected
         })
     }
 
@@ -62,16 +64,28 @@ export default class SelectExm extends React.Component {
                 <p>selected: {this.state.selected && this.state.selected.text}</p>
                 <div className={'select-wrapper'}>
                     <AiSelect
-                        value={this.state.selected}
+                        selected={this.state.selected}
                         placeholder={'请选择'}
                         onAiChange={this.changeSelect}
                         compareWith={'id'}
                     >
                         {
-                            this.options.map((option, index) => (<AiSelectOption value={option} key={index}>{option.text}</AiSelectOption>))
+                            this.options.map((option, index) => (<AiSelectOption option={option} key={index}>{option.text}</AiSelectOption>))
                         }
                     </AiSelect>
                 </div>
+
+                {/* <div className={'select-wrapper'}>
+                    <AiSelect
+                        value={this.state.selected}
+                        placeholder={'请选择'}
+                        onAiChange={this.changeSelect}
+                    >
+                        <AiSelectOption value={'React'} key={1}>{'React'}</AiSelectOption>
+                        <AiSelectOption value={'Vue'} key={2}>{'Vue'}</AiSelectOption>
+                        <AiSelectOption value={'JS'} key={3}>{'JS'}</AiSelectOption>
+                    </AiSelect>
+                </div> */}
             </div>
         )
     }

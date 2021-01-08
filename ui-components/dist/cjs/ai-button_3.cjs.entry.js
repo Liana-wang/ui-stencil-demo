@@ -25,10 +25,10 @@ const AiButton = class {
     };
   }
   connectedCallback() {
-    console.log('btn-value', this.value);
+    console.log('btn-value', this.btnValue);
   }
   render() {
-    return (index.h(index.Host, null, index.h("span", null, this.value && this.value.text ? this.value.text : ''), index.h("button", { class: {
+    return (index.h(index.Host, null, index.h("span", null, this.btnValue && this.btnValue.text ? this.btnValue.text : ''), index.h("button", { class: {
         'btn': true,
         'btn-disabled': this.disabled,
       }, onClick: this.handleClick }, index.h("slot", { name: 'btn-icon' }), this.text ? this.text : index.h("slot", null))));
@@ -124,7 +124,6 @@ const AiSelect = class {
     this.aiBlur = index.createEvent(this, "aiBlur", 7);
     this.aiStyle = index.createEvent(this, "aiStyle", 7);
     this.inputId = `ai-sel-${selectIds++}`;
-    this.didInit = false;
     /**
      * 是否处于展开状态
      */
@@ -148,15 +147,16 @@ const AiSelect = class {
     this.emitStyle();
   }
   valueChanged() {
+    this.updateOptions();
     this.emitStyle();
-    if (this.didInit) {
-      this.aiChange.emit({
-        value: this.value,
-      });
-    }
+    // if (this.didInit) {
+    //   this.aiChange.emit({
+    //     selected: this.selected,
+    //   })
+    // }
   }
   async connectedCallback() {
-    console.log('this.value', this.value);
+    this.updateOptions();
     this.updateOverlayOptions();
     this.emitStyle();
     this.mutationO = watchForOptions(this.el, 'ai-select-option', async () => {
@@ -170,7 +170,7 @@ const AiSelect = class {
     }
   }
   componentDidLoad() {
-    this.didInit = true;
+    // this.didInit = true;
   }
   async open(event) {
     if (this.disabled || this.isExpanded) {
@@ -195,7 +195,7 @@ const AiSelect = class {
       return;
     }
     const childOpts = this.childOpts;
-    const value = this.value;
+    const value = this.selected;
     const popover = overlay.querySelector('ai-select-popover');
     if (popover) {
       popover.options = this.createPopoverOptions(childOpts, value);
@@ -209,11 +209,14 @@ const AiSelect = class {
       return {
         text: option.textContent || '',
         cssClass: optClass,
-        value,
+        option: value,
         checked: isOptionSelected(value, selectValue, this.compareWith),
         disabled: option.disabled,
         handler: () => {
-          this.value = value;
+          this.selected = value;
+          this.aiChange.emit({
+            selected: value,
+          });
           this.close();
         }
       };
@@ -221,13 +224,13 @@ const AiSelect = class {
     return popoverOptions;
   }
   async openPopover(ev) {
-    const value = this.value;
+    const value = this.selected;
     const popoverOpts = {
       component: 'ai-select-popover',
       cssClass: ['select-popover'],
       event: ev,
       componentProps: {
-        value,
+        selected: value,
         options: this.createPopoverOptions(this.childOpts, value)
       }
     };
@@ -240,6 +243,21 @@ const AiSelect = class {
     this.isExpanded = false;
     return this.overlay.dismiss();
   }
+  updateOptions() {
+    // iterate all options, updating the selected prop
+    let canSelect = true;
+    const { selected, childOpts, compareWith } = this;
+    for (const selectOption of childOpts) {
+      const optValue = getOptionValue(selectOption);
+      const isSelected = canSelect && isOptionSelected(selected, optValue, compareWith);
+      selectOption.selected = isSelected;
+      // if current option is selected and select is single-option, we can't select
+      // any option more
+      if (isSelected) {
+        canSelect = false;
+      }
+    }
+  }
   hasValue() {
     return this.getText() !== '';
   }
@@ -247,7 +265,7 @@ const AiSelect = class {
     return Array.from(this.el.querySelectorAll('ai-select-option'));
   }
   getText() {
-    return generateText(this.childOpts, this.value, this.compareWith);
+    return generateText(this.childOpts, this.selected, this.compareWith);
   }
   setFocus() {
     if (this.focusEl) {
@@ -288,7 +306,7 @@ const AiSelect = class {
   static get watchers() { return {
     "disabled": ["disabledChanged"],
     "placeholder": ["disabledChanged"],
-    "value": ["valueChanged"]
+    "selected": ["valueChanged"]
   }; }
 };
 const isOptionSelected = (currentValue, compareValue, compareWith) => {
@@ -303,7 +321,7 @@ const isOptionSelected = (currentValue, compareValue, compareWith) => {
   }
 };
 const getOptionValue = (el) => {
-  const value = el.value;
+  const value = el.option;
   return (value === undefined)
     ? el.textContent || ''
     : value;

@@ -162,7 +162,7 @@ AiButton.decorators = [
                 selector: 'ai-button',
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 template: '<ng-content></ng-content>',
-                inputs: ['disabled', 'text', 'value'],
+                inputs: ['btnValue', 'disabled', 'text'],
                 outputs: ['aiClick']
             },] },
 ];
@@ -174,7 +174,7 @@ AiButton.ctorParameters = () => [
 ];
 AiButton = __decorate([
     ProxyCmp({
-        inputs: ['disabled', 'text', 'value']
+        inputs: ['btnValue', 'disabled', 'text']
     }),
     __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
 ], AiButton);
@@ -290,7 +290,7 @@ AiSelect.decorators = [
                 selector: 'ai-select',
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 template: '<ng-content></ng-content>',
-                inputs: ['compareWith', 'disabled', 'placeholder', 'value'],
+                inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
                 outputs: ['aiChange', 'aiCancel', 'aiFocus', 'aiBlur', 'aiStyle']
             },] },
 ];
@@ -302,7 +302,7 @@ AiSelect.ctorParameters = () => [
 ];
 AiSelect = __decorate([
     ProxyCmp({
-        inputs: ['compareWith', 'disabled', 'placeholder', 'value'],
+        inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
         methods: ['open']
     }),
     __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
@@ -324,7 +324,7 @@ AiSelectOption.decorators = [
                 selector: 'ai-select-option',
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 template: '<ng-content></ng-content>',
-                inputs: ['disabled', 'value']
+                inputs: ['disabled', 'option']
             },] },
 ];
 /** @nocollapse */
@@ -335,7 +335,7 @@ AiSelectOption.ctorParameters = () => [
 ];
 AiSelectOption = __decorate([
     ProxyCmp({
-        inputs: ['disabled', 'value']
+        inputs: ['disabled', 'option']
     }),
     __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
 ], AiSelectOption);
@@ -371,6 +371,38 @@ AiSelectPopover = __decorate([
     }),
     __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
 ], AiSelectPopover);
+let AiStringfy = class AiStringfy {
+    /**
+     * @param {?} c
+     * @param {?} r
+     * @param {?} z
+     */
+    constructor(c, r, z) {
+        this.z = z;
+        c.detach();
+        this.el = r.nativeElement;
+    }
+};
+AiStringfy.decorators = [
+    { type: Component, args: [{
+                selector: 'ai-stringfy',
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                template: '<ng-content></ng-content>',
+                inputs: ['data']
+            },] },
+];
+/** @nocollapse */
+AiStringfy.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef },
+    { type: NgZone }
+];
+AiStringfy = __decorate([
+    ProxyCmp({
+        inputs: ['data']
+    }),
+    __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+], AiStringfy);
 
 /**
  * @fileoverview added by tsickle
@@ -489,6 +521,7 @@ const DECLARATIONS = [
     AiPopover,
     AiSelectOption,
     AiSelectPopover,
+    AiStringfy,
     // Value Accessors
     TextValueAccessor,
 ];
@@ -503,4 +536,4 @@ ComponentNgModule.decorators = [
             },] },
 ];
 
-export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, ComponentNgModule, ProxyCmp as ɵa, TextValueAccessor as ɵb, ValueAccessor as ɵc };
+export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, AiStringfy, ComponentNgModule, ProxyCmp as ɵa, TextValueAccessor as ɵb, ValueAccessor as ɵc };

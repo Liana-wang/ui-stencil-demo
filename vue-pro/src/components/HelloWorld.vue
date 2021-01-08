@@ -1,33 +1,33 @@
 <template>
   <div class="hello">
-    <!-- <div class="item">
+    <div class="item">
       <span>姓名：</span>
-      <ai-input placeholder="请输入..." @aiInput="onAiInput" :value="name" />
+      <AiInput placeholder="请输入..." @aiInput="onAiInput" v-model="name" />
       <AiButton
         @aiClick="onClick"
-        :disabled="!name"
-        :value="{ id: '111', text: 'aaa' }"
+        :disabled.prop="!name"
+        :btn-value.prop="{ id: '111', text: 'aaa' }"
       >
         确定
       </AiButton>
       <p v-if="isConfirm && name">Welcome! {{ name }}</p>
       <div style="margin-top: 20px">
         <span>联动：</span>
-        <ai-input placeholder="请输入..." @aiInput="onAiInput" :value="name" />
+        <AiInput placeholder="请输入..." @aiInput="onAiInput" v-model="name" />
       </div>
-    </div> -->
+    </div>
     <div class="item">
       <p>选中项为：{{ selected ? selected.text : "" }}</p>
       <div class="select">
         <AiSelect
-          :value="selected"
+          :selected.prop="selected"
           @aiChange="onSelectChange"
           compare-with="id"
           placeholder="请选择"
         >
           <AiSelectOption
             v-for="option in options"
-            :value="option"
+            :option.prop="option"
             :key="option.id"
           >
             {{ option.text }}
@@ -35,9 +35,9 @@
         </AiSelect>
       </div>
     </div>
-    <!-- <div class="item">
-      <my-button :value.prop="{ id: '111', text: 'aaa' }">测试</my-button>
-    </div> -->
+    <div class="item">
+      <AiStringfy :data="options"></AiStringfy>
+    </div>
   </div>
 </template>
 
@@ -47,6 +47,7 @@ import {
   AiInput,
   AiSelect,
   AiSelectOption,
+  AiStringfy,
 } from "@ai/ui-components-vue";
 
 export default {
@@ -56,6 +57,7 @@ export default {
     AiInput,
     AiSelect,
     AiSelectOption,
+    AiStringfy,
   },
   data() {
     return {
@@ -91,20 +93,15 @@ export default {
       this.isConfirm = true;
     },
     onAiInput: function (event) {
-      console.log("input", event);
       this.name = event.target.value;
+      console.log("input", this.name);
 
       if (this.isConfirm) {
         this.isConfirm = false;
       }
     },
-    onSelectChange: function (Event) {
-      console.log(event);
-    },
-  },
-  watch: {
-    name: function (newName, oldName) {
-      console.log(newName);
+    onSelectChange: function ({ selected }) {
+      this.selected = selected;
     },
   },
 };

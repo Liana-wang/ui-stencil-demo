@@ -12,7 +12,7 @@
 | `compareWith` | `compare-with` | 选中之后做对比的条件  | `Function \| string` | `undefined` |
 | `disabled`    | `disabled`     | 是否禁用        | `boolean`            | `false`     |
 | `placeholder` | `placeholder`  | 预设文案        | `string`             | `undefined` |
-| `value`       | `value`        | 选中的值        | `any`                | `undefined` |
+| `selected`    | `selected`     | 选中的值        | `any`                | `undefined` |
 
 
 ## Events

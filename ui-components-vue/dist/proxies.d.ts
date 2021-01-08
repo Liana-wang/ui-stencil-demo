@@ -7,7 +7,7 @@ export declare const AiBackdrop: import("vue/types/vue").ExtendedVue<Vue, unknow
 export declare const AiButton: import("vue/types/vue").ExtendedVue<Vue, unknown, unknown, unknown, {
     text: string;
     disabled: boolean;
-    value: any;
+    btnValue: any;
 }>;
 export declare const AiControl: import("vue/types/vue").ExtendedVue<Vue, unknown, unknown, unknown, Record<never, any>>;
 export declare const AiInput: import("vue/types/vue").ExtendedVue<Vue, unknown, unknown, unknown, {
@@ -33,13 +33,16 @@ export declare const AiSelect: import("vue/types/vue").ExtendedVue<Vue, unknown,
 }, unknown, {
     disabled: boolean;
     placeholder: string;
-    value: any;
+    selected: any;
     compareWith: TimerHandler;
 }>;
 export declare const AiSelectOption: import("vue/types/vue").ExtendedVue<Vue, unknown, unknown, unknown, {
     disabled: boolean;
-    value: any;
+    option: any;
 }>;
 export declare const AiSelectPopover: import("vue/types/vue").ExtendedVue<Vue, unknown, unknown, unknown, {
     options: readonly any[];
+}>;
+export declare const AiStringfy: import("vue/types/vue").ExtendedVue<Vue, unknown, unknown, unknown, {
+    data: any;
 }>;

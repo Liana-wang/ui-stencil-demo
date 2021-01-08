@@ -154,7 +154,7 @@ var AiButton = /** @class */ (function () {
                     selector: 'ai-button',
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     template: '<ng-content></ng-content>',
-                    inputs: ['disabled', 'text', 'value'],
+                    inputs: ['btnValue', 'disabled', 'text'],
                     outputs: ['aiClick']
                 },] },
     ];
@@ -166,7 +166,7 @@ var AiButton = /** @class */ (function () {
     ]; };
     AiButton = __decorate([
         ProxyCmp({
-            inputs: ['disabled', 'text', 'value']
+            inputs: ['btnValue', 'disabled', 'text']
         }),
         __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
     ], AiButton);
@@ -266,7 +266,7 @@ var AiSelect = /** @class */ (function () {
                     selector: 'ai-select',
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     template: '<ng-content></ng-content>',
-                    inputs: ['compareWith', 'disabled', 'placeholder', 'value'],
+                    inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
                     outputs: ['aiChange', 'aiCancel', 'aiFocus', 'aiBlur', 'aiStyle']
                 },] },
     ];
@@ -278,7 +278,7 @@ var AiSelect = /** @class */ (function () {
     ]; };
     AiSelect = __decorate([
         ProxyCmp({
-            inputs: ['compareWith', 'disabled', 'placeholder', 'value'],
+            inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
             methods: ['open']
         }),
         __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
@@ -296,7 +296,7 @@ var AiSelectOption = /** @class */ (function () {
                     selector: 'ai-select-option',
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     template: '<ng-content></ng-content>',
-                    inputs: ['disabled', 'value']
+                    inputs: ['disabled', 'option']
                 },] },
     ];
     /** @nocollapse */
@@ -307,7 +307,7 @@ var AiSelectOption = /** @class */ (function () {
     ]; };
     AiSelectOption = __decorate([
         ProxyCmp({
-            inputs: ['disabled', 'value']
+            inputs: ['disabled', 'option']
         }),
         __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
     ], AiSelectOption);
@@ -340,6 +340,34 @@ var AiSelectPopover = /** @class */ (function () {
         __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
     ], AiSelectPopover);
     return AiSelectPopover;
+}());
+var AiStringfy = /** @class */ (function () {
+    function AiStringfy(c, r, z) {
+        this.z = z;
+        c.detach();
+        this.el = r.nativeElement;
+    }
+    AiStringfy.decorators = [
+        { type: Component, args: [{
+                    selector: 'ai-stringfy',
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    template: '<ng-content></ng-content>',
+                    inputs: ['data']
+                },] },
+    ];
+    /** @nocollapse */
+    AiStringfy.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: ElementRef },
+        { type: NgZone }
+    ]; };
+    AiStringfy = __decorate([
+        ProxyCmp({
+            inputs: ['data']
+        }),
+        __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], AiStringfy);
+    return AiStringfy;
 }());
 
 /**
@@ -479,6 +507,7 @@ var DECLARATIONS = [
     AiPopover,
     AiSelectOption,
     AiSelectPopover,
+    AiStringfy,
     // Value Accessors
     TextValueAccessor,
 ];
@@ -496,4 +525,4 @@ var ComponentNgModule = /** @class */ (function () {
     return ComponentNgModule;
 }());
 
-export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, ComponentNgModule, ProxyCmp as ɵa, TextValueAccessor as ɵb, ValueAccessor as ɵc };
+export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, AiStringfy, ComponentNgModule, ProxyCmp as ɵa, TextValueAccessor as ɵb, ValueAccessor as ɵc };

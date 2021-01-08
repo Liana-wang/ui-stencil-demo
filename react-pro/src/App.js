@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { AiButton, AiInput } from '@ai/ui-components-react'
+import { AiButton, AiInput, AiStringfy } from '@ai/ui-components-react'
 import './App.css'
 import SelectExm from './SelectExm'
 
@@ -22,6 +22,9 @@ export default function App() {
         <img src="logo192.png" alt="" />
       </div>
       <div>
+        <div>
+          <AiStringfy data={{ id: 'aa', name: 'sdsdsd' }}></AiStringfy>
+        </div>
         <span>姓名: </span>
         <AiInput
           placeholder={'请输入...'}
@@ -31,7 +34,7 @@ export default function App() {
           disabled={!name}
           className={'ai-btn'}
           onAiClick={(event) => setIsConfirm(true)}
-          value={{ id: '111', text: 'hhh' }}
+          btnValue={{ id: '111', text: 'hhh' }}
         >
           <span slot="btn-icon">@</span>
           确定

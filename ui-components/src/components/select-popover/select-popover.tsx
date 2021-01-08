@@ -14,7 +14,7 @@ export class SelectPopover implements ComponentInterface {
 
   @Listen('aiChange')
   onSelect(ev: any) {
-    const option = this.options.find(o => o.value === ev.target.value);
+    const option = this.options.find(o => o.option === ev.target.value);
     if (option) {
       if (typeof option.handler === 'function') {
         option.handler()

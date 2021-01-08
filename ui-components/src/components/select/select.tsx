@@ -10,7 +10,7 @@ import { popoverController } from '../../utils/overlays'
 export class AiSelect implements ComponentInterface {
   private inputId = `ai-sel-${selectIds++}`;
   private overlay?: any;
-  private didInit = false;
+  // private didInit = false;
   private focusEl?: HTMLButtonElement;
   private mutationO?: MutationObserver;
 
@@ -34,7 +34,7 @@ export class AiSelect implements ComponentInterface {
   /**
    * 选中的值
    */
-  @Prop({ mutable: true }) value?: any | null;
+  @Prop({ mutable: true }) selected?: any | null;
 
   /**
    * 选中之后做对比的条件
@@ -72,19 +72,20 @@ export class AiSelect implements ComponentInterface {
     this.emitStyle();
   }
 
-  @Watch('value')
+  @Watch('selected')
   valueChanged() {
+    this.updateOptions()
     this.emitStyle()
 
-    if (this.didInit) {
-      this.aiChange.emit({
-        value: this.value,
-      })
-    }
+    // if (this.didInit) {
+    //   this.aiChange.emit({
+    //     selected: this.selected,
+    //   })
+    // }
   }
 
   async connectedCallback() {
-    console.log('this.value', this.value)
+    this.updateOptions()
     this.updateOverlayOptions()
 
     this.emitStyle()
@@ -103,7 +104,7 @@ export class AiSelect implements ComponentInterface {
   }
 
   componentDidLoad() {
-    this.didInit = true;
+    // this.didInit = true;
   }
 
   @Method()
@@ -140,7 +141,7 @@ export class AiSelect implements ComponentInterface {
     }
     const childOpts = this.childOpts
 
-    const value = this.value
+    const value = this.selected
 
     const popover = overlay.querySelector('ai-select-popover')
 
@@ -160,11 +161,14 @@ export class AiSelect implements ComponentInterface {
       return {
         text: option.textContent || '',
         cssClass: optClass,
-        value,
+        option: value,
         checked: isOptionSelected(value, selectValue, this.compareWith),
         disabled: option.disabled,
         handler: () => {
-          this.value = value
+          this.selected = value
+          this.aiChange.emit({
+            selected: value,
+          })
           this.close()
         }
       }
@@ -174,14 +178,14 @@ export class AiSelect implements ComponentInterface {
   }
 
   private async openPopover(ev: UIEvent) {
-    const value = this.value
+    const value = this.selected
 
     const popoverOpts = {
       component: 'ai-select-popover',
       cssClass: ['select-popover'],
       event: ev,
       componentProps: {
-        value,
+        selected: value,
         options: this.createPopoverOptions(this.childOpts, value)
       }
     }
@@ -199,16 +203,33 @@ export class AiSelect implements ComponentInterface {
     return this.overlay.dismiss()
   }
 
+  private updateOptions() {
+    // iterate all options, updating the selected prop
+    let canSelect = true;
+    const { selected, childOpts, compareWith } = this;
+    for (const selectOption of childOpts) {
+      const optValue = getOptionValue(selectOption);
+      const isSelected = canSelect && isOptionSelected(selected, optValue, compareWith);
+      selectOption.selected = isSelected;
+
+      // if current option is selected and select is single-option, we can't select
+      // any option more
+      if (isSelected) {
+        canSelect = false;
+      }
+    }
+  }
+
   private hasValue(): boolean {
     return this.getText() !== '';
   }
 
-  private get childOpts() {
+  private get childOpts(): ReadonlyArray<any> {
     return Array.from(this.el.querySelectorAll('ai-select-option'));
   }
 
   private getText(): string {
-    return generateText(this.childOpts, this.value, this.compareWith);
+    return generateText(this.childOpts, this.selected, this.compareWith);
   }
 
   private setFocus() {
@@ -312,7 +333,7 @@ const isOptionSelected = (currentValue: any[] | any, compareValue: any, compareW
 }
 
 const getOptionValue = (el: any) => {
-  const value = el.value
+  const value = el.option
 
   return (value === undefined)
     ? el.textContent || ''

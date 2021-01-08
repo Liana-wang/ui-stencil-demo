@@ -2,7 +2,7 @@
 import { NgModule } from "@angular/core";
 import { defineCustomElements } from "@ai/ui-components/loader";
 import { TextValueAccessor } from './directives/text-value-accessor';
-import { AiButton, AiInput, AiControl, AiSelect, AiBackdrop, AiPopover, AiSelectOption, AiSelectPopover } from './directives/proxies';
+import { AiButton, AiInput, AiControl, AiSelect, AiBackdrop, AiPopover, AiSelectOption, AiSelectPopover, AiStringfy } from './directives/proxies';
 
 defineCustomElements(window);
 
@@ -16,6 +16,7 @@ const DECLARATIONS = [
     AiPopover,
     AiSelectOption,
     AiSelectPopover,
+    AiStringfy,
 
     // Value Accessors
     TextValueAccessor,

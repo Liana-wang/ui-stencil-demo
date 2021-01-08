@@ -10,7 +10,7 @@
 | Property   | Attribute  | Description | Type      | Default     |
 | ---------- | ---------- | ----------- | --------- | ----------- |
 | `disabled` | `disabled` | 是否禁用        | `boolean` | `false`     |
-| `value`    | `value`    | 选项的value    | `any`     | `undefined` |
+| `option`   | `option`   | 选项的value    | `any`     | `undefined` |
 
 
 ----------------------------------------------

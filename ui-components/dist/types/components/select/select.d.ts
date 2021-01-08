@@ -2,7 +2,6 @@ import { ComponentInterface, EventEmitter } from '../../stencil-public-runtime';
 export declare class AiSelect implements ComponentInterface {
   private inputId;
   private overlay?;
-  private didInit;
   private focusEl?;
   private mutationO?;
   el: any;
@@ -21,7 +20,7 @@ export declare class AiSelect implements ComponentInterface {
   /**
    * 选中的值
    */
-  value?: any | null;
+  selected?: any | null;
   /**
    * 选中之后做对比的条件
    */
@@ -57,6 +56,7 @@ export declare class AiSelect implements ComponentInterface {
   private createPopoverOptions;
   private openPopover;
   private close;
+  private updateOptions;
   private hasValue;
   private get childOpts();
   private getText;

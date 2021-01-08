@@ -50,7 +50,7 @@ export class AppComponent {
   }
 
   onSelectChange(event: any) {
-    this.selected = event.detail.value
+    this.selected = event.detail.selected
     console.log('event', event)
   }
 }

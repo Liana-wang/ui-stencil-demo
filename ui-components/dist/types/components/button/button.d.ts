@@ -9,9 +9,9 @@ export declare class AiButton {
    */
   disabled: boolean;
   /**
-   * value
+   * btnValue
    */
-  value?: any;
+  btnValue?: any;
   /**
    * 点击
    */

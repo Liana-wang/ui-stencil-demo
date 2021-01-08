@@ -14,6 +14,7 @@ const customElementTags = [
     'ai-select',
     'ai-select-option',
     'ai-select-popover',
+    'ai-stringfy',
 ];
 Vue.config.ignoredElements = [...Vue.config.ignoredElements, ...customElementTags];
 export const AiBackdrop = /*@__PURE__*/ Vue.extend({
@@ -28,7 +29,7 @@ export const AiButton = /*@__PURE__*/ Vue.extend({
     props: {
         text: {},
         disabled: {},
-        value: {},
+        btnValue: {},
     },
     render: createCommonRender('ai-button', ['aiClick']),
 });
@@ -68,7 +69,7 @@ export const AiSelect = /*@__PURE__*/ Vue.extend({
     props: {
         disabled: {},
         placeholder: {},
-        value: {},
+        selected: {},
         compareWith: {},
     },
     methods: {
@@ -79,7 +80,7 @@ export const AiSelect = /*@__PURE__*/ Vue.extend({
 export const AiSelectOption = /*@__PURE__*/ Vue.extend({
     props: {
         disabled: {},
-        value: {},
+        option: {},
     },
     render: createCommonRender('ai-select-option', []),
 });
@@ -88,5 +89,11 @@ export const AiSelectPopover = /*@__PURE__*/ Vue.extend({
         options: {},
     },
     render: createCommonRender('ai-select-popover', []),
+});
+export const AiStringfy = /*@__PURE__*/ Vue.extend({
+    props: {
+        data: {},
+    },
+    render: createCommonRender('ai-stringfy', []),
 });
 //# sourceMappingURL=proxies.js.map

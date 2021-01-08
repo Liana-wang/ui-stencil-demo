@@ -7,7 +7,7 @@ export class SelectPopover {
     this.options = [];
   }
   onSelect(ev) {
-    const option = this.options.find(o => o.value === ev.target.value);
+    const option = this.options.find(o => o.option === ev.target.value);
     if (option) {
       if (typeof option.handler === 'function') {
         option.handler();

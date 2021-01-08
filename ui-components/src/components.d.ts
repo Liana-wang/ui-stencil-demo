@@ -23,6 +23,10 @@ export namespace Components {
     }
     interface AiButton {
         /**
+          * btnValue
+         */
+        "btnValue"?: any;
+        /**
           * 是否禁用
          */
         "disabled": boolean;
@@ -30,10 +34,6 @@ export namespace Components {
           * 文字
          */
         "text": string;
-        /**
-          * value
-         */
-        "value"?: any;
     }
     interface AiControl {
     }
@@ -95,7 +95,7 @@ export namespace Components {
         /**
           * 选中的值
          */
-        "value"?: any | null;
+        "selected"?: any | null;
     }
     interface AiSelectOption {
         /**
@@ -105,7 +105,7 @@ export namespace Components {
         /**
           * 选项的value
          */
-        "value"?: any | null;
+        "option"?: any | null;
     }
     interface AiSelectPopover {
         /**
@@ -205,6 +205,10 @@ declare namespace LocalJSX {
     }
     interface AiButton {
         /**
+          * btnValue
+         */
+        "btnValue"?: any;
+        /**
           * 是否禁用
          */
         "disabled"?: boolean;
@@ -216,10 +220,6 @@ declare namespace LocalJSX {
           * 文字
          */
         "text"?: string;
-        /**
-          * value
-         */
-        "value"?: any;
     }
     interface AiControl {
     }
@@ -324,7 +324,7 @@ declare namespace LocalJSX {
         /**
           * 选中的值
          */
-        "value"?: any | null;
+        "selected"?: any | null;
     }
     interface AiSelectOption {
         /**
@@ -334,7 +334,7 @@ declare namespace LocalJSX {
         /**
           * 选项的value
          */
-        "value"?: any | null;
+        "option"?: any | null;
     }
     interface AiSelectPopover {
         /**

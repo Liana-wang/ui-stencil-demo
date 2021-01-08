@@ -15,11 +15,11 @@ export class AiButton {
     };
   }
   connectedCallback() {
-    console.log('btn-value', this.value);
+    console.log('btn-value', this.btnValue);
   }
   render() {
     return (h(Host, null,
-      h("span", null, this.value && this.value.text ? this.value.text : ''),
+      h("span", null, this.btnValue && this.btnValue.text ? this.btnValue.text : ''),
       h("button", { class: {
           'btn': true,
           'btn-disabled': this.disabled,
@@ -70,7 +70,7 @@ export class AiButton {
       "reflect": false,
       "defaultValue": "false"
     },
-    "value": {
+    "btnValue": {
       "type": "any",
       "mutable": true,
       "complexType": {
@@ -82,9 +82,9 @@ export class AiButton {
       "optional": true,
       "docs": {
         "tags": [],
-        "text": "value"
+        "text": "btnValue"
       },
-      "attribute": "value",
+      "attribute": "btn-value",
       "reflect": false
     }
   }; }

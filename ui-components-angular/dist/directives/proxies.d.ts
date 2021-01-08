@@ -89,3 +89,10 @@ export declare class AiSelectPopover {
     protected el: HTMLElement;
     constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
 }
+export declare interface AiStringfy extends Components.AiStringfy {
+}
+export declare class AiStringfy {
+    protected z: NgZone;
+    protected el: HTMLElement;
+    constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
+}

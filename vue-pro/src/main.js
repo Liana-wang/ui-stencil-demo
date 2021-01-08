@@ -3,11 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { AiVue } from '@ai/ui-components-vue'
+// import { AiVue } from '@ai/ui-components-vue'
 
 Vue.config.productionTip = false
 
-Vue.use(AiVue)
+// Vue.config.ignoredElements = [/ai-\w*/]
+
+// Vue.use(AiVue)
 // Vue.config.ignoredElements = [/ai|my-\w*/]
 
 /* eslint-disable no-new */

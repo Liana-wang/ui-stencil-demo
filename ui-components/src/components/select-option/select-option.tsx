@@ -19,7 +19,7 @@ export class AiSelectOption implements ComponentInterface {
   /**
    * 选项的value
    */
-  @Prop() value?: any | null;
+  @Prop() option?: any | null;
 
   render() {
     return (

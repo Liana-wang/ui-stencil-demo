@@ -19,6 +19,7 @@ const customElementTags: string[] = [
  'ai-select',
  'ai-select-option',
  'ai-select-popover',
+ 'ai-stringfy',
 ];
 Vue.config.ignoredElements = [...Vue.config.ignoredElements, ...customElementTags];
 
@@ -41,7 +42,7 @@ export const AiButton = /*@__PURE__*/ Vue.extend({
   props: {
     text: {} as PropOptions<Components.AiButton['text']>,
     disabled: {} as PropOptions<Components.AiButton['disabled']>,
-    value: {} as PropOptions<Components.AiButton['value']>,
+    btnValue: {} as PropOptions<Components.AiButton['btnValue']>,
   },
 
 
@@ -101,7 +102,7 @@ export const AiSelect = /*@__PURE__*/ Vue.extend({
   props: {
     disabled: {} as PropOptions<Components.AiSelect['disabled']>,
     placeholder: {} as PropOptions<Components.AiSelect['placeholder']>,
-    value: {} as PropOptions<Components.AiSelect['value']>,
+    selected: {} as PropOptions<Components.AiSelect['selected']>,
     compareWith: {} as PropOptions<Components.AiSelect['compareWith']>,
   },
 
@@ -117,7 +118,7 @@ export const AiSelectOption = /*@__PURE__*/ Vue.extend({
 
   props: {
     disabled: {} as PropOptions<Components.AiSelectOption['disabled']>,
-    value: {} as PropOptions<Components.AiSelectOption['value']>,
+    option: {} as PropOptions<Components.AiSelectOption['option']>,
   },
 
 
@@ -133,5 +134,16 @@ export const AiSelectPopover = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('ai-select-popover', []),
+});
+
+
+export const AiStringfy = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    data: {} as PropOptions<Components.AiStringfy['data']>,
+  },
+
+
+  render: createCommonRender('ai-stringfy', []),
 });
 

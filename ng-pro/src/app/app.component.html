@@ -78,22 +78,25 @@
   <span>Welcome Angular</span>
   <div class="content">
     <div class="item">
+      <ai-stringfy [data]="options"></ai-stringfy>
+    </div>
+    <div class="item">
       <h3>输入&按钮</h3>
       <span>姓名：</span>
       <ai-input (aiInput)="onAiInput($event)" placeholder="请输入..."></ai-input>
-      <ai-button (aiClick)="onClick($event)" [disabled]="!name" class="ai-btn" [value]="{id: '11', text: 'assdsd'}">确定</ai-button>
+      <ai-button (aiClick)="onClick($event)" [disabled]="!name" class="ai-btn" [btnValue]="{id: '11', text: 'assdsd'}">确定</ai-button>
       <p *ngIf="isConfirm">Welcome! {{name}}</p>
     </div>
     <div class="item">
       <h3>下拉框选中项: {{selected.text}}</h3>
       <div class="select-wrapper">
         <ai-select 
-        [value]="selected" 
+        [selected]="selected" 
         (aiChange)="onSelectChange($event)" 
         [compareWith]="'id'"
         placeholder="请选择语言"
       >
-          <ai-select-option *ngFor="let item of options" [value]="item">
+          <ai-select-option *ngFor="let item of options" [option]="item">
             {{item.text}}
           </ai-select-option>
         </ai-select>

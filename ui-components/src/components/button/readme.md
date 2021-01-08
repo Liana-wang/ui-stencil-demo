@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default     |
-| ---------- | ---------- | ----------- | --------- | ----------- |
-| `disabled` | `disabled` | 是否禁用        | `boolean` | `false`     |
-| `text`     | `text`     | 文字          | `string`  | `undefined` |
-| `value`    | `value`    | value       | `any`     | `undefined` |
+| Property   | Attribute   | Description | Type      | Default     |
+| ---------- | ----------- | ----------- | --------- | ----------- |
+| `btnValue` | `btn-value` | btnValue    | `any`     | `undefined` |
+| `disabled` | `disabled`  | 是否禁用        | `boolean` | `false`     |
+| `text`     | `text`      | 文字          | `string`  | `undefined` |
 
 
 ## Events

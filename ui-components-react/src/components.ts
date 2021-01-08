@@ -16,3 +16,4 @@ export const AiPopover = /*@__PURE__*/createReactComponent<JSX.AiPopover, HTMLAi
 export const AiSelect = /*@__PURE__*/createReactComponent<JSX.AiSelect, HTMLAiSelectElement>('ai-select');
 export const AiSelectOption = /*@__PURE__*/createReactComponent<JSX.AiSelectOption, HTMLAiSelectOptionElement>('ai-select-option');
 export const AiSelectPopover = /*@__PURE__*/createReactComponent<JSX.AiSelectPopover, HTMLAiSelectPopoverElement>('ai-select-popover');
+export const AiStringfy = /*@__PURE__*/createReactComponent<JSX.AiStringfy, HTMLAiStringfyElement>('ai-stringfy');

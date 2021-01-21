@@ -1,5 +1,3 @@
-'use strict';
-
 const raf = (h) => {
   if (typeof __zone_symbol__requestAnimationFrame === 'function') {
     return __zone_symbol__requestAnimationFrame(h);
@@ -109,18 +107,9 @@ const dismiss = async (overlay, data, role, leaveAnimation, opts) => {
   return true;
 };
 const overlayAnimation = async (overlay, animationBuilder, baseEl, opts) => {
-  // Make overlay visible in case it's hidden
   baseEl.classList.remove('overlay-hidden');
   const aniRoot = baseEl.shadowRoot || overlay.el;
   const animation = animationBuilder(aniRoot, opts);
-  if (overlay.keyboardClose) {
-    animation.beforeAddWrite(() => {
-      const activeElement = baseEl.ownerDocument.activeElement;
-      if (activeElement && activeElement.matches('input, ion-input, ion-textarea')) {
-        activeElement.blur();
-      }
-    });
-  }
   const activeAni = activeAnimations.get(overlay) || [];
   activeAnimations.set(overlay, [...activeAni, animation]);
   await animation.play();
@@ -143,9 +132,4 @@ const getAppRoot = (doc) => {
   return doc.querySelector('ai-app') || doc.body;
 };
 
-exports.dismiss = dismiss;
-exports.eventMethod = eventMethod;
-exports.popoverController = popoverController;
-exports.prepareOverlay = prepareOverlay;
-exports.present = present;
-exports.raf = raf;
+export { prepareOverlay as a, present as b, dismiss as d, eventMethod as e, popoverController as p, raf as r };

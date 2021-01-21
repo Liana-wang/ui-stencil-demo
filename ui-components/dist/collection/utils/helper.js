@@ -32,3 +32,17 @@ export const renderHiddenInput = (always, container, value, disabled) => {
 export const hasShadowDom = (el) => {
   return !!el.shadowRoot && !!el.attachShadow;
 };
+export const debounceEvent = (event, wait) => {
+  const original = event._original || event;
+  return {
+    _original: event,
+    emit: debounce(original.emit.bind(original), wait)
+  };
+};
+export const debounce = (func, wait = 0) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(func, wait, ...args);
+  };
+};

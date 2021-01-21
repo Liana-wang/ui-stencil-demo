@@ -16,9 +16,9 @@ export class AiPopover implements ComponentInterface {
 
   presented = false;
 
-  @Element() el!: any;
+  @Element() el!: HTMLAiPopoverElement;
 
-  /** @internal */
+  /** index值 */
   @Prop() overlayIndex!: number;
 
   /**
@@ -33,6 +33,11 @@ export class AiPopover implements ComponentInterface {
 
   /** 点击背景时关闭 */
   @Prop() backdropDismiss = true;
+
+  /**
+   * 是否显示背景
+   */
+  @Prop() showBackdrop = false;
 
   /**
    * 触发动画的事件
@@ -51,10 +56,13 @@ export class AiPopover implements ComponentInterface {
   /** 派发弹出层已销毁事件 */
   @Event({ eventName: 'aiPopoverDidDismiss' }) didDismiss!: EventEmitter<any>;
 
-  connectedCallback() {
+  constructor() {
     prepareOverlay(this.el);
   }
 
+  /**
+   * 弹出popover
+   */
   @Method()
   async present(): Promise<void> {
     if (this.presented) {
@@ -70,13 +78,16 @@ export class AiPopover implements ComponentInterface {
       popover: this.el
     }
 
-    this.usersElement = await attachComponent(container, this.component, ['popover-viewport', (this.el as any)['s-sc']], data)
+    this.usersElement = await attachComponent(container, this.component, ['popover-viewport'], data)
 
     await deepReady(this.usersElement)
 
     return present(this, enterAnimation, this.event)
   }
 
+  /**
+   * 关闭popover
+   */
   @Method()
   async dismiss(data?: any, role?: string): Promise<boolean> {
     const shouldDismiss = await dismiss(this, data, role, leaveAnimation, this.event)
@@ -88,11 +99,15 @@ export class AiPopover implements ComponentInterface {
     return shouldDismiss
   }
 
+  /**
+   * popover已经销毁
+   */
   @Method()
   onDidDismiss(): Promise<any> {
     return eventMethod(this.el, 'aiPopoverDidDismiss');
   }
 
+  /** popover即将销毁 */
   @Method()
   onWillDismiss(): Promise<any> {
     return eventMethod(this.el, 'aiPopoverWillDismiss');

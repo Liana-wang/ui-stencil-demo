@@ -17,10 +17,12 @@ export declare class AiSelect implements ComponentInterface {
    * 预设文案
    */
   placeholder?: string | null;
+  disabledChanged(): void;
   /**
    * 选中的值
    */
   selected?: any | null;
+  valueChanged(): void;
   /**
    * 选中之后做对比的条件
    */
@@ -45,11 +47,11 @@ export declare class AiSelect implements ComponentInterface {
    * 派发样式改变
    */
   aiStyle: EventEmitter<any>;
-  disabledChanged(): void;
-  valueChanged(): void;
   connectedCallback(): Promise<void>;
   disconnectedCallback(): void;
-  componentDidLoad(): void;
+  /**
+   * 显示下拉选项
+   */
   open(event?: UIEvent): Promise<any>;
   private createOverlay;
   private updateOverlayOptions;

@@ -1,4 +1,4 @@
-import { Component, Host, Prop, Watch, Event, EventEmitter, h } from '@stencil/core';
+import { Component, Host, Prop, State, Watch, Event, EventEmitter, h } from '@stencil/core';
 
 @Component({
   tag: 'ai-input',
@@ -7,14 +7,24 @@ import { Component, Host, Prop, Watch, Event, EventEmitter, h } from '@stencil/c
 })
 export class AiInput {
   /**
-   * 默认值
+   * 是否聚焦
    */
-  @Prop() defaultValue: string;
+  @State() hasFocus = false;
+
+  /**
+   * 是否禁用
+   */
+  @Prop() disabled: boolean = false;
 
   /**
    * 预设文案
    */
   @Prop() placeholder: string = '';
+
+  /**
+   * 是否只读
+   */
+  @Prop() readonly = false;
 
   /**
    * 类型
@@ -25,6 +35,12 @@ export class AiInput {
    * 输入值
    */
   @Prop({ mutable: true }) value: string = '';
+
+  @Watch('value')
+  protected valueChanged() {
+    console.log('value', this.value)
+    this.aiChange.emit({ value: this.value })
+  }
 
   /**
    * 值改变
@@ -39,12 +55,12 @@ export class AiInput {
   /**
    * 失焦
    */
-  @Event() aiBlur;
+  @Event() aiBlur!: EventEmitter<void>;
 
-  @Watch('value')
-  protected valueChanged() {
-    this.aiChange.emit({ value: this.value == null ? this.value : this.value.toString() });
-  }
+  /**
+   * 聚焦
+   */
+  @Event() aiFocus!: EventEmitter<void>;
 
   private onInput = (ev: Event) => {
     const input = ev.target as HTMLInputElement | null;
@@ -54,13 +70,43 @@ export class AiInput {
     this.aiInput.emit(ev as KeyboardEvent);
   }
 
-  private onBlur = (ev: FocusEvent) => {
-    this.aiBlur.emit(ev)
+  /**
+   * 失焦
+   */
+  private onBlur = () => {
+    this.hasFocus = false
+    this.aiBlur.emit()
+  }
+
+  /**
+   * 聚焦
+   */
+  private onFocus = () => {
+    this.hasFocus = true
+    this.aiFocus.emit()
+  }
+
+  /**
+   * 获取输入框的值
+   */
+  private getValue(): string {
+    return this.value || ''
+  }
+
+  /**
+   * 输入框是否有值
+   */
+  private hasValue(): boolean {
+    return this.getValue().length > 0;
   }
 
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          'has-value': this.hasValue(),
+          'has-focus': this.hasFocus
+        }}>
         <div class={'box'}>
           <input
             class={'ai-input'}
@@ -68,7 +114,9 @@ export class AiInput {
             placeholder={this.placeholder}
             onInput={this.onInput}
             value={this.value}
+            readOnly={this.readonly}
             onBlur={this.onBlur}
+            onFocus={this.onFocus}
           />
         </div>
       </Host>

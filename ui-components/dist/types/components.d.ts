@@ -9,23 +9,19 @@ import { ComponentProps, ComponentRef } from "./interface";
 export namespace Components {
     interface AiBackdrop {
         /**
-          * If `true`, the backdrop will stop propagation on tap.
+          * 点击背景时，是否阻止冒泡
          */
         "stopPropagation": boolean;
         /**
-          * If `true`, the backdrop will can be clicked and will emit the `aiBackdropTap` event.
+          * 背景是否可点击，默认为true，会出发aiBackdropTap
          */
         "tappable": boolean;
         /**
-          * If `true`, the backdrop will be visible.
+          * 背景是否可见，默认可见
          */
         "visible": boolean;
     }
     interface AiButton {
-        /**
-          * btnValue
-         */
-        "btnValue"?: any;
         /**
           * 是否禁用
          */
@@ -39,13 +35,17 @@ export namespace Components {
     }
     interface AiInput {
         /**
-          * 默认值
+          * 是否禁用
          */
-        "defaultValue": string;
+        "disabled": boolean;
         /**
           * 预设文案
          */
         "placeholder": string;
+        /**
+          * 是否只读
+         */
+        "readonly": boolean;
         /**
           * 类型
          */
@@ -68,15 +68,34 @@ export namespace Components {
           * 传递给弹出窗的数据
          */
         "componentProps"?: ComponentProps;
+        /**
+          * 关闭popover
+         */
         "dismiss": (data?: any, role?: string) => Promise<boolean>;
         /**
           * 触发动画的事件
          */
         "event": any;
+        /**
+          * popover已经销毁
+         */
         "onDidDismiss": () => Promise<any>;
+        /**
+          * popover即将销毁
+         */
         "onWillDismiss": () => Promise<any>;
+        /**
+          * index值
+         */
         "overlayIndex": number;
+        /**
+          * 弹出popover
+         */
         "present": () => Promise<void>;
+        /**
+          * 是否显示背景
+         */
+        "showBackdrop": boolean;
     }
     interface AiSelect {
         /**
@@ -87,6 +106,9 @@ export namespace Components {
           * 是否禁用
          */
         "disabled": boolean;
+        /**
+          * 显示下拉选项
+         */
         "open": (event?: UIEvent) => Promise<any>;
         /**
           * 预设文案
@@ -114,6 +136,9 @@ export namespace Components {
         "options": ReadonlyArray<any>;
     }
     interface AiStringfy {
+        /**
+          * data
+         */
         "data": any;
     }
 }
@@ -187,27 +212,23 @@ declare global {
 declare namespace LocalJSX {
     interface AiBackdrop {
         /**
-          * Emitted when the backdrop is tapped.
+          * 点击背景时出发的事件
          */
         "onAiBackdropTap"?: (event: CustomEvent<void>) => void;
         /**
-          * If `true`, the backdrop will stop propagation on tap.
+          * 点击背景时，是否阻止冒泡
          */
         "stopPropagation"?: boolean;
         /**
-          * If `true`, the backdrop will can be clicked and will emit the `aiBackdropTap` event.
+          * 背景是否可点击，默认为true，会出发aiBackdropTap
          */
         "tappable"?: boolean;
         /**
-          * If `true`, the backdrop will be visible.
+          * 背景是否可见，默认可见
          */
         "visible"?: boolean;
     }
     interface AiButton {
-        /**
-          * btnValue
-         */
-        "btnValue"?: any;
         /**
           * 是否禁用
          */
@@ -225,17 +246,21 @@ declare namespace LocalJSX {
     }
     interface AiInput {
         /**
-          * 默认值
+          * 是否禁用
          */
-        "defaultValue"?: string;
+        "disabled"?: boolean;
         /**
           * 失焦
          */
-        "onAiBlur"?: (event: CustomEvent<any>) => void;
+        "onAiBlur"?: (event: CustomEvent<void>) => void;
         /**
           * 值改变
          */
         "onAiChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * 聚焦
+         */
+        "onAiFocus"?: (event: CustomEvent<void>) => void;
         /**
           * 改变值
          */
@@ -244,6 +269,10 @@ declare namespace LocalJSX {
           * 预设文案
          */
         "placeholder"?: string;
+        /**
+          * 是否只读
+         */
+        "readonly"?: boolean;
         /**
           * 类型
          */
@@ -286,6 +315,14 @@ declare namespace LocalJSX {
           * 派发弹出之前事件
          */
         "onAiPopoverWillPresent"?: (event: CustomEvent<void>) => void;
+        /**
+          * index值
+         */
+        "overlayIndex": number;
+        /**
+          * 是否显示背景
+         */
+        "showBackdrop"?: boolean;
     }
     interface AiSelect {
         /**
@@ -342,6 +379,9 @@ declare namespace LocalJSX {
         "options"?: ReadonlyArray<any>;
     }
     interface AiStringfy {
+        /**
+          * data
+         */
         "data"?: any;
     }
     interface IntrinsicElements {

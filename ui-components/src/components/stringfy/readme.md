@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description | Type  | Default     |
 | -------- | --------- | ----------- | ----- | ----------- |
-| `data`   | `data`    |             | `any` | `undefined` |
+| `data`   | `data`    | data        | `any` | `undefined` |
 
 
 ----------------------------------------------

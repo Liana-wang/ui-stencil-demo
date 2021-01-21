@@ -1,3 +1,5 @@
+import { EventEmitter } from '@stencil/core';
+
 declare const __zone_symbol__requestAnimationFrame: any;
 
 export const getElementRoot = (el: HTMLElement, fallback: HTMLElement = el) => {
@@ -38,4 +40,20 @@ export const renderHiddenInput = (always: boolean, container: HTMLElement, value
 
 export const hasShadowDom = (el: HTMLElement) => {
     return !!el.shadowRoot && !!(el as any).attachShadow;
+};
+
+export const debounceEvent = (event: EventEmitter, wait: number): EventEmitter => {
+    const original = (event as any)._original || event;
+    return {
+        _original: event,
+        emit: debounce(original.emit.bind(original), wait)
+    } as EventEmitter;
+};
+
+export const debounce = (func: (...args: any[]) => void, wait = 0) => {
+    let timer: any;
+    return (...args: any[]): any => {
+        clearTimeout(timer);
+        timer = setTimeout(func, wait, ...args);
+    };
 };

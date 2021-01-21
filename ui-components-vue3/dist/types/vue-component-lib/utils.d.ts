@@ -4,7 +4,6 @@ export interface InputProps extends Object {
 interface ComponentOptions {
     modelProp?: string;
     modelUpdateEvent?: string;
-    routerLinkComponent?: boolean;
 }
 /**
 * Create a callback to define a Vue component wrapper around a Web Component.

@@ -24,7 +24,7 @@ export class AiStringfy {
       "optional": false,
       "docs": {
         "tags": [],
-        "text": ""
+        "text": "data"
       },
       "attribute": "data",
       "reflect": false

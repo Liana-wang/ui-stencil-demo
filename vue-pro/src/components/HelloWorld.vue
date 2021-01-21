@@ -2,7 +2,7 @@
   <div class="hello">
     <div class="item">
       <span>姓名：</span>
-      <AiInput placeholder="请输入..." @aiInput="onAiInput" v-model="name" />
+      <AiInput placeholder="请输入..." @aiChange="onAiInput" :value="name" />
       <AiButton
         @aiClick="onClick"
         :disabled.prop="!name"
@@ -13,7 +13,7 @@
       <p v-if="isConfirm && name">Welcome! {{ name }}</p>
       <div style="margin-top: 20px">
         <span>联动：</span>
-        <AiInput placeholder="请输入..." @aiInput="onAiInput" v-model="name" />
+        <AiInput placeholder="请输入..." @aiChange="onAiInput" :value="name" />
       </div>
     </div>
     <div class="item">

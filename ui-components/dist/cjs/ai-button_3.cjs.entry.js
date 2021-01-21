@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-78c9c8a6.js');
-const overlays = require('./overlays-a8360bca.js');
+const index = require('./index-56afdc95.js');
+const overlays = require('./overlays-6498908f.js');
 
 const buttonCss = ":host{display:block}.btn{height:30px;padding:0 8px;border:1px solid #d3d4db;border-radius:4px;background-color:#fff;color:#505050;box-shadow:none;line-height:normal;text-align:center;outline:none;cursor:pointer;font-size:13px}.btn:hover{border-color:#d3d4db;background-color:rgba(228, 230, 237, 0.25)}.btn:active{background-color:rgba(228, 230, 237, 0.45)}.btn-disabled{border-color:rgba(211, 212, 219, 0.8);background-color:#fff;opacity:0.5;cursor:pointer}";
 
@@ -24,11 +24,8 @@ const AiButton = class {
       }
     };
   }
-  connectedCallback() {
-    console.log('btn-value', this.btnValue);
-  }
   render() {
-    return (index.h(index.Host, null, index.h("span", null, this.btnValue && this.btnValue.text ? this.btnValue.text : ''), index.h("button", { class: {
+    return (index.h(index.Host, null, index.h("button", { class: {
         'btn': true,
         'btn-disabled': this.disabled,
       }, onClick: this.handleClick }, index.h("slot", { name: 'btn-icon' }), this.text ? this.text : index.h("slot", null))));
@@ -36,7 +33,7 @@ const AiButton = class {
 };
 AiButton.style = buttonCss;
 
-const inputCss = ":host{display:block}.box{position:relative;display:inline-block;width:198px;padding:4px 10px 5px 10px;border:1px solid #d3d4db;border-radius:4px;background-color:#fff}.ai-input{padding:0;margin:0;box-shadow:none;border:none;line-height:normal;font-size:13px;outline:none}";
+const inputCss = ":host{display:block}:host(.has-focus.has-value){visibility:visible}:host(.has-focus){pointer-events:none}.box{position:relative;display:inline-block;width:198px;padding:4px 10px 5px 10px;border:1px solid #d3d4db;border-radius:4px;background-color:#fff}.ai-input{padding:0;margin:0;box-shadow:none;border:none;line-height:normal;font-size:13px;outline:none}";
 
 const AiInput = class {
   constructor(hostRef) {
@@ -44,10 +41,23 @@ const AiInput = class {
     this.aiChange = index.createEvent(this, "aiChange", 7);
     this.aiInput = index.createEvent(this, "aiInput", 7);
     this.aiBlur = index.createEvent(this, "aiBlur", 7);
+    this.aiFocus = index.createEvent(this, "aiFocus", 7);
+    /**
+     * 是否聚焦
+     */
+    this.hasFocus = false;
+    /**
+     * 是否禁用
+     */
+    this.disabled = false;
     /**
      * 预设文案
      */
     this.placeholder = '';
+    /**
+     * 是否只读
+     */
+    this.readonly = false;
     /**
      * 类型
      */
@@ -63,15 +73,41 @@ const AiInput = class {
       }
       this.aiInput.emit(ev);
     };
-    this.onBlur = (ev) => {
-      this.aiBlur.emit(ev);
+    /**
+     * 失焦
+     */
+    this.onBlur = () => {
+      this.hasFocus = false;
+      this.aiBlur.emit();
+    };
+    /**
+     * 聚焦
+     */
+    this.onFocus = () => {
+      this.hasFocus = true;
+      this.aiFocus.emit();
     };
   }
   valueChanged() {
-    this.aiChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+    this.aiChange.emit({ value: this.value });
+  }
+  /**
+   * 获取输入框的值
+   */
+  getValue() {
+    return this.value || '';
+  }
+  /**
+   * 输入框是否有值
+   */
+  hasValue() {
+    return this.getValue().length > 0;
   }
   render() {
-    return (index.h(index.Host, null, index.h("div", { class: 'box' }, index.h("input", { class: 'ai-input', type: this.type, placeholder: this.placeholder, onInput: this.onInput, value: this.value, onBlur: this.onBlur }))));
+    return (index.h(index.Host, { class: {
+        'has-value': this.hasValue(),
+        'has-focus': this.hasFocus
+      } }, index.h("div", { class: 'box' }, index.h("input", { class: 'ai-input', type: this.type, placeholder: this.placeholder, onInput: this.onInput, value: this.value, readOnly: this.readonly, onBlur: this.onBlur, onFocus: this.onFocus }))));
   }
   static get watchers() { return {
     "value": ["valueChanged"]
@@ -149,11 +185,6 @@ const AiSelect = class {
   valueChanged() {
     this.updateOptions();
     this.emitStyle();
-    // if (this.didInit) {
-    //   this.aiChange.emit({
-    //     selected: this.selected,
-    //   })
-    // }
   }
   async connectedCallback() {
     this.updateOptions();
@@ -169,9 +200,9 @@ const AiSelect = class {
       this.mutationO = undefined;
     }
   }
-  componentDidLoad() {
-    // this.didInit = true;
-  }
+  /**
+   * 显示下拉选项
+   */
   async open(event) {
     if (this.disabled || this.isExpanded) {
       return undefined;
@@ -244,15 +275,12 @@ const AiSelect = class {
     return this.overlay.dismiss();
   }
   updateOptions() {
-    // iterate all options, updating the selected prop
     let canSelect = true;
     const { selected, childOpts, compareWith } = this;
     for (const selectOption of childOpts) {
       const optValue = getOptionValue(selectOption);
       const isSelected = canSelect && isOptionSelected(selected, optValue, compareWith);
       selectOption.selected = isSelected;
-      // if current option is selected and select is single-option, we can't select
-      // any option more
       if (isSelected) {
         canSelect = false;
       }

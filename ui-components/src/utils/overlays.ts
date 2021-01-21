@@ -139,27 +139,17 @@ const overlayAnimation = async (
     baseEl: any,
     opts: any
 ): Promise<boolean> => {
-    // Make overlay visible in case it's hidden
-    baseEl.classList.remove('overlay-hidden');
+    baseEl.classList.remove('overlay-hidden')
 
-    const aniRoot = baseEl.shadowRoot || overlay.el;
-    const animation = animationBuilder(aniRoot, opts);
+    const aniRoot = baseEl.shadowRoot || overlay.el
+    const animation = animationBuilder(aniRoot, opts)
 
-    if (overlay.keyboardClose) {
-        animation.beforeAddWrite(() => {
-            const activeElement = baseEl.ownerDocument!.activeElement as HTMLElement;
-            if (activeElement && activeElement.matches('input, ion-input, ion-textarea')) {
-                activeElement.blur();
-            }
-        });
-    }
+    const activeAni = activeAnimations.get(overlay) || []
+    activeAnimations.set(overlay, [...activeAni, animation])
 
-    const activeAni = activeAnimations.get(overlay) || [];
-    activeAnimations.set(overlay, [...activeAni, animation]);
+    await animation.play()
 
-    await animation.play();
-
-    return true;
+    return true
 };
 
 export const eventMethod = <T>(element: HTMLElement, eventName: string): Promise<T> => {

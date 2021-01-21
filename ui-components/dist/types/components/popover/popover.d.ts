@@ -3,8 +3,8 @@ import { ComponentRef, ComponentProps } from '../../interface';
 export declare class AiPopover implements ComponentInterface {
   private usersElement?;
   presented: boolean;
-  el: any;
-  /** @internal */
+  el: HTMLAiPopoverElement;
+  /** index值 */
   overlayIndex: number;
   /**
    * 在popover中显示的组件
@@ -17,6 +17,10 @@ export declare class AiPopover implements ComponentInterface {
   /** 点击背景时关闭 */
   backdropDismiss: boolean;
   /**
+   * 是否显示背景
+   */
+  showBackdrop: boolean;
+  /**
    * 触发动画的事件
    */
   event: any;
@@ -28,10 +32,20 @@ export declare class AiPopover implements ComponentInterface {
   willDismiss: EventEmitter<any>;
   /** 派发弹出层已销毁事件 */
   didDismiss: EventEmitter<any>;
-  connectedCallback(): void;
+  constructor();
+  /**
+   * 弹出popover
+   */
   present(): Promise<void>;
+  /**
+   * 关闭popover
+   */
   dismiss(data?: any, role?: string): Promise<boolean>;
+  /**
+   * popover已经销毁
+   */
   onDidDismiss(): Promise<any>;
+  /** popover即将销毁 */
   onWillDismiss(): Promise<any>;
   private onDismiss;
   private onBackdropTap;

@@ -30,7 +30,7 @@
 
 ### `open(event?: UIEvent) => Promise<any>`
 
-
+显示下拉选项
 
 #### Returns
 

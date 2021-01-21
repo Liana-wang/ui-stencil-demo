@@ -7,18 +7,18 @@
 
 ## Properties
 
-| Property          | Attribute          | Description                                                                          | Type      | Default |
-| ----------------- | ------------------ | ------------------------------------------------------------------------------------ | --------- | ------- |
-| `stopPropagation` | `stop-propagation` | If `true`, the backdrop will stop propagation on tap.                                | `boolean` | `true`  |
-| `tappable`        | `tappable`         | If `true`, the backdrop will can be clicked and will emit the `aiBackdropTap` event. | `boolean` | `true`  |
-| `visible`         | `visible`          | If `true`, the backdrop will be visible.                                             | `boolean` | `true`  |
+| Property          | Attribute          | Description                      | Type      | Default |
+| ----------------- | ------------------ | -------------------------------- | --------- | ------- |
+| `stopPropagation` | `stop-propagation` | 点击背景时，是否阻止冒泡                     | `boolean` | `true`  |
+| `tappable`        | `tappable`         | 背景是否可点击，默认为true，会出发aiBackdropTap | `boolean` | `true`  |
+| `visible`         | `visible`          | 背景是否可见，默认可见                      | `boolean` | `true`  |
 
 
 ## Events
 
-| Event           | Description                          | Type                |
-| --------------- | ------------------------------------ | ------------------- |
-| `aiBackdropTap` | Emitted when the backdrop is tapped. | `CustomEvent<void>` |
+| Event           | Description | Type                |
+| --------------- | ----------- | ------------------- |
+| `aiBackdropTap` | 点击背景时出发的事件  | `CustomEvent<void>` |
 
 
 ## Dependencies

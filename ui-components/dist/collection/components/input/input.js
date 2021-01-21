@@ -1,10 +1,22 @@
-import { Component, Host, Prop, Watch, Event, h } from '@stencil/core';
+import { Component, Host, Prop, State, Watch, Event, h } from '@stencil/core';
 export class AiInput {
   constructor() {
+    /**
+     * 是否聚焦
+     */
+    this.hasFocus = false;
+    /**
+     * 是否禁用
+     */
+    this.disabled = false;
     /**
      * 预设文案
      */
     this.placeholder = '';
+    /**
+     * 是否只读
+     */
+    this.readonly = false;
     /**
      * 类型
      */
@@ -20,17 +32,43 @@ export class AiInput {
       }
       this.aiInput.emit(ev);
     };
-    this.onBlur = (ev) => {
-      this.aiBlur.emit(ev);
+    /**
+     * 失焦
+     */
+    this.onBlur = () => {
+      this.hasFocus = false;
+      this.aiBlur.emit();
+    };
+    /**
+     * 聚焦
+     */
+    this.onFocus = () => {
+      this.hasFocus = true;
+      this.aiFocus.emit();
     };
   }
   valueChanged() {
-    this.aiChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+    this.aiChange.emit({ value: this.value });
+  }
+  /**
+   * 获取输入框的值
+   */
+  getValue() {
+    return this.value || '';
+  }
+  /**
+   * 输入框是否有值
+   */
+  hasValue() {
+    return this.getValue().length > 0;
   }
   render() {
-    return (h(Host, null,
+    return (h(Host, { class: {
+        'has-value': this.hasValue(),
+        'has-focus': this.hasFocus
+      } },
       h("div", { class: 'box' },
-        h("input", { class: 'ai-input', type: this.type, placeholder: this.placeholder, onInput: this.onInput, value: this.value, onBlur: this.onBlur }))));
+        h("input", { class: 'ai-input', type: this.type, placeholder: this.placeholder, onInput: this.onInput, value: this.value, readOnly: this.readonly, onBlur: this.onBlur, onFocus: this.onFocus }))));
   }
   static get is() { return "ai-input"; }
   static get originalStyleUrls() { return {
@@ -40,22 +78,23 @@ export class AiInput {
     "$": ["input.css"]
   }; }
   static get properties() { return {
-    "defaultValue": {
-      "type": "string",
+    "disabled": {
+      "type": "boolean",
       "mutable": false,
       "complexType": {
-        "original": "string",
-        "resolved": "string",
+        "original": "boolean",
+        "resolved": "boolean",
         "references": {}
       },
       "required": false,
       "optional": false,
       "docs": {
         "tags": [],
-        "text": "\u9ED8\u8BA4\u503C"
+        "text": "\u662F\u5426\u7981\u7528"
       },
-      "attribute": "default-value",
-      "reflect": false
+      "attribute": "disabled",
+      "reflect": false,
+      "defaultValue": "false"
     },
     "placeholder": {
       "type": "string",
@@ -74,6 +113,24 @@ export class AiInput {
       "attribute": "placeholder",
       "reflect": false,
       "defaultValue": "''"
+    },
+    "readonly": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": "\u662F\u5426\u53EA\u8BFB"
+      },
+      "attribute": "readonly",
+      "reflect": false,
+      "defaultValue": "false"
     },
     "type": {
       "type": "string",
@@ -111,6 +168,9 @@ export class AiInput {
       "reflect": false,
       "defaultValue": "''"
     }
+  }; }
+  static get states() { return {
+    "hasFocus": {}
   }; }
   static get events() { return [{
       "method": "aiChange",
@@ -157,8 +217,23 @@ export class AiInput {
         "text": "\u5931\u7126"
       },
       "complexType": {
-        "original": "any",
-        "resolved": "any",
+        "original": "void",
+        "resolved": "void",
+        "references": {}
+      }
+    }, {
+      "method": "aiFocus",
+      "name": "aiFocus",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": "\u805A\u7126"
+      },
+      "complexType": {
+        "original": "void",
+        "resolved": "void",
         "references": {}
       }
     }]; }

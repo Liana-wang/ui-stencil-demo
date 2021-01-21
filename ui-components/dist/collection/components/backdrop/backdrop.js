@@ -6,15 +6,15 @@ export class AiBackdrop {
       disableScroll: true
     });
     /**
-     * If `true`, the backdrop will be visible.
+     * 背景是否可见，默认可见
      */
     this.visible = true;
     /**
-     * If `true`, the backdrop will can be clicked and will emit the `aiBackdropTap` event.
+     * 背景是否可点击，默认为true，会出发aiBackdropTap
      */
     this.tappable = true;
     /**
-     * If `true`, the backdrop will stop propagation on tap.
+     * 点击背景时，是否阻止冒泡
      */
     this.stopPropagation = true;
   }
@@ -39,7 +39,7 @@ export class AiBackdrop {
     }
   }
   render() {
-    return (h(Host, { tabindex: "-1", "aria-hidden": "true", class: {
+    return (h(Host, { tabindex: "-1", class: {
         'backdrop-hide': !this.visible,
         'backdrop-no-tappable': !this.tappable,
       } }));
@@ -65,7 +65,7 @@ export class AiBackdrop {
       "optional": false,
       "docs": {
         "tags": [],
-        "text": "If `true`, the backdrop will be visible."
+        "text": "\u80CC\u666F\u662F\u5426\u53EF\u89C1\uFF0C\u9ED8\u8BA4\u53EF\u89C1"
       },
       "attribute": "visible",
       "reflect": false,
@@ -83,7 +83,7 @@ export class AiBackdrop {
       "optional": false,
       "docs": {
         "tags": [],
-        "text": "If `true`, the backdrop will can be clicked and will emit the `aiBackdropTap` event."
+        "text": "\u80CC\u666F\u662F\u5426\u53EF\u70B9\u51FB\uFF0C\u9ED8\u8BA4\u4E3Atrue\uFF0C\u4F1A\u51FA\u53D1aiBackdropTap"
       },
       "attribute": "tappable",
       "reflect": false,
@@ -101,7 +101,7 @@ export class AiBackdrop {
       "optional": false,
       "docs": {
         "tags": [],
-        "text": "If `true`, the backdrop will stop propagation on tap."
+        "text": "\u70B9\u51FB\u80CC\u666F\u65F6\uFF0C\u662F\u5426\u963B\u6B62\u5192\u6CE1"
       },
       "attribute": "stop-propagation",
       "reflect": false,
@@ -116,7 +116,7 @@ export class AiBackdrop {
       "composed": true,
       "docs": {
         "tags": [],
-        "text": "Emitted when the backdrop is tapped."
+        "text": "\u70B9\u51FB\u80CC\u666F\u65F6\u51FA\u53D1\u7684\u4E8B\u4EF6"
       },
       "complexType": {
         "original": "void",

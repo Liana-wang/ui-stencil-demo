@@ -12,22 +12,22 @@ export class AiBackdrop implements ComponentInterface {
   });
 
   /**
-   * If `true`, the backdrop will be visible.
+   * 背景是否可见，默认可见
    */
   @Prop() visible = true;
 
   /**
-   * If `true`, the backdrop will can be clicked and will emit the `aiBackdropTap` event.
+   * 背景是否可点击，默认为true，会出发aiBackdropTap
    */
   @Prop() tappable = true;
 
   /**
-   * If `true`, the backdrop will stop propagation on tap.
+   * 点击背景时，是否阻止冒泡
    */
   @Prop() stopPropagation = true;
 
   /**
-   * Emitted when the backdrop is tapped.
+   * 点击背景时出发的事件
    */
   @Event() aiBackdropTap!: EventEmitter<void>;
 
@@ -60,7 +60,6 @@ export class AiBackdrop implements ComponentInterface {
     return (
       <Host
         tabindex="-1"
-        aria-hidden="true"
         class={{
           'backdrop-hide': !this.visible,
           'backdrop-no-tappable': !this.tappable,

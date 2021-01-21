@@ -1,7 +1,7 @@
 import { createAnimation } from '../../utils/animation/animation';
 
 /**
- * Md Popover Enter Animation
+ * 展开动画
  */
 export const enterAnimation = (baseEl: HTMLElement, ev?: Event) => {
     const POPOVER_MD_BODY_PADDING = 12;
@@ -19,11 +19,9 @@ export const enterAnimation = (baseEl: HTMLElement, ev?: Event) => {
     const bodyWidth = doc.defaultView.innerWidth;
     const bodyHeight = doc.defaultView.innerHeight;
 
-    // If ev was passed, use that for target element
     const targetDim =
         ev && ev.target && (ev.target as HTMLElement).getBoundingClientRect();
 
-    // As per MD spec, by default position the popover below the target (trigger) element
     const targetTop =
         targetDim != null && 'bottom' in targetDim
             ? targetDim.bottom

@@ -5,12 +5,12 @@ export default {
     output: [
         {
             file: 'dist/index.js',
-            format: 'esm',
+            format: 'umd',
             sourcemap: true
         },
         {
             file: 'dist/index.min.js',
-            format: 'esm',
+            format: 'umd',
             sourcemap: true,
             plugins: [terser()]
         }

@@ -92,18 +92,9 @@ export const dismiss = async (overlay, data, role, leaveAnimation, opts) => {
   return true;
 };
 const overlayAnimation = async (overlay, animationBuilder, baseEl, opts) => {
-  // Make overlay visible in case it's hidden
   baseEl.classList.remove('overlay-hidden');
   const aniRoot = baseEl.shadowRoot || overlay.el;
   const animation = animationBuilder(aniRoot, opts);
-  if (overlay.keyboardClose) {
-    animation.beforeAddWrite(() => {
-      const activeElement = baseEl.ownerDocument.activeElement;
-      if (activeElement && activeElement.matches('input, ion-input, ion-textarea')) {
-        activeElement.blur();
-      }
-    });
-  }
   const activeAni = activeAnimations.get(overlay) || [];
   activeAnimations.set(overlay, [...activeAni, animation]);
   await animation.play();

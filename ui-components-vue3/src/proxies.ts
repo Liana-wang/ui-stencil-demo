@@ -20,7 +20,6 @@ export const AiBackdrop = /*@__PURE__*/ defineContainer<JSX.AiBackdrop>('ai-back
 export const AiButton = /*@__PURE__*/ defineContainer<JSX.AiButton>('ai-button', [
   'text',
   'disabled',
-  'value',
   'aiClick'
 ]);
 
@@ -29,13 +28,15 @@ export const AiControl = /*@__PURE__*/ defineContainer<JSX.AiControl>('ai-contro
 
 
 export const AiInput = /*@__PURE__*/ defineContainer<JSX.AiInput>('ai-input', [
-  'defaultValue',
+  'disabled',
   'placeholder',
+  'readonly',
   'type',
   'value',
   'aiChange',
   'aiInput',
-  'aiBlur'
+  'aiBlur',
+  'aiFocus'
 ],
 {
   "modelProp": "value",
@@ -48,6 +49,7 @@ export const AiPopover = /*@__PURE__*/ defineContainer<JSX.AiPopover>('ai-popove
   'component',
   'componentProps',
   'backdropDismiss',
+  'showBackdrop',
   'event',
   'aiPopoverDidPresent',
   'aiPopoverWillPresent',
@@ -59,7 +61,7 @@ export const AiPopover = /*@__PURE__*/ defineContainer<JSX.AiPopover>('ai-popove
 export const AiSelect = /*@__PURE__*/ defineContainer<JSX.AiSelect>('ai-select', [
   'disabled',
   'placeholder',
-  'value',
+  'selected',
   'compareWith',
   'aiChange',
   'aiCancel',
@@ -71,7 +73,7 @@ export const AiSelect = /*@__PURE__*/ defineContainer<JSX.AiSelect>('ai-select',
 
 export const AiSelectOption = /*@__PURE__*/ defineContainer<JSX.AiSelectOption>('ai-select-option', [
   'disabled',
-  'value'
+  'option'
 ]);
 
 

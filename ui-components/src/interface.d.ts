@@ -5,3 +5,6 @@ export type BackButtonEvent = CustomEvent<BackButtonEventDetail>;
 export interface BackButtonEventDetail {
     register(priority: number, handler: (processNextHandler: () => void) => Promise<any> | void): void;
 }
+export interface StyleEventDetail {
+    [styleName: string]: boolean;
+}

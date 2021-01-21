@@ -9,14 +9,9 @@ export declare class AiButton {
    */
   disabled: boolean;
   /**
-   * btnValue
-   */
-  btnValue?: any;
-  /**
    * 点击
    */
   aiClick: EventEmitter<MouseEvent>;
-  connectedCallback(): void;
   private handleClick;
   render(): any;
 }

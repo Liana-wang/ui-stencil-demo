@@ -9,6 +9,10 @@ export class AiPopover {
     this.presented = false;
     /** 点击背景时关闭 */
     this.backdropDismiss = true;
+    /**
+     * 是否显示背景
+     */
+    this.showBackdrop = false;
     this.onDismiss = (ev) => {
       ev.stopPropagation();
       ev.preventDefault();
@@ -29,10 +33,11 @@ export class AiPopover {
         el.dispatchEvent(event);
       }
     };
-  }
-  connectedCallback() {
     prepareOverlay(this.el);
   }
+  /**
+   * 弹出popover
+   */
   async present() {
     if (this.presented) {
       return;
@@ -42,10 +47,13 @@ export class AiPopover {
       throw new Error('container is undefined');
     }
     const data = Object.assign(Object.assign({}, this.componentProps), { popover: this.el });
-    this.usersElement = await attachComponent(container, this.component, ['popover-viewport', this.el['s-sc']], data);
+    this.usersElement = await attachComponent(container, this.component, ['popover-viewport'], data);
     await deepReady(this.usersElement);
     return present(this, enterAnimation, this.event);
   }
+  /**
+   * 关闭popover
+   */
   async dismiss(data, role) {
     const shouldDismiss = await dismiss(this, data, role, leaveAnimation, this.event);
     if (shouldDismiss) {
@@ -53,9 +61,13 @@ export class AiPopover {
     }
     return shouldDismiss;
   }
+  /**
+   * popover已经销毁
+   */
   onDidDismiss() {
     return eventMethod(this.el, 'aiPopoverDidDismiss');
   }
+  /** popover即将销毁 */
   onWillDismiss() {
     return eventMethod(this.el, 'aiPopoverWillDismiss');
   }
@@ -89,11 +101,8 @@ export class AiPopover {
       "required": true,
       "optional": false,
       "docs": {
-        "tags": [{
-            "text": undefined,
-            "name": "internal"
-          }],
-        "text": ""
+        "tags": [],
+        "text": "index\u503C"
       },
       "attribute": "overlay-index",
       "reflect": false
@@ -157,6 +166,24 @@ export class AiPopover {
       "attribute": "backdrop-dismiss",
       "reflect": false,
       "defaultValue": "true"
+    },
+    "showBackdrop": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": "\u662F\u5426\u663E\u793A\u80CC\u666F"
+      },
+      "attribute": "show-backdrop",
+      "reflect": false,
+      "defaultValue": "false"
     },
     "event": {
       "type": "any",
@@ -250,7 +277,7 @@ export class AiPopover {
         "return": "Promise<void>"
       },
       "docs": {
-        "text": "",
+        "text": "\u5F39\u51FApopover",
         "tags": []
       }
     },
@@ -272,7 +299,7 @@ export class AiPopover {
         "return": "Promise<boolean>"
       },
       "docs": {
-        "text": "",
+        "text": "\u5173\u95EDpopover",
         "tags": []
       }
     },
@@ -288,7 +315,7 @@ export class AiPopover {
         "return": "Promise<any>"
       },
       "docs": {
-        "text": "",
+        "text": "popover\u5DF2\u7ECF\u9500\u6BC1",
         "tags": []
       }
     },
@@ -304,7 +331,7 @@ export class AiPopover {
         "return": "Promise<any>"
       },
       "docs": {
-        "text": "",
+        "text": "popover\u5373\u5C06\u9500\u6BC1",
         "tags": []
       }
     }

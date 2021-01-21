@@ -2,6 +2,14 @@
   display: block;
 }
 
+:host(.has-focus.has-value) {
+  visibility: visible;
+}
+
+:host(.has-focus) {
+  pointer-events: none;
+}
+
 .box {
   position: relative;
   display: inline-block;

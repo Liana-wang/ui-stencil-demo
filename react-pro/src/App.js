@@ -16,6 +16,11 @@ export default function App() {
     }
   }
 
+  const myEvent = (event) => {
+    console.log('event', event)
+  }
+
+
   return (
     <div className="App">
       <div className={'logo'}>
@@ -46,6 +51,9 @@ export default function App() {
         }
         <div className={'select'}>
           <SelectExm />
+        </div>
+        <div>
+          <my-button data={JSON.stringify([{ id: '111', name: 'ddfdfdf' }])} my-event={myEvent}></my-button>
         </div>
       </div>
     </div>

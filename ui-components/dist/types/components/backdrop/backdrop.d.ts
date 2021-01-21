@@ -2,19 +2,19 @@ import { ComponentInterface, EventEmitter } from '../../stencil-public-runtime';
 export declare class AiBackdrop implements ComponentInterface {
   private blocker;
   /**
-   * If `true`, the backdrop will be visible.
+   * 背景是否可见，默认可见
    */
   visible: boolean;
   /**
-   * If `true`, the backdrop will can be clicked and will emit the `aiBackdropTap` event.
+   * 背景是否可点击，默认为true，会出发aiBackdropTap
    */
   tappable: boolean;
   /**
-   * If `true`, the backdrop will stop propagation on tap.
+   * 点击背景时，是否阻止冒泡
    */
   stopPropagation: boolean;
   /**
-   * Emitted when the backdrop is tapped.
+   * 点击背景时出发的事件
    */
   aiBackdropTap: EventEmitter<void>;
   connectedCallback(): void;

@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-78c9c8a6.js');
-const overlays = require('./overlays-a8360bca.js');
+const index = require('./index-56afdc95.js');
+const overlays = require('./overlays-6498908f.js');
 
 const attachComponent = async (container, component, cssClasses, componentProps) => {
   if (typeof component !== 'string' && !(component instanceof HTMLElement)) {
@@ -997,7 +997,7 @@ const createAnimation = (animationId) => {
 };
 
 /**
- * Md Popover Enter Animation
+ * 展开动画
  */
 const enterAnimation = (baseEl, ev) => {
   const POPOVER_MD_BODY_PADDING = 12;
@@ -1011,9 +1011,7 @@ const enterAnimation = (baseEl, ev) => {
   const contentHeight = contentDimentions.height;
   const bodyWidth = doc.defaultView.innerWidth;
   const bodyHeight = doc.defaultView.innerHeight;
-  // If ev was passed, use that for target element
   const targetDim = ev && ev.target && ev.target.getBoundingClientRect();
-  // As per MD spec, by default position the popover below the target (trigger) element
   const targetTop = targetDim != null && 'bottom' in targetDim
     ? targetDim.bottom
     : bodyHeight / 2 - contentHeight / 2;
@@ -1085,7 +1083,7 @@ const enterAnimation = (baseEl, ev) => {
 };
 
 /**
- * Md Popover Leave Animation
+ * 移除动画
  */
 const leaveAnimation = (baseEl) => {
   const baseAnimation = createAnimation();
@@ -1112,6 +1110,10 @@ const AiPopover = class {
     this.presented = false;
     /** 点击背景时关闭 */
     this.backdropDismiss = true;
+    /**
+     * 是否显示背景
+     */
+    this.showBackdrop = false;
     this.onDismiss = (ev) => {
       ev.stopPropagation();
       ev.preventDefault();
@@ -1132,10 +1134,11 @@ const AiPopover = class {
         el.dispatchEvent(event);
       }
     };
-  }
-  connectedCallback() {
     overlays.prepareOverlay(this.el);
   }
+  /**
+   * 弹出popover
+   */
   async present() {
     if (this.presented) {
       return;
@@ -1145,10 +1148,13 @@ const AiPopover = class {
       throw new Error('container is undefined');
     }
     const data = Object.assign(Object.assign({}, this.componentProps), { popover: this.el });
-    this.usersElement = await attachComponent(container, this.component, ['popover-viewport', this.el['s-sc']], data);
+    this.usersElement = await attachComponent(container, this.component, ['popover-viewport'], data);
     await deepReady(this.usersElement);
     return overlays.present(this, enterAnimation, this.event);
   }
+  /**
+   * 关闭popover
+   */
   async dismiss(data, role) {
     const shouldDismiss = await overlays.dismiss(this, data, role, leaveAnimation, this.event);
     if (shouldDismiss) {
@@ -1156,9 +1162,13 @@ const AiPopover = class {
     }
     return shouldDismiss;
   }
+  /**
+   * popover已经销毁
+   */
   onDidDismiss() {
     return overlays.eventMethod(this.el, 'aiPopoverDidDismiss');
   }
+  /** popover即将销毁 */
   onWillDismiss() {
     return overlays.eventMethod(this.el, 'aiPopoverWillDismiss');
   }

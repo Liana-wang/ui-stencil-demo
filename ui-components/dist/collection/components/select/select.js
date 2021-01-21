@@ -29,11 +29,6 @@ export class AiSelect {
   valueChanged() {
     this.updateOptions();
     this.emitStyle();
-    // if (this.didInit) {
-    //   this.aiChange.emit({
-    //     selected: this.selected,
-    //   })
-    // }
   }
   async connectedCallback() {
     this.updateOptions();
@@ -49,9 +44,9 @@ export class AiSelect {
       this.mutationO = undefined;
     }
   }
-  componentDidLoad() {
-    // this.didInit = true;
-  }
+  /**
+   * 显示下拉选项
+   */
   async open(event) {
     if (this.disabled || this.isExpanded) {
       return undefined;
@@ -124,15 +119,12 @@ export class AiSelect {
     return this.overlay.dismiss();
   }
   updateOptions() {
-    // iterate all options, updating the selected prop
     let canSelect = true;
     const { selected, childOpts, compareWith } = this;
     for (const selectOption of childOpts) {
       const optValue = getOptionValue(selectOption);
       const isSelected = canSelect && isOptionSelected(selected, optValue, compareWith);
       selectOption.selected = isSelected;
-      // if current option is selected and select is single-option, we can't select
-      // any option more
       if (isSelected) {
         canSelect = false;
       }
@@ -368,7 +360,7 @@ export class AiSelect {
         "return": "Promise<any>"
       },
       "docs": {
-        "text": "",
+        "text": "\u663E\u793A\u4E0B\u62C9\u9009\u9879",
         "tags": []
       }
     }

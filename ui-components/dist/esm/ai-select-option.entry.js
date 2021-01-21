@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement, H as Host } from './index-f73eee45.js';
+import { r as registerInstance, h, g as getElement, H as Host } from './index-df92ec43.js';
 
 const selectOptionCss = ":host{display:none}";
 

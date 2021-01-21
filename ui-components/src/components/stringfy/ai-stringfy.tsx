@@ -6,6 +6,7 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class AiStringfy {
+  /** data */
   @Prop({ reflect: false }) data: any;
 
   render() {

@@ -9,8 +9,8 @@
         "tsc": "tsc -p ."
     },
     "main": "./dist/index.js",
-    "module": "./dist/index.esm.js",
-    "types": "./dist/index.d.ts",
+    "module": "./dist/index.min.js",
+    "types": "./dist/types/index.d.ts",
     "files": [
         "dist/",
         "css/"

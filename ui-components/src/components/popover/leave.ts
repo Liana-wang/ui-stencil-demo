@@ -1,7 +1,7 @@
 import { createAnimation } from '../../utils/animation/animation';
 
 /**
- * Md Popover Leave Animation
+ * 移除动画
  */
 export const leaveAnimation = (baseEl: HTMLElement): any => {
     const baseAnimation = createAnimation();

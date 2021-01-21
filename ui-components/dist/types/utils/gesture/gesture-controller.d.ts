@@ -5,19 +5,34 @@ declare class GestureController {
   private disabledScroll;
   private capturedId?;
   /**
-   * Creates a gesture delegate based on the GestureConfig passed
+   * 根据传入的配置，创建一个委托
    */
   createGesture(config: GestureConfig): GestureDelegate;
   /**
-   * Creates a blocker that will block any other gesture events from firing. Set in the ion-gesture component.
+   * 创建一个blocker
    */
   createBlocker(opts?: BlockerConfig): BlockerDelegate;
   start(gestureName: string, id: number, priority: number): boolean;
+  /**
+   * 捕获
+   */
   capture(gestureName: string, id: number, priority: number): boolean;
   release(id: number): void;
+  /**
+   * 禁用
+   */
   disableGesture(gestureName: string, id: number): void;
+  /**
+   * 启用
+   */
   enableGesture(gestureName: string, id: number): void;
+  /**
+   * 禁止滚动
+   */
   disableScroll(id: number): void;
+  /**
+   * 允许滚动
+   */
   enableScroll(id: number): void;
   canStart(gestureName: string): boolean;
   isCaptured(): boolean;

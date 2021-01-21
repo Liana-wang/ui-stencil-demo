@@ -10,7 +10,6 @@ import { popoverController } from '../../utils/overlays'
 export class AiSelect implements ComponentInterface {
   private inputId = `ai-sel-${selectIds++}`;
   private overlay?: any;
-  // private didInit = false;
   private focusEl?: HTMLButtonElement;
   private mutationO?: MutationObserver;
 
@@ -31,10 +30,22 @@ export class AiSelect implements ComponentInterface {
    */
   @Prop() placeholder?: string | null;
 
+  @Watch('disabled')
+  @Watch('placeholder')
+  disabledChanged() {
+    this.emitStyle();
+  }
+
   /**
    * 选中的值
    */
   @Prop({ mutable: true }) selected?: any | null;
+
+  @Watch('selected')
+  valueChanged() {
+    this.updateOptions()
+    this.emitStyle()
+  }
 
   /**
    * 选中之后做对比的条件
@@ -66,24 +77,6 @@ export class AiSelect implements ComponentInterface {
    */
   @Event() aiStyle!: EventEmitter<any>;
 
-  @Watch('disabled')
-  @Watch('placeholder')
-  disabledChanged() {
-    this.emitStyle();
-  }
-
-  @Watch('selected')
-  valueChanged() {
-    this.updateOptions()
-    this.emitStyle()
-
-    // if (this.didInit) {
-    //   this.aiChange.emit({
-    //     selected: this.selected,
-    //   })
-    // }
-  }
-
   async connectedCallback() {
     this.updateOptions()
     this.updateOverlayOptions()
@@ -103,10 +96,9 @@ export class AiSelect implements ComponentInterface {
     }
   }
 
-  componentDidLoad() {
-    // this.didInit = true;
-  }
-
+  /**
+   * 显示下拉选项
+   */
   @Method()
   async open(event?: UIEvent): Promise<any> {
     if (this.disabled || this.isExpanded) {
@@ -204,7 +196,6 @@ export class AiSelect implements ComponentInterface {
   }
 
   private updateOptions() {
-    // iterate all options, updating the selected prop
     let canSelect = true;
     const { selected, childOpts, compareWith } = this;
     for (const selectOption of childOpts) {
@@ -212,8 +203,6 @@ export class AiSelect implements ComponentInterface {
       const isSelected = canSelect && isOptionSelected(selected, optValue, compareWith);
       selectOption.selected = isSelected;
 
-      // if current option is selected and select is single-option, we can't select
-      // any option more
       if (isSelected) {
         canSelect = false;
       }

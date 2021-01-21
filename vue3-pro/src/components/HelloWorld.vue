@@ -2,32 +2,41 @@
   <div class="hello">
     <div class="item">
       <span>姓名：</span>
-      <AiInput placeholder="请输入..." @aiChange="onAiInput" :value="name" />
-      <AiButton
-        @aiClick="onClick"
-        :disabled="!name"
-        :value="{ id: '111', text: 'aaa' }"
-      >
-        确定
-      </AiButton>
-      <p v-if="isConfirm && name">Welcome! {{ name }}</p>
+      <AiInput
+        placeholder="请输入姓名..."
+        @aiChange="onAiInput"
+        :value="name"
+      />
       <div style="margin-top: 20px">
-        <span>联动：</span>
-        <ai-input placeholder="请输入..." @aiInput="onAiInput" :value="name" />
+        <span>住址：</span>
+        <AiInput
+          placeholder="请输入住址..."
+          @aiInput="changeAddress"
+          :value="address"
+        />
+      </div>
+      <div>
+        <AiButton @aiClick="onClick" :disabled="!name || !address">
+          确定
+        </AiButton>
+        <AiButton @aiClick="reset"> 重置 </AiButton>
+        <p v-if="isConfirm && name">
+          Welcome! {{ name }}, 您的地址是：{{ address }}
+        </p>
       </div>
     </div>
     <div class="item">
       <p>选中项为：{{ selected ? selected.text : "" }}</p>
       <div class="select">
         <AiSelect
-          :value="selected"
+          :selected="selected"
           @aiChange="onSelectChange"
           compare-with="id"
           placeholder="请选择"
         >
           <AiSelectOption
             v-for="option in options"
-            :value="option"
+            :option="option"
             :key="option.id"
           >
             {{ option.text }}
@@ -36,7 +45,6 @@
       </div>
     </div>
     <AiStringfy :data="options" />
-    <EveStringify :data="options" />
   </div>
 </template>
 
@@ -48,8 +56,6 @@ import {
   AiSelectOption,
   AiStringfy,
 } from "@ai/ui-components-vue3";
-
-import { EveStringify } from "elwins-test-web-components-vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -60,11 +66,11 @@ export default defineComponent({
     AiSelect,
     AiSelectOption,
     AiStringfy,
-    EveStringify,
   },
   data() {
     return {
       name: "",
+      address: "",
       isConfirm: false,
       options: [
         {
@@ -99,13 +105,21 @@ export default defineComponent({
         this.isConfirm = false;
       }
     },
+    changeAddress(event) {
+      this.address = event.target.value;
+    },
     onClick(event) {
       console.log(event);
       this.isConfirm = true;
     },
+    reset() {
+      this.name = "";
+      this.address = "";
+      this.isConfirm = false;
+    },
     onSelectChange(event) {
       console.log(event);
-      this.selected = event.detail.value;
+      this.selected = event.detail.selected;
     },
   },
 });

@@ -8,7 +8,7 @@ class GestureController {
   private capturedId?: number;
 
   /**
-   * Creates a gesture delegate based on the GestureConfig passed
+   * 根据传入的配置，创建一个委托
    */
   createGesture(config: GestureConfig): GestureDelegate {
     return new GestureDelegate(
@@ -21,7 +21,7 @@ class GestureController {
   }
 
   /**
-   * Creates a blocker that will block any other gesture events from firing. Set in the ion-gesture component.
+   * 创建一个blocker
    */
   createBlocker(opts: BlockerConfig = {}): BlockerDelegate {
     return new BlockerDelegate(
@@ -41,6 +41,9 @@ class GestureController {
     return true;
   }
 
+  /**
+   * 捕获
+   */
   capture(gestureName: string, id: number, priority: number): boolean {
     if (!this.start(gestureName, id, priority)) {
       return false;
@@ -56,7 +59,7 @@ class GestureController {
       this.capturedId = id;
       requestedStart.clear();
 
-      const event = new CustomEvent('ionGestureCaptured', { detail: { gestureName } });
+      const event = new CustomEvent('aiGestureCaptured', { detail: { gestureName } });
       document.dispatchEvent(event);
       return true;
     }
@@ -73,6 +76,9 @@ class GestureController {
     }
   }
 
+  /**
+   * 禁用
+   */
   disableGesture(gestureName: string, id: number) {
     let set = this.disabledGestures.get(gestureName);
     if (set === undefined) {
@@ -82,6 +88,9 @@ class GestureController {
     set.add(id);
   }
 
+  /**
+   * 启用
+   */
   enableGesture(gestureName: string, id: number) {
     const set = this.disabledGestures.get(gestureName);
     if (set !== undefined) {
@@ -89,6 +98,9 @@ class GestureController {
     }
   }
 
+  /**
+   * 禁止滚动
+   */
   disableScroll(id: number) {
     this.disabledScroll.add(id);
     if (this.disabledScroll.size === 1) {
@@ -96,6 +108,9 @@ class GestureController {
     }
   }
 
+  /**
+   * 允许滚动
+   */
   enableScroll(id: number) {
     this.disabledScroll.delete(id);
     if (this.disabledScroll.size === 0) {

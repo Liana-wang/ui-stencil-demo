@@ -16,18 +16,9 @@ export class AiButton {
   @Prop({ mutable: true }) disabled: boolean = false;
 
   /**
-   * btnValue
-   */
-  @Prop({ mutable: true }) btnValue?: any;
-
-  /**
    * 点击
    */
   @Event() aiClick: EventEmitter<MouseEvent>;
-
-  connectedCallback() {
-    console.log('btn-value', this.btnValue)
-  }
 
   private handleClick = (event) => {
     if (this.disabled) {
@@ -40,7 +31,6 @@ export class AiButton {
   render() {
     return (
       <Host>
-        <span>{this.btnValue && this.btnValue.text ? this.btnValue.text : ''}</span>
         <button
           class={{
             'btn': true,

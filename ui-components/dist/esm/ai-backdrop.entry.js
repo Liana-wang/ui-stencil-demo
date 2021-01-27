@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-df92ec43.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-e34d4d15.js';
 
 class GestureController {
   constructor() {

@@ -15,17 +15,17 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 export const config: Config = {
   namespace: 'ui-components',
   outputTargets: [
-    // angularOutputTarget({
-    //   componentCorePackage: '@ai/ui-components',
-    //   directivesProxyFile: '../ui-components-angular/src/directives/proxies.ts',
-    //   valueAccessorConfigs: angularValueAccessorBindings
-    // }),
-    // reactOutputTarget({
-    //   componentCorePackage: '@ai/ui-components',
-    //   proxiesFile: '../ui-components-react/src/components.ts',
-    //   includePolyfills: true,
-    //   includeDefineCustomElements: true,
-    // }),
+    angularOutputTarget({
+      componentCorePackage: '@ai/ui-components',
+      directivesProxyFile: '../ui-components-angular/src/directives/proxies.ts',
+      valueAccessorConfigs: angularValueAccessorBindings
+    }),
+    reactOutputTarget({
+      componentCorePackage: '@ai/ui-components',
+      proxiesFile: '../ui-components-react/src/components.ts',
+      includePolyfills: true,
+      includeDefineCustomElements: true,
+    }),
     vueOutputTarget({
       componentCorePackage: '@ai/ui-components',
       proxiesFile: '../ui-components-vue3/src/proxies.ts',

@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-56afdc95.js');
+const index = require('./index-44d9bd3d.js');
 const overlays = require('./overlays-6498908f.js');
 
-const buttonCss = ":host{display:block}.btn{height:30px;padding:0 8px;border:1px solid #d3d4db;border-radius:4px;background-color:#fff;color:#505050;box-shadow:none;line-height:normal;text-align:center;outline:none;cursor:pointer;font-size:13px}.btn:hover{border-color:#d3d4db;background-color:rgba(228, 230, 237, 0.25)}.btn:active{background-color:rgba(228, 230, 237, 0.45)}.btn-disabled{border-color:rgba(211, 212, 219, 0.8);background-color:#fff;opacity:0.5;cursor:pointer}";
+const buttonCss = ":host{display:inline-block}.btn{height:30px;padding:0 8px;border:none;border-radius:4px;background:#6775CD;color:#fff;box-shadow:none;line-height:normal;text-align:center;cursor:pointer;outline:none;font-size:13px}.btn:hover{filter:saturate(.9) brightness(1.2)}.btn:active{filter:saturate(.9) brightness(1.2)}.btn-disabled{border-color:rgba(211, 212, 219, 0.8);background-color:#fff;opacity:0.5;cursor:pointer}";
 
 const AiButton = class {
   constructor(hostRef) {
@@ -89,6 +89,7 @@ const AiInput = class {
     };
   }
   valueChanged() {
+    console.log('value', this.value);
     this.aiChange.emit({ value: this.value });
   }
   /**

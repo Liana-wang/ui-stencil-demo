@@ -3,6 +3,7 @@ import { Component, Host, Prop, Event, EventEmitter, h } from '@stencil/core';
 @Component({
   tag: 'ai-button',
   styleUrl: 'button.css',
+  shadow: true,
 })
 export class AiButton {
   /**

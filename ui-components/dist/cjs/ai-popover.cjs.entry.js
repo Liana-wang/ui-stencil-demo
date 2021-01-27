@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-56afdc95.js');
+const index = require('./index-44d9bd3d.js');
 const overlays = require('./overlays-6498908f.js');
 
 const attachComponent = async (container, component, cssClasses, componentProps) => {

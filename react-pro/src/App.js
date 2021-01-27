@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { AiButton, AiInput, AiStringfy } from '@ai/ui-components-react'
 import './App.css'
 import SelectExm from './SelectExm'
+import BtnTest from './BtnTest'
 
 export default function App() {
   const [name, setName] = useState('')
@@ -16,16 +17,12 @@ export default function App() {
     }
   }
 
-  const myEvent = (event) => {
-    console.log('event', event)
-  }
-
-
   return (
     <div className="App">
       <div className={'logo'}>
         <img src="logo192.png" alt="" />
       </div>
+      <h1>StencilJS</h1>
       <div>
         <div>
           <AiStringfy data={{ id: 'aa', name: 'sdsdsd' }}></AiStringfy>
@@ -53,7 +50,7 @@ export default function App() {
           <SelectExm />
         </div>
         <div>
-          <my-button data={JSON.stringify([{ id: '111', name: 'ddfdfdf' }])} my-event={myEvent}></my-button>
+          <BtnTest />
         </div>
       </div>
     </div>

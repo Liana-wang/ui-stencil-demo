@@ -18,7 +18,7 @@ export declare interface AiBackdrop extends Components.AiBackdrop {}
   outputs: ['aiBackdropTap']
 })
 export class AiBackdrop {
-  /** Emitted when the backdrop is tapped. */
+  /** 点击背景时出发的事件 */
   aiBackdropTap!: IAiBackdrop['aiBackdropTap'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -31,13 +31,13 @@ export class AiBackdrop {
 import { AiButton as IAiButton } from '@ai/ui-components/dist/types/components/button/button';
 export declare interface AiButton extends Components.AiButton {}
 @ProxyCmp({
-  inputs: ['btnValue', 'disabled', 'text']
+  inputs: ['disabled', 'text']
 })
 @Component({
   selector: 'ai-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['btnValue', 'disabled', 'text'],
+  inputs: ['disabled', 'text'],
   outputs: ['aiClick']
 })
 export class AiButton {
@@ -70,14 +70,14 @@ export class AiControl {
 import { AiInput as IAiInput } from '@ai/ui-components/dist/types/components/input/input';
 export declare interface AiInput extends Components.AiInput {}
 @ProxyCmp({
-  inputs: ['defaultValue', 'placeholder', 'type', 'value']
+  inputs: ['disabled', 'placeholder', 'readonly', 'type', 'value']
 })
 @Component({
   selector: 'ai-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['defaultValue', 'placeholder', 'type', 'value'],
-  outputs: ['aiChange', 'aiInput', 'aiBlur']
+  inputs: ['disabled', 'placeholder', 'readonly', 'type', 'value'],
+  outputs: ['aiChange', 'aiInput', 'aiBlur', 'aiFocus']
 })
 export class AiInput {
   /** 值改变 */
@@ -86,25 +86,27 @@ export class AiInput {
   aiInput!: IAiInput['aiInput'];
   /** 失焦 */
   aiBlur!: IAiInput['aiBlur'];
+  /** 聚焦 */
+  aiFocus!: IAiInput['aiFocus'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['aiChange', 'aiInput', 'aiBlur']);
+    proxyOutputs(this, this.el, ['aiChange', 'aiInput', 'aiBlur', 'aiFocus']);
   }
 }
 
 import { AiPopover as IAiPopover } from '@ai/ui-components/dist/types/components/popover/popover';
 export declare interface AiPopover extends Components.AiPopover {}
 @ProxyCmp({
-  inputs: ['backdropDismiss', 'component', 'componentProps', 'event'],
+  inputs: ['backdropDismiss', 'component', 'componentProps', 'event', 'overlayIndex', 'showBackdrop'],
   methods: ['present', 'dismiss', 'onDidDismiss', 'onWillDismiss']
 })
 @Component({
   selector: 'ai-popover',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['backdropDismiss', 'component', 'componentProps', 'event'],
+  inputs: ['backdropDismiss', 'component', 'componentProps', 'event', 'overlayIndex', 'showBackdrop'],
   outputs: ['aiPopoverDidPresent', 'aiPopoverWillPresent', 'aiPopoverWillDismiss', 'aiPopoverDidDismiss']
 })
 export class AiPopover {

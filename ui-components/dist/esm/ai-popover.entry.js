@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-df92ec43.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-e34d4d15.js';
 import { r as raf, a as prepareOverlay, b as present, d as dismiss, e as eventMethod } from './overlays-e9675823.js';
 
 const attachComponent = async (container, component, cssClasses, componentProps) => {

@@ -48,6 +48,7 @@ export class AiInput {
     };
   }
   valueChanged() {
+    console.log('value', this.value);
     this.aiChange.emit({ value: this.value });
   }
   /**

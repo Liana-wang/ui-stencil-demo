@@ -24,6 +24,7 @@ export class AiButton {
         this.text ? this.text : h("slot", null))));
   }
   static get is() { return "ai-button"; }
+  static get encapsulation() { return "shadow"; }
   static get originalStyleUrls() { return {
     "$": ["button.css"]
   }; }

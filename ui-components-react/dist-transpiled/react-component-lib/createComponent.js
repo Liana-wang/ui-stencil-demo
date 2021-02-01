@@ -1,16 +1,6 @@
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
+import { __rest } from "tslib";
 import React from 'react';
-import { attachProps, createForwardRef, dashToPascalCase, isCoveredByReact, mergeRefs, camelToDashCase, } from './utils';
+import { attachProps, createForwardRef, dashToPascalCase, isCoveredByReact, mergeRefs, } from './utils';
 export const createReactComponent = (tagName, ReactComponentContext, manipulatePropsFunction) => {
     const displayName = dashToPascalCase(tagName);
     const ReactComponent = class extends React.Component {
@@ -35,8 +25,8 @@ export const createReactComponent = (tagName, ReactComponentContext, manipulateP
                         acc[name] = cProps[name];
                     }
                 }
-                else if (typeof cProps[name] === 'string') {
-                    acc[camelToDashCase(name)] = cProps[name];
+                else {
+                    acc[name] = cProps[name];
                 }
                 return acc;
             }, {});
@@ -56,3 +46,4 @@ export const createReactComponent = (tagName, ReactComponentContext, manipulateP
     }
     return createForwardRef(ReactComponent, displayName);
 };
+//# sourceMappingURL=createComponent.js.map

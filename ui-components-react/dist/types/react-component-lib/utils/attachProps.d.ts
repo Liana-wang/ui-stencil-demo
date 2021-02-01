@@ -7,6 +7,6 @@ export declare const getClassName: (classList: DOMTokenList, newProps: any, oldP
 export declare const isCoveredByReact: (eventNameSuffix: string, doc: Document) => boolean;
 export declare const syncEvent: (node: Element & {
     __events?: {
-        [key: string]: (e: Event) => any;
-    };
-}, eventName: string, newEventHandler?: (e: Event) => any) => void;
+        [key: string]: ((e: Event) => any) | undefined;
+    } | undefined;
+}, eventName: string, newEventHandler?: ((e: Event) => any) | undefined) => void;

@@ -18,3 +18,4 @@ export const createForwardRef = (ReactComponent, displayName) => {
 };
 export * from './attachProps';
 export * from './case';
+//# sourceMappingURL=index.js.map

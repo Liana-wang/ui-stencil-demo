@@ -1,13 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var loader = require('@ai/ui-components/loader');
-var React = require('react');
-
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
+import React from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -150,15 +142,15 @@ const mergeRefs = (...refs) => (value) => refs.forEach((ref) => {
 });
 const createForwardRef = (ReactComponent, displayName) => {
     const forwardRef = (props, ref) => {
-        return React__default['default'].createElement(ReactComponent, Object.assign({}, props, { forwardedRef: ref }));
+        return React.createElement(ReactComponent, Object.assign({}, props, { forwardedRef: ref }));
     };
     forwardRef.displayName = displayName;
-    return React__default['default'].forwardRef(forwardRef);
+    return React.forwardRef(forwardRef);
 };
 
 const createReactComponent = (tagName, ReactComponentContext, manipulatePropsFunction) => {
     const displayName = dashToPascalCase(tagName);
-    const ReactComponent = class extends React__default['default'].Component {
+    const ReactComponent = class extends React.Component {
         constructor(props) {
             super(props);
             this.setComponentElRef = (element) => {
@@ -189,7 +181,7 @@ const createReactComponent = (tagName, ReactComponentContext, manipulatePropsFun
                 propsToPass = manipulatePropsFunction(this.props, propsToPass);
             }
             let newProps = Object.assign(Object.assign({}, propsToPass), { ref: mergeRefs(forwardedRef, this.setComponentElRef), style });
-            return React__default['default'].createElement(tagName, newProps, children);
+            return React.createElement(tagName, newProps, children);
         }
         static get displayName() {
             return displayName;
@@ -203,7 +195,7 @@ const createReactComponent = (tagName, ReactComponentContext, manipulatePropsFun
 };
 
 /* eslint-disable */
-loader.applyPolyfills().then(() => loader.defineCustomElements());
+applyPolyfills().then(() => defineCustomElements());
 const AiBackdrop = /*@__PURE__*/ createReactComponent('ai-backdrop');
 const AiButton = /*@__PURE__*/ createReactComponent('ai-button');
 const AiControl = /*@__PURE__*/ createReactComponent('ai-control');
@@ -214,12 +206,4 @@ const AiSelectOption = /*@__PURE__*/ createReactComponent('ai-select-option');
 const AiSelectPopover = /*@__PURE__*/ createReactComponent('ai-select-popover');
 const AiStringfy = /*@__PURE__*/ createReactComponent('ai-stringfy');
 
-exports.AiBackdrop = AiBackdrop;
-exports.AiButton = AiButton;
-exports.AiControl = AiControl;
-exports.AiInput = AiInput;
-exports.AiPopover = AiPopover;
-exports.AiSelect = AiSelect;
-exports.AiSelectOption = AiSelectOption;
-exports.AiSelectPopover = AiSelectPopover;
-exports.AiStringfy = AiStringfy;
+export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, AiStringfy };

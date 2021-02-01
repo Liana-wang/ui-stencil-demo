@@ -6,41 +6,40 @@ import {
   dashToPascalCase,
   isCoveredByReact,
   mergeRefs,
-  camelToDashCase,
 } from './utils';
 
-export interface HTMLAiElement extends HTMLElement {
+export interface HTMLStencilElement extends HTMLElement {
   componentOnReady(): Promise<this>;
 }
 
-interface AiReactInternalProps<ElementType> extends React.HTMLAttributes<ElementType> {
+interface StencilReactInternalProps<ElementType> extends React.HTMLAttributes<ElementType> {
   forwardedRef: React.RefObject<ElementType>;
   ref?: React.Ref<any>;
 }
 
 export const createReactComponent = <
   PropType,
-  ElementType extends HTMLAiElement,
+  ElementType extends HTMLStencilElement,
   ContextStateType = {},
   ExpandedPropsTypes = {}
 >(
   tagName: string,
   ReactComponentContext?: React.Context<ContextStateType>,
   manipulatePropsFunction?: (
-    originalProps: AiReactInternalProps<ElementType>,
+    originalProps: StencilReactInternalProps<ElementType>,
     propsToPass: any,
   ) => ExpandedPropsTypes,
 ) => {
   const displayName = dashToPascalCase(tagName);
 
-  const ReactComponent = class extends React.Component<AiReactInternalProps<ElementType>> {
+  const ReactComponent = class extends React.Component<StencilReactInternalProps<ElementType>> {
     componentEl!: ElementType;
 
     setComponentElRef = (element: ElementType) => {
       this.componentEl = element;
     };
 
-    constructor(props: AiReactInternalProps<ElementType>) {
+    constructor(props: StencilReactInternalProps<ElementType>) {
       super(props);
     }
 
@@ -48,7 +47,7 @@ export const createReactComponent = <
       this.componentDidUpdate(this.props);
     }
 
-    componentDidUpdate(prevProps: AiReactInternalProps<ElementType>) {
+    componentDidUpdate(prevProps: StencilReactInternalProps<ElementType>) {
       attachProps(this.componentEl, this.props, prevProps);
     }
 
@@ -61,8 +60,8 @@ export const createReactComponent = <
           if (typeof document !== 'undefined' && isCoveredByReact(eventName, document)) {
             (acc as any)[name] = (cProps as any)[name];
           }
-        } else if (typeof (cProps as any)[name] === 'string') {
-          (acc as any)[camelToDashCase(name)] = (cProps as any)[name];
+        } else {
+          (acc as any)[name] = (cProps as any)[name];
         }
         return acc;
       }, {});
@@ -71,7 +70,7 @@ export const createReactComponent = <
         propsToPass = manipulatePropsFunction(this.props, propsToPass);
       }
 
-      let newProps: Omit<AiReactInternalProps<ElementType>, 'forwardedRef'> = {
+      let newProps: Omit<StencilReactInternalProps<ElementType>, 'forwardedRef'> = {
         ...propsToPass,
         ref: mergeRefs(forwardedRef, this.setComponentElRef),
         style,

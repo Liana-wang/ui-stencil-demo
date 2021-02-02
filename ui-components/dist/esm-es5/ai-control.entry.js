@@ -1,0 +1,1 @@
+import{r as registerInstance,h,H as Host}from"./index-3f63a081.js";var controlCss=":host{display:block;padding:10px 10px}";var AiControl=function(){function o(o){registerInstance(this,o)}o.prototype.render=function(){return h(Host,null,h("slot",null))};return o}();AiControl.style=controlCss;export{AiControl as ai_control};

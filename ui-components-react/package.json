@@ -3,20 +3,28 @@
   "sideEffects": false,
   "version": "0.0.1",
   "description": "ui-components component",
-  "main": "dist/index.js", 
+  "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "npm run clean && npm run compile",
-    "compile": "npm run tsc && rollup -c",
+    "build": "npm run clean && npm run compile && npm run bundle",
+    "compile": "npm run tsc",
     "clean": "rm -rf dist dist-transpiled",
     "tsc": "tsc -p .",
+    "bundle": "rollup -c",
     "start": "npm run build:rollup"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "tslib": "*"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@rollup/plugin-babel": "^5.2.3",
     "@rollup/plugin-node-resolve": "^8.1.0",
     "@rollup/plugin-virtual": "^2.0.3",
     "@types/node": "^14.0.14",
@@ -26,6 +34,7 @@
     "react-dom": "^16.9.0",
     "rollup": "^2.26.4",
     "rollup-plugin-sourcemaps": "^0.6.2",
+    "rollup-plugin-typescript2": "^0.29.0",
     "typescript": "^3.9.5"
   },
   "peerDependencies": {

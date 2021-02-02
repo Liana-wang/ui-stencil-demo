@@ -1,0 +1,1 @@
+System.register(["./p-3a6f7bbd.system.js"],(function(t){"use strict";var n,r;return{setters:[function(t){n=t.r;r=t.h}],execute:function(){var e=":host{display:block}";var i=t("ai_stringfy",function(){function t(t){n(this,t)}t.prototype.render=function(){return r("div",null,JSON.stringify(this.data))};return t}());i.style=e}}}));

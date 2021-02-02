@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-e34d4d15.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-3f63a081.js';
 
 class GestureController {
   constructor() {
@@ -205,7 +205,7 @@ class BlockerDelegate {
 const BACKDROP_NO_SCROLL = 'backdrop-no-scroll';
 const GESTURE_CONTROLLER = new GestureController();
 
-const backdropCss = ":host{display:block;position:absolute;top:0;left:0;bottom:0;right:0;background-color:#000;transform:translateZ(0);contain:strict;cursor:default;opacity:.01;touch-action:none;z-index:2}:host(.backdrop-hide){background:transparent}:host(.backdrop-no-tappable){cursor:auto}";
+const backdropCss = ":host{display:block;position:absolute;top:0;left:0;bottom:0;right:0;background-color:#000;-webkit-transform:translateZ(0);transform:translateZ(0);contain:strict;cursor:default;opacity:.01;-ms-touch-action:none;touch-action:none;z-index:2}:host(.backdrop-hide){background:transparent}:host(.backdrop-no-tappable){cursor:auto}";
 
 const AiBackdrop = class {
   constructor(hostRef) {

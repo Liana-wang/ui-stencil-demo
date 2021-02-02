@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import sourcemaps from 'rollup-plugin-sourcemaps';
+import { babel } from '@rollup/plugin-babel';
 
 export default {
     input: 'dist-transpiled/index.js',
@@ -17,5 +18,13 @@ export default {
         },
     ],
     external: ['react', 'react-dom', '@ai/ui-components/loader'],
-    plugins: [resolve(), sourcemaps()],
+    plugins: [
+        resolve(),
+        sourcemaps(),
+        babel({
+            extensions: [".js", ".ts"],
+            exclude: 'node_modules/**',
+            babelHelpers: 'bundled'
+        })
+    ],
 };

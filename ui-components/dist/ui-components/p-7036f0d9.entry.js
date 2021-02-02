@@ -1,0 +1,1 @@
+import{r as s,h as r}from"./p-e89055a2.js";const t=class{constructor(r){s(this,r)}render(){return r("div",null,JSON.stringify(this.data))}};t.style=":host{display:block}";export{t as ai_stringfy}

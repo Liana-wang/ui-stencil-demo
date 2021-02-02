@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-e34d4d15.js';
+import { r as registerInstance, h, H as Host } from './index-3f63a081.js';
 
 const controlCss = ":host{display:block;padding:10px 10px}";
 

@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-44d9bd3d.js');
+const index = require('./index-ddea3caa.js');
 const overlays = require('./overlays-6498908f.js');
 
 const attachComponent = async (container, component, cssClasses, componentProps) => {
@@ -1098,7 +1098,7 @@ const leaveAnimation = (baseEl) => {
     .addAnimation([wrapperAnimation]);
 };
 
-const popoverCss = ".sc-ai-popover-h{position:fixed;display:flex;min-width:0;min-height:0;max-width:auto;height:auto;align-items:center;top:0;left:0;right:0;bottom:0;outline:none;color:#000;z-index:1001}.popover-wrapper.sc-ai-popover{z-index:10}.popover-content.sc-ai-popover{display:flex;position:absolute;flex-direction:column;min-width:200px;max-width:500px;min-height:40px;max-height:500px;background:#fff;box-shadow:0 2px 9px 1px rgba(0, 0, 0, .1);border:1px solid rgba(0, 0, 0, .05);border-radius:4px;overflow-y:auto;z-index:10;opacity:0;color:#505050;transition-delay:30ms}";
+const popoverCss = ".sc-ai-popover-h{position:fixed;display:-ms-flexbox;display:flex;min-width:0;min-height:0;max-width:auto;height:auto;-ms-flex-align:center;align-items:center;top:0;left:0;right:0;bottom:0;outline:none;color:#000;z-index:1001}.popover-wrapper.sc-ai-popover{z-index:10}.popover-content.sc-ai-popover{display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;min-width:200px;max-width:500px;min-height:40px;max-height:500px;background:#fff;-webkit-box-shadow:0 2px 9px 1px rgba(0, 0, 0, .1);box-shadow:0 2px 9px 1px rgba(0, 0, 0, .1);border:1px solid rgba(0, 0, 0, .05);border-radius:4px;overflow-y:auto;z-index:10;opacity:0;color:#505050;-webkit-transition-delay:30ms;transition-delay:30ms}";
 
 const AiPopover = class {
   constructor(hostRef) {

@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-e34d4d15.js';
+import { r as registerInstance, h } from './index-3f63a081.js';
 
 const aiStringfyCss = ":host{display:block}";
 

@@ -1,0 +1,1 @@
+import{r as registerInstance,h}from"./index-3f63a081.js";var aiStringfyCss=":host{display:block}";var AiStringfy=function(){function i(i){registerInstance(this,i)}i.prototype.render=function(){return h("div",null,JSON.stringify(this.data))};return i}();AiStringfy.style=aiStringfyCss;export{AiStringfy as ai_stringfy};

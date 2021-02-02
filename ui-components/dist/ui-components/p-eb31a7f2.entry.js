@@ -1,0 +1,1 @@
+import{r as t,h as s,g as e,H as o}from"./p-e89055a2.js";const r=class{constructor(s){t(this,s),this.inputId="ai-selopt-"+i++,this.disabled=!1}render(){return s(o,{role:"option",id:this.inputId})}get el(){return e(this)}};let i=0;r.style=":host{display:none}";export{r as ai_select_option}

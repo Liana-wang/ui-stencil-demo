@@ -1,17 +1,26 @@
+import { __assign } from "tslib";
 import React from 'react';
 // The comma in the type is to trick typescript because it things a single generic in a tsx file is jsx
-export const mergeRefs = (...refs) => (value) => refs.forEach((ref) => {
-    if (typeof ref === 'function') {
-        ref(value);
+export var mergeRefs = function () {
+    var refs = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        refs[_i] = arguments[_i];
     }
-    else if (ref != null) {
-        // This is typed as readonly so we need to allow for override
-        ref.current = value;
-    }
-});
-export const createForwardRef = (ReactComponent, displayName) => {
-    const forwardRef = (props, ref) => {
-        return React.createElement(ReactComponent, Object.assign({}, props, { forwardedRef: ref }));
+    return function (value) {
+        return refs.forEach(function (ref) {
+            if (typeof ref === 'function') {
+                ref(value);
+            }
+            else if (ref != null) {
+                // This is typed as readonly so we need to allow for override
+                ref.current = value;
+            }
+        });
+    };
+};
+export var createForwardRef = function (ReactComponent, displayName) {
+    var forwardRef = function (props, ref) {
+        return React.createElement(ReactComponent, __assign({}, props, { forwardedRef: ref }));
     };
     forwardRef.displayName = displayName;
     return React.forwardRef(forwardRef);

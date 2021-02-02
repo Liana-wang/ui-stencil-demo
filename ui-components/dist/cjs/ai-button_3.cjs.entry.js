@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-44d9bd3d.js');
+const index = require('./index-ddea3caa.js');
 const overlays = require('./overlays-6498908f.js');
 
-const buttonCss = ":host{display:inline-block}.btn{height:30px;padding:0 8px;border:none;border-radius:4px;background:#6775CD;color:#fff;box-shadow:none;line-height:normal;text-align:center;cursor:pointer;outline:none;font-size:13px}.btn:hover{filter:saturate(.9) brightness(1.2)}.btn:active{filter:saturate(.9) brightness(1.2)}.btn-disabled{border-color:rgba(211, 212, 219, 0.8);background-color:#fff;opacity:0.5;cursor:pointer}";
+const buttonCss = ":host{display:inline-block}.btn{height:30px;padding:0 8px;border:none;border-radius:4px;background:#6775CD;color:#fff;-webkit-box-shadow:none;box-shadow:none;line-height:normal;text-align:center;cursor:pointer;outline:none;font-size:13px}.btn:hover{-webkit-filter:saturate(.9) brightness(1.2);filter:saturate(.9) brightness(1.2)}.btn:active{-webkit-filter:saturate(.9) brightness(1.2);filter:saturate(.9) brightness(1.2)}.btn-disabled{border-color:rgba(211, 212, 219, 0.8);background-color:#fff;opacity:0.5;cursor:pointer}";
 
 const AiButton = class {
   constructor(hostRef) {
@@ -33,7 +33,7 @@ const AiButton = class {
 };
 AiButton.style = buttonCss;
 
-const inputCss = ":host{display:block}:host(.has-focus.has-value){visibility:visible}:host(.has-focus){pointer-events:none}.box{position:relative;display:inline-block;width:198px;padding:4px 10px 5px 10px;border:1px solid #d3d4db;border-radius:4px;background-color:#fff}.ai-input{padding:0;margin:0;box-shadow:none;border:none;line-height:normal;font-size:13px;outline:none}";
+const inputCss = ":host{display:block}:host(.has-focus.has-value){visibility:visible}:host(.has-focus){pointer-events:none}.box{position:relative;display:inline-block;width:198px;padding:4px 10px 5px 10px;border:1px solid #d3d4db;border-radius:4px;background-color:#fff}.ai-input{padding:0;margin:0;-webkit-box-shadow:none;box-shadow:none;border:none;line-height:normal;font-size:13px;outline:none}";
 
 const AiInput = class {
   constructor(hostRef) {
@@ -150,7 +150,7 @@ const findCheckedOption = (el, tagName) => {
   return options.find((o) => o.value === el.value);
 };
 
-const selectCss = ":host{--placeholder-color:currentColor;--placeholder-opacity:0.33;padding:6px;display:flex;position:relative;height:30px;border:1px solid #d3d4db;border-radius:4px;background-color:#fff;box-sizing:border-box;align-items:center;overflow:hidden;z-index:2}:host(:hover){border:1px solid #779eea}:host(.select-disabled){opacity:.4;pointer-events:none}:host(.ai-focused){border:1px solid #779eea;box-shadow:0 0 0 2px rgba(119, 158, 234, .35)}.select-placeholder{color:#444;opacity:0.8}label{display:flex;align-items:center;opacity:0}button{position:absolute;inset:0px;width:100%;height:100%;margin:0px;padding:0px;border:0px;outline:0px;clip:rect(0px, 0px, 0px, 0px);opacity:0;overflow:hidden;appearance:none}.select-icon{position:relative;opacity:.33;width:16px;height:16px;line-height:16px}.select-text{flex:1;min-width:16px;font-size:13px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.select-icon-inner{position:absolute;left:3px;top:50%;margin-top:-2px;width:0px;height:0px;border-top:5px solid;border-right:5px solid transparent;border-left:5px solid transparent;color:currentcolor;pointer-events:none}label{left:0px;top:0px;margin:0px;position:absolute;width:100%;height:100%;border:0px;background:transparent;cursor:pointer;appearance:none;outline:none;display:flex;align-items:center;opacity:0}";
+const selectCss = ":host{--placeholder-color:currentColor;--placeholder-opacity:0.33;padding:6px;display:-ms-flexbox;display:flex;position:relative;height:30px;border:1px solid #d3d4db;border-radius:4px;background-color:#fff;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-align:center;align-items:center;overflow:hidden;z-index:2}:host(:hover){border:1px solid #779eea}:host(.select-disabled){opacity:.4;pointer-events:none}:host(.ai-focused){border:1px solid #779eea;-webkit-box-shadow:0 0 0 2px rgba(119, 158, 234, .35);box-shadow:0 0 0 2px rgba(119, 158, 234, .35)}.select-placeholder{color:#444;opacity:0.8}label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}button{position:absolute;inset:0px;width:100%;height:100%;margin:0px;padding:0px;border:0px;outline:0px;clip:rect(0px, 0px, 0px, 0px);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none;appearance:none}.select-icon{position:relative;opacity:.33;width:16px;height:16px;line-height:16px}.select-text{-ms-flex:1;flex:1;min-width:16px;font-size:13px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.select-icon-inner{position:absolute;left:3px;top:50%;margin-top:-2px;width:0px;height:0px;border-top:5px solid;border-right:5px solid transparent;border-left:5px solid transparent;color:currentcolor;pointer-events:none}label{left:0px;top:0px;margin:0px;position:absolute;width:100%;height:100%;border:0px;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}";
 
 const AiSelect = class {
   constructor(hostRef) {

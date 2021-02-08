@@ -24,7 +24,7 @@
       "target": "es5"
     },
     "include": ["src/**/*.ts", "src/**/*.tsx"],
-    "exclude": ["**/__tests__/**"],
+    "exclude": ["node_modules", "dist", "dist-transpiled"],
     "compileOnSave": false,
     "buildOnSave": false
   }

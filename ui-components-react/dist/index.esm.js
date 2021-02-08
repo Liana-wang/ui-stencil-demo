@@ -110,6 +110,9 @@ var getClassName = function getClassName(classList, newProps, oldProps) {
   var oldClassProp = oldProps.className || oldProps.class; // map the classes to Maps for performance
 
   var currentClasses = arrayToMap(classList);
+  console.log({
+    currentClasses: currentClasses
+  });
   var incomingPropClasses = arrayToMap(newClassProp ? newClassProp.split(' ') : []);
   var oldPropClasses = arrayToMap(oldClassProp ? oldClassProp.split(' ') : []);
   var finalClassNames = []; // loop through each of the current classes on the component
@@ -292,5 +295,15 @@ var AiSelect = /*@__PURE__*/createReactComponent('ai-select');
 var AiSelectOption = /*@__PURE__*/createReactComponent('ai-select-option');
 var AiSelectPopover = /*@__PURE__*/createReactComponent('ai-select-popover');
 var AiStringfy = /*@__PURE__*/createReactComponent('ai-stringfy');
+
+if (window.DOMTokenList && !DOMTokenList.prototype.forEach) {
+  DOMTokenList.prototype.forEach = function (callback, thisArg) {
+    thisArg = thisArg || window;
+
+    for (var i = 0; i < this.length; i++) {
+      callback.call(thisArg, this[i], i, this);
+    }
+  };
+}
 
 export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, AiStringfy };

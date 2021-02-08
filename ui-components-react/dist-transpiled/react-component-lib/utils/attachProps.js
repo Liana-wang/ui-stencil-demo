@@ -42,6 +42,7 @@ export var getClassName = function (classList, newProps, oldProps) {
     var oldClassProp = oldProps.className || oldProps.class;
     // map the classes to Maps for performance
     var currentClasses = arrayToMap(classList);
+    console.log({ currentClasses: currentClasses });
     var incomingPropClasses = arrayToMap(newClassProp ? newClassProp.split(' ') : []);
     var oldPropClasses = arrayToMap(oldClassProp ? oldClassProp.split(' ') : []);
     var finalClassNames = [];

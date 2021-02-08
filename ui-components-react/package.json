@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "reactify-wc": "^4.0.0",
     "tslib": "*"
   },
   "devDependencies": {

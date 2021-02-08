@@ -22,7 +22,7 @@ export default {
         resolve(),
         sourcemaps(),
         babel({
-            extensions: [".js", ".ts"],
+            extensions: ['.js', '.jsx', '.ts', '.tsx',],
             exclude: 'node_modules/**',
             babelHelpers: 'bundled'
         })

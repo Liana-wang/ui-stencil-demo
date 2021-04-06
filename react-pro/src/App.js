@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { AiButton, AiInput, AiStringfy } from '@ai/ui-components-react'
+import { AiButton, AiInput, AiStringfy } from '@ai.s/ui-components-react'
 import './App.css'
 import SelectExm from './SelectExm'
 import BtnTest from './BtnTest'
@@ -49,6 +49,7 @@ export default function App() {
         <div className={'select'}>
           <SelectExm />
         </div>
+        <hr />
         <div>
           <BtnTest />
         </div>

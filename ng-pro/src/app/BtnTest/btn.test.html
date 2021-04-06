@@ -1,0 +1,21 @@
+  <!-- Toolbar -->
+  <div>
+    <p>{{count}}</p>
+    <p>
+        <span>default样式：</span>
+        <ai-button (aiClick)="onClick($event)">Default Btn</ai-button>
+        <ai-button (aiClick)="onClick($event)" [disabled]="true">Default Btn</ai-button>
+        <span>default危险：</span>
+        <ai-button (aiClick)="onClick($event)" [danger]="true">Default Btn</ai-button>
+        <ai-button (aiClick)="onClick($event)" [disabled]="true" [danger]="true">Default Btn</ai-button>
+    </p>
+    <p>
+        <span>primary样式：</span>
+        <ai-button (aiClick)="onClick($event)" [type]="'primary'">Primary Btn</ai-button>
+        <ai-button (aiClick)="onClick($event)" [disabled]="true" [type]="'primary'">Default Btn</ai-button>
+        <span>default危险：</span>
+        <ai-button (aiClick)="onClick($event)" [danger]="true" [type]="'primary'">Default Btn</ai-button>
+        <ai-button (aiClick)="onClick($event)" [disabled]="true" [danger]="true" [type]="'primary'">Default Btn</ai-button>
+    </p>
+  </div>
+  

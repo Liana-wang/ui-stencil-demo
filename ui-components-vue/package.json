@@ -1,11 +1,12 @@
 {
-    "name": "@ai/ui-components-vue",
-    "version": "5.5.2",
+    "name": "@ai.s/ui-components-vue",
+    "version": "0.0.1",
     "scripts": {
-        "build": "npm run clean && npm run compile",
-        "clean": "rimraf dist",
+        "build": "npm run clean && npm run compile && npm run bundle",
         "compile": "npm run tsc",
-        "tsc": "tsc -p ."
+        "clean": "rm -rf dist dist-transpiled",
+        "tsc": "tsc -p .",
+        "bundle": "rollup -c"
     },
     "main": "./dist/index.js",
     "module": "./dist/index.esm.js",
@@ -16,12 +17,18 @@
     ],
     "license": "MIT",
     "devDependencies": {
+        "@babel/cli": "^7.12.10",
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-transform-runtime": "^7.12.10",
+        "@babel/preset-env": "^7.12.11",
+        "@babel/preset-typescript": "^7.12.7",
+        "@rollup/plugin-babel": "^5.2.3",
+        "@rollup/plugin-node-resolve": "^8.1.0",
         "rimraf": "^2.6.3",
         "rollup": "^1.21.2",
-        "rollup-plugin-node-resolve": "^5.2.0",
-        "typescript": "^3.3.4000"
-    },
-    "dependencies": {
+        "rollup-plugin-sourcemaps": "^0.6.2",
+        "tslib": "^2.2.0",
+        "typescript": "^3.3.4000",
         "vue": "^2.6.11",
         "vue-class-component": "^7.2.3",
         "vue-template-compiler": "^2.6.11"

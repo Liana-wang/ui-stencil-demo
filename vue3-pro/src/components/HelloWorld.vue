@@ -19,7 +19,7 @@
         <AiButton @aiClick="onClick" :disabled="!name || !address">
           确定
         </AiButton>
-        <AiButton @aiClick="reset"> 重置 </AiButton>
+        <AiButton @aiClick="reset" :type="'primary'"> 重置 </AiButton>
         <p v-if="isConfirm && name">
           Welcome! {{ name }}, 您的地址是：{{ address }}
         </p>
@@ -55,7 +55,7 @@ import {
   AiSelect,
   AiSelectOption,
   AiStringfy,
-} from "@ai/ui-components-vue3";
+} from "@ai.s/ui-components-vue3";
 import { defineComponent } from "vue";
 
 export default defineComponent({

@@ -11,5 +11,4 @@ export declare class ValueAccessor implements ControlValueAccessor {
     _handleBlurEvent(): void;
     registerOnChange(fn: (value: any) => void): void;
     registerOnTouched(fn: () => void): void;
-    setDisabledState(isDisabled: boolean): void;
 }

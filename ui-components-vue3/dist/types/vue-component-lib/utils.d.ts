@@ -16,5 +16,5 @@ interface ComponentOptions {
 * options for the component such as router or v-model
 * integrations.
 */
-export declare const defineContainer: <Props>(name: string, componentProps?: string[], componentOptions?: ComponentOptions) => import("vue").DefineComponent<Props & InputProps, object, {}, Record<string, import("@vue/reactivity").ComputedGetter<any> | import("vue").WritableComputedOptions<any>>, import("vue").MethodOptions, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<Props & InputProps>>, import("vue").ExtractDefaultPropTypes<Props & InputProps>>;
+export declare const defineContainer: <Props>(name: string, componentProps?: string[], componentOptions?: ComponentOptions) => import("vue").DefineComponent<Props & InputProps, object, {}, import("vue").ComputedOptions, import("vue").MethodOptions, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<Props & InputProps>>, import("vue").ExtractDefaultPropTypes<Props & InputProps>>;
 export {};

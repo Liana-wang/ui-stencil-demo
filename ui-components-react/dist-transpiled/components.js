@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
-import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
+import { applyPolyfills, defineCustomElements } from '@ai.s/ui-components/loader';
 applyPolyfills().then(function () { return defineCustomElements(); });
 export var AiBackdrop = /*@__PURE__*/ createReactComponent('ai-backdrop');
 export var AiButton = /*@__PURE__*/ createReactComponent('ai-button');

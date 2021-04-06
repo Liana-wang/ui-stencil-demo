@@ -19,7 +19,7 @@
     "skipLibCheck": true,
     "paths": {
       "@angular/*": ["node_modules/@angular/*"],
-      "@ai/*": ["node_modules/@ai/*"],
+      "@ai.s/*": ["node_modules/@ai.s/*"],
     },
     "lib": [
       "es2018",

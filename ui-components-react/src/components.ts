@@ -3,9 +3,9 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import type { JSX } from '@ai/ui-components';
+import type { JSX } from '@ai.s/ui-components';
 
-import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
+import { applyPolyfills, defineCustomElements } from '@ai.s/ui-components/loader';
 
 applyPolyfills().then(() => defineCustomElements());
 export const AiBackdrop = /*@__PURE__*/createReactComponent<JSX.AiBackdrop, HTMLAiBackdropElement>('ai-backdrop');

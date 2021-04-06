@@ -84,7 +84,7 @@
       <h3>输入&按钮</h3>
       <span>姓名：</span>
       <ai-input (aiInput)="onAiInput($event)" placeholder="请输入..."></ai-input>
-      <ai-button (aiClick)="onClick($event)" [disabled]="!name" class="ai-btn" [btnValue]="{id: '11', text: 'assdsd'}">确定</ai-button>
+      <ai-button (aiClick)="onClick($event)" [disabled]="!name" class="ai-btn">确定</ai-button>
       <p *ngIf="isConfirm">Welcome! {{name}}</p>
     </div>
     <div class="item">
@@ -102,5 +102,7 @@
         </ai-select>
       </div>
     </div>
+    <hr/>
+    <btn-test></btn-test>
   </div>
 </div>

@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add eactify-wc
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @ai/ui-components
 
 PATH: 
-  C:\Users\wang.lianyan\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\wang.lianyan\bin;D:\software\Python37\Scripts;D:\software\Python37;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;D:\software\Microsoft VS Code\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Users\wang.lianyan\AppData\Roaming\npm;C:\Program Files\TortoiseGit\bin;D:\software\AISHU AnyShare;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\wang.lianyan\AppData\Local\Microsoft\WindowsApps;C:\Users\wang.lianyan\AppData\Local\BypassRuntm;C:\Users\wang.lianyan\AppData\Roaming\npm;C:\Users\wang.lianyan\.deno\bin;C:\Users\wang.lianyan\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Users\wang.lianyan\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\wang.lianyan\bin;D:\software\Python37\Scripts;D:\software\Python37;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;D:\software\Microsoft VS Code\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Users\wang.lianyan\AppData\Roaming\npm;C:\Program Files\TortoiseGit\bin;D:\software\AISHU AnyShare;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\wang.lianyan\AppData\Local\Microsoft\WindowsApps;C:\Users\wang.lianyan\AppData\Local\BypassRuntm;C:\Users\wang.lianyan\AppData\Roaming\npm;C:\Users\wang.lianyan\.deno\bin;C:\Users\wang.lianyan\AppData\Local\Yarn\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.22.4
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/eactify-wc: Not found
+  Error: https://registry.yarnpkg.com/@ai%2fui-components: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66096:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140748:22)
       at Request.emit (events.js:310:20)
@@ -44,7 +44,6 @@ npm manifest:
       "start": "npm run build:rollup"
     },
     "dependencies": {
-      "@babel/polyfill": "^7.12.1",
       "tslib": "*"
     },
     "devDependencies": {
@@ -807,14 +806,6 @@ Lockfile:
       "@babel/helper-create-regexp-features-plugin" "^7.12.13"
       "@babel/helper-plugin-utils" "^7.12.13"
   
-  "@babel/polyfill@^7.12.1":
-    version "7.12.1"
-    resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.12.1.tgz#1f2d6371d1261bbd961f3c5d5909150e12d0bd96"
-    integrity sha512-X0pi0V6gxLi6lFZpGmeNa4zxtwEmCs42isWLNjZZDE0Y8yVfgu0T2OAHlzBbdYlqbW/YXVvoBHpATEM+goCj8g==
-    dependencies:
-      core-js "^2.6.5"
-      regenerator-runtime "^0.13.4"
-  
   "@babel/preset-env@^7.12.11":
     version "7.12.13"
     resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.12.13.tgz#3aa2d09cf7d255177538dff292ac9af29ad46525"
@@ -1302,11 +1293,6 @@ Lockfile:
     dependencies:
       browserslist "^4.16.1"
       semver "7.0.0"
-  
-  core-js@^2.6.5:
-    version "2.6.12"
-    resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
-    integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
   
   core-util-is@~1.0.0:
     version "1.0.2"

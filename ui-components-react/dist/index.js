@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var loader = require('@ai/ui-components/loader');
+var loader = require('@ai.s/ui-components/loader');
 var React = require('react');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -118,9 +118,6 @@ var getClassName = function getClassName(classList, newProps, oldProps) {
   var oldClassProp = oldProps.className || oldProps.class; // map the classes to Maps for performance
 
   var currentClasses = arrayToMap(classList);
-  console.log({
-    currentClasses: currentClasses
-  });
   var incomingPropClasses = arrayToMap(newClassProp ? newClassProp.split(' ') : []);
   var oldPropClasses = arrayToMap(oldClassProp ? oldClassProp.split(' ') : []);
   var finalClassNames = []; // loop through each of the current classes on the component
@@ -253,7 +250,7 @@ var createReactComponent = function createReactComponent(tagName, ReactComponent
           if (typeof document !== 'undefined' && isCoveredByReact(eventName, document)) {
             acc[name] = cProps[name];
           }
-        } else if (typeof cProps[name] === 'string') {
+        } else if (['string', 'boolean', 'number'].includes(typeof cProps[name])) {
           acc[camelToDashCase(name)] = cProps[name];
         }
 
@@ -303,16 +300,6 @@ var AiSelect = /*@__PURE__*/createReactComponent('ai-select');
 var AiSelectOption = /*@__PURE__*/createReactComponent('ai-select-option');
 var AiSelectPopover = /*@__PURE__*/createReactComponent('ai-select-popover');
 var AiStringfy = /*@__PURE__*/createReactComponent('ai-stringfy');
-
-if (window.DOMTokenList && !DOMTokenList.prototype.forEach) {
-  DOMTokenList.prototype.forEach = function (callback, thisArg) {
-    thisArg = thisArg || window;
-
-    for (var i = 0; i < this.length; i++) {
-      callback.call(thisArg, this[i], i, this);
-    }
-  };
-}
 
 exports.AiBackdrop = AiBackdrop;
 exports.AiButton = AiButton;

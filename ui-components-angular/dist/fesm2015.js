@@ -1,408 +1,255 @@
-import { __decorate, __metadata } from 'tslib';
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef, NgZone, HostListener, Directive, NgModule } from '@angular/core';
+import { Component, ChangeDetectorRef, ElementRef, HostListener, Directive, NgModule } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { defineCustomElements } from '@ai/ui-components/loader';
+import { defineCustomElements } from '@ai.s/ui-components/loader';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-/** @type {?} */
-const proxyInputs = (/**
+/**
  * @param {?} Cmp
  * @param {?} inputs
  * @return {?}
  */
-(Cmp, inputs) => {
+function proxyInputs(Cmp, inputs) {
     /** @type {?} */
     const Prototype = Cmp.prototype;
     inputs.forEach((/**
      * @param {?} item
      * @return {?}
      */
-    (item) => {
+    item => {
         Object.defineProperty(Prototype, item, {
             /**
              * @return {?}
              */
-            get() {
-                return this.el[item];
-            },
+            get() { return this.el[item]; },
             /**
              * @param {?} val
              * @return {?}
              */
-            set(val) {
-                this.z.runOutsideAngular((/**
-                 * @return {?}
-                 */
-                () => (this.el[item] = val)));
-            },
+            set(val) { this.el[item] = val; },
         });
     }));
-});
-/** @type {?} */
-const proxyMethods = (/**
+}
+/**
  * @param {?} Cmp
  * @param {?} methods
  * @return {?}
  */
-(Cmp, methods) => {
+function proxyMethods(Cmp, methods) {
     /** @type {?} */
     const Prototype = Cmp.prototype;
     methods.forEach((/**
      * @param {?} methodName
      * @return {?}
      */
-    (methodName) => {
+    methodName => {
         Prototype[methodName] = (/**
          * @return {?}
          */
         function () {
             /** @type {?} */
             const args = arguments;
-            return this.z.runOutsideAngular((/**
+            return this.el.componentOnReady().then((/**
+             * @param {?} el
              * @return {?}
              */
-            () => this.el[methodName].apply(this.el, args)));
+            (el) => el[methodName].apply(el, args)));
         });
     }));
-});
-/** @type {?} */
-const proxyOutputs = (/**
+}
+/**
  * @param {?} instance
  * @param {?} el
  * @param {?} events
  * @return {?}
  */
-(instance, el, events) => {
+function proxyOutputs(instance, el, events) {
     events.forEach((/**
      * @param {?} eventName
      * @return {?}
      */
-    (eventName) => (instance[eventName] = fromEvent(el, eventName))));
-});
-// tslint:disable-next-line: only-arrow-functions
-/**
- * @param {?} opts
- * @return {?}
- */
-function ProxyCmp(opts) {
-    /** @type {?} */
-    const decorator = (/**
-     * @param {?} cls
-     * @return {?}
-     */
-    function (cls) {
-        if (opts.inputs) {
-            proxyInputs(cls, opts.inputs);
-        }
-        if (opts.methods) {
-            proxyMethods(cls, opts.methods);
-        }
-        return cls;
-    });
-    return decorator;
+    eventName => instance[eventName] = fromEvent(el, eventName)));
 }
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-let AiBackdrop = class AiBackdrop {
+class AiBackdrop {
     /**
      * @param {?} c
      * @param {?} r
-     * @param {?} z
      */
-    constructor(c, r, z) {
-        this.z = z;
+    constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['aiBackdropTap']);
     }
-};
+}
 AiBackdrop.decorators = [
-    { type: Component, args: [{
-                selector: 'ai-backdrop',
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                template: '<ng-content></ng-content>',
-                inputs: ['stopPropagation', 'tappable', 'visible'],
-                outputs: ['aiBackdropTap']
-            },] },
+    { type: Component, args: [{ selector: 'ai-backdrop', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['stopPropagation', 'tappable', 'visible'] },] },
 ];
 /** @nocollapse */
 AiBackdrop.ctorParameters = () => [
     { type: ChangeDetectorRef },
-    { type: ElementRef },
-    { type: NgZone }
+    { type: ElementRef }
 ];
-AiBackdrop = __decorate([
-    ProxyCmp({
-        inputs: ['stopPropagation', 'tappable', 'visible']
-    }),
-    __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-], AiBackdrop);
-let AiButton = class AiButton {
+proxyInputs(AiBackdrop, ['stopPropagation', 'tappable', 'visible']);
+class AiButton {
     /**
      * @param {?} c
      * @param {?} r
-     * @param {?} z
      */
-    constructor(c, r, z) {
-        this.z = z;
+    constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['aiClick']);
     }
-};
+}
 AiButton.decorators = [
-    { type: Component, args: [{
-                selector: 'ai-button',
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                template: '<ng-content></ng-content>',
-                inputs: ['btnValue', 'disabled', 'text'],
-                outputs: ['aiClick']
-            },] },
+    { type: Component, args: [{ selector: 'ai-button', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['block', 'danger', 'disabled', 'ghost', 'href', 'htmlType', 'shap', 'size', 'target', 'type'] },] },
 ];
 /** @nocollapse */
 AiButton.ctorParameters = () => [
     { type: ChangeDetectorRef },
-    { type: ElementRef },
-    { type: NgZone }
+    { type: ElementRef }
 ];
-AiButton = __decorate([
-    ProxyCmp({
-        inputs: ['btnValue', 'disabled', 'text']
-    }),
-    __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-], AiButton);
+proxyInputs(AiButton, ['block', 'danger', 'disabled', 'ghost', 'href', 'htmlType', 'shap', 'size', 'target', 'type']);
 class AiControl {
     /**
      * @param {?} c
      * @param {?} r
-     * @param {?} z
      */
-    constructor(c, r, z) {
-        this.z = z;
+    constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
     }
 }
 AiControl.decorators = [
-    { type: Component, args: [{
-                selector: 'ai-control',
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                template: '<ng-content></ng-content>'
-            },] },
+    { type: Component, args: [{ selector: 'ai-control', changeDetection: 0, template: '<ng-content></ng-content>' },] },
 ];
 /** @nocollapse */
 AiControl.ctorParameters = () => [
     { type: ChangeDetectorRef },
-    { type: ElementRef },
-    { type: NgZone }
+    { type: ElementRef }
 ];
-let AiInput = class AiInput {
+class AiInput {
     /**
      * @param {?} c
      * @param {?} r
-     * @param {?} z
      */
-    constructor(c, r, z) {
-        this.z = z;
+    constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
-        proxyOutputs(this, this.el, ['aiChange', 'aiInput', 'aiBlur']);
+        proxyOutputs(this, this.el, ['aiChange', 'aiInput', 'aiBlur', 'aiFocus']);
     }
-};
+}
 AiInput.decorators = [
-    { type: Component, args: [{
-                selector: 'ai-input',
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                template: '<ng-content></ng-content>',
-                inputs: ['defaultValue', 'placeholder', 'type', 'value'],
-                outputs: ['aiChange', 'aiInput', 'aiBlur']
-            },] },
+    { type: Component, args: [{ selector: 'ai-input', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'placeholder', 'readonly', 'type', 'value'] },] },
 ];
 /** @nocollapse */
 AiInput.ctorParameters = () => [
     { type: ChangeDetectorRef },
-    { type: ElementRef },
-    { type: NgZone }
+    { type: ElementRef }
 ];
-AiInput = __decorate([
-    ProxyCmp({
-        inputs: ['defaultValue', 'placeholder', 'type', 'value']
-    }),
-    __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-], AiInput);
-let AiPopover = class AiPopover {
+proxyInputs(AiInput, ['disabled', 'placeholder', 'readonly', 'type', 'value']);
+class AiPopover {
     /**
      * @param {?} c
      * @param {?} r
-     * @param {?} z
      */
-    constructor(c, r, z) {
-        this.z = z;
+    constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['aiPopoverDidPresent', 'aiPopoverWillPresent', 'aiPopoverWillDismiss', 'aiPopoverDidDismiss']);
     }
-};
+}
 AiPopover.decorators = [
-    { type: Component, args: [{
-                selector: 'ai-popover',
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                template: '<ng-content></ng-content>',
-                inputs: ['backdropDismiss', 'component', 'componentProps', 'event'],
-                outputs: ['aiPopoverDidPresent', 'aiPopoverWillPresent', 'aiPopoverWillDismiss', 'aiPopoverDidDismiss']
-            },] },
+    { type: Component, args: [{ selector: 'ai-popover', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['backdropDismiss', 'component', 'componentProps', 'event', 'overlayIndex', 'showBackdrop'] },] },
 ];
 /** @nocollapse */
 AiPopover.ctorParameters = () => [
     { type: ChangeDetectorRef },
-    { type: ElementRef },
-    { type: NgZone }
+    { type: ElementRef }
 ];
-AiPopover = __decorate([
-    ProxyCmp({
-        inputs: ['backdropDismiss', 'component', 'componentProps', 'event'],
-        methods: ['present', 'dismiss', 'onDidDismiss', 'onWillDismiss']
-    }),
-    __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-], AiPopover);
-let AiSelect = class AiSelect {
+proxyMethods(AiPopover, ['present', 'dismiss', 'onDidDismiss', 'onWillDismiss']);
+proxyInputs(AiPopover, ['backdropDismiss', 'component', 'componentProps', 'event', 'overlayIndex', 'showBackdrop']);
+class AiSelect {
     /**
      * @param {?} c
      * @param {?} r
-     * @param {?} z
      */
-    constructor(c, r, z) {
-        this.z = z;
+    constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['aiChange', 'aiCancel', 'aiFocus', 'aiBlur', 'aiStyle']);
     }
-};
+}
 AiSelect.decorators = [
-    { type: Component, args: [{
-                selector: 'ai-select',
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                template: '<ng-content></ng-content>',
-                inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
-                outputs: ['aiChange', 'aiCancel', 'aiFocus', 'aiBlur', 'aiStyle']
-            },] },
+    { type: Component, args: [{ selector: 'ai-select', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['compareWith', 'disabled', 'placeholder', 'selected'] },] },
 ];
 /** @nocollapse */
 AiSelect.ctorParameters = () => [
     { type: ChangeDetectorRef },
-    { type: ElementRef },
-    { type: NgZone }
+    { type: ElementRef }
 ];
-AiSelect = __decorate([
-    ProxyCmp({
-        inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
-        methods: ['open']
-    }),
-    __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-], AiSelect);
-let AiSelectOption = class AiSelectOption {
+proxyMethods(AiSelect, ['open']);
+proxyInputs(AiSelect, ['compareWith', 'disabled', 'placeholder', 'selected']);
+class AiSelectOption {
     /**
      * @param {?} c
      * @param {?} r
-     * @param {?} z
      */
-    constructor(c, r, z) {
-        this.z = z;
+    constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
     }
-};
+}
 AiSelectOption.decorators = [
-    { type: Component, args: [{
-                selector: 'ai-select-option',
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                template: '<ng-content></ng-content>',
-                inputs: ['disabled', 'option']
-            },] },
+    { type: Component, args: [{ selector: 'ai-select-option', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'option'] },] },
 ];
 /** @nocollapse */
 AiSelectOption.ctorParameters = () => [
     { type: ChangeDetectorRef },
-    { type: ElementRef },
-    { type: NgZone }
+    { type: ElementRef }
 ];
-AiSelectOption = __decorate([
-    ProxyCmp({
-        inputs: ['disabled', 'option']
-    }),
-    __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-], AiSelectOption);
-let AiSelectPopover = class AiSelectPopover {
+proxyInputs(AiSelectOption, ['disabled', 'option']);
+class AiSelectPopover {
     /**
      * @param {?} c
      * @param {?} r
-     * @param {?} z
      */
-    constructor(c, r, z) {
-        this.z = z;
+    constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
     }
-};
+}
 AiSelectPopover.decorators = [
-    { type: Component, args: [{
-                selector: 'ai-select-popover',
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                template: '<ng-content></ng-content>',
-                inputs: ['options']
-            },] },
+    { type: Component, args: [{ selector: 'ai-select-popover', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['options'] },] },
 ];
 /** @nocollapse */
 AiSelectPopover.ctorParameters = () => [
     { type: ChangeDetectorRef },
-    { type: ElementRef },
-    { type: NgZone }
+    { type: ElementRef }
 ];
-AiSelectPopover = __decorate([
-    ProxyCmp({
-        inputs: ['options']
-    }),
-    __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-], AiSelectPopover);
-let AiStringfy = class AiStringfy {
+proxyInputs(AiSelectPopover, ['options']);
+class AiStringfy {
     /**
      * @param {?} c
      * @param {?} r
-     * @param {?} z
      */
-    constructor(c, r, z) {
-        this.z = z;
+    constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
     }
-};
+}
 AiStringfy.decorators = [
-    { type: Component, args: [{
-                selector: 'ai-stringfy',
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                template: '<ng-content></ng-content>',
-                inputs: ['data']
-            },] },
+    { type: Component, args: [{ selector: 'ai-stringfy', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['data'] },] },
 ];
 /** @nocollapse */
 AiStringfy.ctorParameters = () => [
     { type: ChangeDetectorRef },
-    { type: ElementRef },
-    { type: NgZone }
+    { type: ElementRef }
 ];
-AiStringfy = __decorate([
-    ProxyCmp({
-        inputs: ['data']
-    }),
-    __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-], AiStringfy);
+proxyInputs(AiStringfy, ['data']);
 
 /**
  * @fileoverview added by tsickle
@@ -459,13 +306,6 @@ class ValueAccessor {
      */
     registerOnTouched(fn) {
         this.onTouched = fn;
-    }
-    /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    setDisabledState(isDisabled) {
-        this.el.nativeElement.disabled = isDisabled;
     }
 }
 ValueAccessor.propDecorators = {
@@ -536,4 +376,4 @@ ComponentNgModule.decorators = [
             },] },
 ];
 
-export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, AiStringfy, ComponentNgModule, ProxyCmp as ɵa, TextValueAccessor as ɵb, ValueAccessor as ɵc };
+export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, AiStringfy, ComponentNgModule, TextValueAccessor as ɵa, ValueAccessor as ɵb };

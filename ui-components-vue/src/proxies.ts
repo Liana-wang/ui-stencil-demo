@@ -4,9 +4,9 @@
 import Vue, { PropOptions } from 'vue';
 import { createCommonRender, createCommonMethod } from './vue-component-lib/utils';
 
-import type { Components } from '@ai/ui-components';
+import type { Components } from '@ai.s/ui-components';
 
-import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
+import { applyPolyfills, defineCustomElements } from '@ai.s/ui-components/loader';
 
 applyPolyfills().then(() => defineCustomElements());
 
@@ -40,9 +40,16 @@ export const AiBackdrop = /*@__PURE__*/ Vue.extend({
 export const AiButton = /*@__PURE__*/ Vue.extend({
 
   props: {
-    text: {} as PropOptions<Components.AiButton['text']>,
+    type: {} as PropOptions<Components.AiButton['type']>,
+    htmlType: {} as PropOptions<Components.AiButton['htmlType']>,
+    size: {} as PropOptions<Components.AiButton['size']>,
+    danger: {} as PropOptions<Components.AiButton['danger']>,
+    ghost: {} as PropOptions<Components.AiButton['ghost']>,
+    block: {} as PropOptions<Components.AiButton['block']>,
+    shap: {} as PropOptions<Components.AiButton['shap']>,
+    href: {} as PropOptions<Components.AiButton['href']>,
+    target: {} as PropOptions<Components.AiButton['target']>,
     disabled: {} as PropOptions<Components.AiButton['disabled']>,
-    btnValue: {} as PropOptions<Components.AiButton['btnValue']>,
   },
 
 
@@ -61,8 +68,9 @@ export const AiControl = /*@__PURE__*/ Vue.extend({
 export const AiInput = /*@__PURE__*/ Vue.extend({
 
   props: {
-    defaultValue: {} as PropOptions<Components.AiInput['defaultValue']>,
+    disabled: {} as PropOptions<Components.AiInput['disabled']>,
     placeholder: {} as PropOptions<Components.AiInput['placeholder']>,
+    readonly: {} as PropOptions<Components.AiInput['readonly']>,
     type: {} as PropOptions<Components.AiInput['type']>,
     value: {} as PropOptions<Components.AiInput['value']>,
   },
@@ -72,7 +80,7 @@ export const AiInput = /*@__PURE__*/ Vue.extend({
     event: 'aiChange'
   },
 
-  render: createCommonRender('ai-input', ['aiChange', 'aiInput', 'aiBlur']),
+  render: createCommonRender('ai-input', ['aiChange', 'aiInput', 'aiBlur', 'aiFocus']),
 });
 
 
@@ -83,6 +91,7 @@ export const AiPopover = /*@__PURE__*/ Vue.extend({
     component: {} as PropOptions<Components.AiPopover['component']>,
     componentProps: {} as PropOptions<Components.AiPopover['componentProps']>,
     backdropDismiss: {} as PropOptions<Components.AiPopover['backdropDismiss']>,
+    showBackdrop: {} as PropOptions<Components.AiPopover['showBackdrop']>,
     event: {} as PropOptions<Components.AiPopover['event']>,
   },
 

@@ -1,12 +1,32 @@
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-3f63a081.js';
 import { p as popoverController } from './overlays-e9675823.js';
 
-const buttonCss = ":host{display:inline-block}.btn{height:30px;padding:0 8px;border:none;border-radius:4px;background:#6775CD;color:#fff;-webkit-box-shadow:none;box-shadow:none;line-height:normal;text-align:center;cursor:pointer;outline:none;font-size:13px}.btn:hover{-webkit-filter:saturate(.9) brightness(1.2);filter:saturate(.9) brightness(1.2)}.btn:active{-webkit-filter:saturate(.9) brightness(1.2);filter:saturate(.9) brightness(1.2)}.btn-disabled{border-color:rgba(211, 212, 219, 0.8);background-color:#fff;opacity:0.5;cursor:pointer}";
+const buttonCss = ":host{display:inline-block}.btn{position:relative;display:inline-block;height:32px;padding:4px 15px;font-weight:normal;white-space:nowrap;text-align:center;background-image:none;border:1px solid transparent;border-radius:2px;-webkit-box-shadow:0 2px 0 rgb(0 0 0 / 2%);box-shadow:0 2px 0 rgb(0 0 0 / 2%);font-size:14px;cursor:pointer;-webkit-transition:all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);transition:all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}a.btn{padding-top:0.1px;line-height:30px;-webkit-box-sizing:border-box;box-sizing:border-box}.btn,.btn:focus,.btn:active{outline:none}a,.btn:not([disabled]):hover{text-decoration:none}.btn:not([disabled]):active{outline:0;-webkit-box-shadow:none;box-shadow:none}.btn[disabled]{cursor:not-allowed}.btn[disabled],.btn[disabled]:active,.btn[disabled]:focus,.btn[disabled]:hover{color:rgba(0, 0, 0, .25);background:#f5f5f5;border-color:#d9d9d9;text-shadow:none;-webkit-box-shadow:none;box-shadow:none}.btn-default{color:rgba(0, 0, 0, .85);background-color:#fff;border-color:#d9d9d9}.btn-default:hover,.btn-default:active,.btn-default:focus{color:#40a9ff;background:#fff;border-color:#40a9ff}.btn-primary{color:#fff;background:#1890ff;border-color:#1890ff;text-shadow:0 -1px 0 rgb(0 0 0 / 12%);-webkit-box-shadow:0 2px 0 rgb(0 0 0 / 5%);box-shadow:0 2px 0 rgb(0 0 0 / 5%)}.btn-primary:focus,.btn-primary:hover{color:#fff;background:#40a9ff;border-color:#40a9ff}.btn-dashed{color:rgba(0, 0, 0, .85);background:#fff;border-color:#d9d9d9;border-style:dashed}.btn-dashed:focus,.btn-dashed:hover{color:#40a9ff;background:#fff;border-color:#40a9ff}.btn-text{color:rgba(0, 0, 0, .85);background:0 0;border-color:transparent;-webkit-box-shadow:none;box-shadow:none}.btn-text:active,.btn-text:hover,.btn-text:focus{color:rgba(0, 0, 0, .85);background:rgba(0, 0, 0, .028);border-color:transparent}.btn-text[disabled],.btn-text[disabled]:active,.btn-text[disabled]:hover,.btn-text[disabled]:focus{color:rgba(0, 0, 0, .25);background:0 0;border-color:transparent;text-shadow:none;-webkit-box-shadow:none;box-shadow:none}.btn-link{color:#1890ff;background:0 0;border-color:transparent;-webkit-box-shadow:none;box-shadow:none}.btn-link:hover,.btn-link:focus{color:#40a9ff;background:0 0;border-color:transparent}.btn-link:active{color:#096dd9;border-color:transparent}a.btn-link-disabled,a.btn-link-disabled:active,a.btn-link-disabled:hover,a.btn-link-disabled:focus,.btn-link[disabled],.btn-link[disabled]:active,.btn-link[disabled]:focus,.btn-link[disabled]:hover{color:rgba(0, 0, 0, .25);background:0 0;border-color:transparent;text-shadow:none;-webkit-box-shadow:none;box-shadow:none;cursor:not-allowed}.btn-dangerous{color:#ff4d4f;background:#fff;border-color:#ff4d4f}.btn-dangerous:focus,.btn-dangerous:hover{color:#ff7875;background:#fff;border-color:#ff7875}.btn-dangerous.btn-primary{color:#fff;background:#ff4d4f;border-color:#ff4d4f;text-shadow:0 -1px 0 rgb(0 0 0 / 12%);-webkit-box-shadow:0 2px 0 rgb(0 0 0 / 5%);box-shadow:0 2px 0 rgb(0 0 0 / 5%)}.btn-dangerous.btn-primary:focus,.btn-dangerous.btn-primary:hover{color:#fff;background:#ff7875;border-color:#ff7875}.btn-dangerous.btn-text,.btn-dangerous.btn-link{color:#ff4d4f;background:0 0;border-color:transparent;-webkit-box-shadow:none;box-shadow:none}.btn-dangerous[disabled],.btn-dangerous[disabled]:active,.btn-dangerous[disabled]:focus,.btn-dangerous[disabled]:hover{color:rgba(0, 0, 0, .25);background:#f5f5f5;border-color:#d9d9d9;text-shadow:none;-webkit-box-shadow:none;box-shadow:none}a.btn-dangerous.btn-link-disabled,a.btn-dangerous.btn-link-disabled:active,a.btn-dangerous.btn-link-disabled:hover,a.btn-dangerous.btn-link-disabled:focus,.btn-dangerous.btn-text[disabled],.btn-dangerous.btn-text[disabled]:active,.btn-dangerous.btn-text[disabled]:focus,.btn-dangerous.btn-text[disabled]:hover,.btn-dangerous.btn-link[disabled],.btn-dangerous.btn-link[disabled]:active,.btn-dangerous.btn-link[disabled]:focus,.btn-dangerous.btn-link[disabled]:hover{color:rgba(0, 0, 0, .25);background:0 0;border-color:transparent;text-shadow:none;-webkit-box-shadow:none;box-shadow:none;cursor:not-allowed}.btn-ghost{color:#fff;background:0 0 !important;border-color:#fff}.btn-ghost.btn-primary{color:#1890ff;background:0 0;border-color:#1890ff;text-shadow:none}.btn-ghost.btn-dangerous,.btn-ghost.btn-primary.btn-dangerous{color:#ff4d4f;background:transparent;border-color:#ff4d4f;text-shadow:none}.btn-ghost.btn-primary[disabled],.btn-ghost.btn-primary[disabled]:hover,.btn-ghost.btn-primary[disabled]:focus,.btn-ghost.btn-primary[disabled]:active,.btn-ghost.btn-dangerous[disabled],.btn-ghost.btn-dangerous[disabled]:hover,.btn-ghost.btn-dangerous[disabled]:focus,.btn-ghost.btn-dangerous[disabled]:active{color:rgba(0, 0, 0, 0.25);background:transparent !important;border-color:#d9d9d9;text-shadow:none;-webkit-box-shadow:none;box-shadow:none}.btn-circle{min-width:32px;padding-right:0;padding-left:0;text-align:center;border-radius:50%}.btn-round{height:32px;padding:4px 16px;font-size:14px;border-radius:32px}.btn-large{height:40px;padding:6.4px 15px;font-size:16px}.btn-small{height:24px;padding:0 7px}";
 
 const AiButton = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.aiClick = createEvent(this, "aiClick", 7);
+    /**
+     * 类型
+     */
+    this.type = 'default';
+    /**
+     * 设置 button 原生的 type 值
+     */
+    this.htmlType = 'button';
+    /**
+     * 警告按钮
+     */
+    this.danger = false;
+    /**
+     * 幽灵按钮
+     */
+    this.ghost = false;
+    /**
+     * 适应父元素的宽度
+     */
+    this.block = false;
     /**
      * 是否禁用
      */
@@ -21,10 +41,19 @@ const AiButton = class {
     };
   }
   render() {
-    return (h(Host, null, h("button", { class: {
-        'btn': true,
-        'btn-disabled': this.disabled,
-      }, onClick: this.handleClick }, h("slot", { name: 'btn-icon' }), this.text ? this.text : h("slot", null))));
+    const classes = {
+      'btn': true,
+      [`btn-${this.type}`]: !!this.type,
+      [`btn-ghost`]: this.ghost && this.type !== 'text' && this.type !== 'link',
+      [`btn-${this.shap}`]: !!this.shap,
+      [`btn-${this.size}`]: !!this.size,
+      'btn-block': this.block,
+      'btn-dangerous': this.danger,
+    };
+    if (this.href !== undefined) {
+      return h("a", { href: this.href, target: this.target, class: Object.assign(Object.assign({}, classes), { 'btn-link-disabled': this.disabled }), onClick: this.handleClick }, h("slot", { name: 'btn-icon' }), h("slot", null));
+    }
+    return (h(Host, null, h("button", { type: this.htmlType, disabled: this.disabled, class: classes, onClick: this.handleClick }, h("slot", { name: 'btn-icon' }), h("slot", null))));
   }
 };
 AiButton.style = buttonCss;

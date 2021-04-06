@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { AiBackdrop } from '../ai-backdrop';
+import { AiBackdrop } from '../backdrop';
 
 describe('ai-backdrop', () => {
   it('renders', async () => {

@@ -1,21 +1,5 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
+import { __assign, __spreadArray } from "tslib";
+// @ts-nocheck
 import { defineComponent, getCurrentInstance, h, inject, ref } from 'vue';
 var UPDATE_VALUE_EVENT = 'update:modelValue';
 var MODEL_VALUE = 'modelValue';
@@ -29,7 +13,7 @@ var getComponentClasses = function (classes) {
 var getElementClasses = function (ref, componentClasses, defaultClasses) {
     var _a;
     if (defaultClasses === void 0) { defaultClasses = []; }
-    return __spreadArrays(Array.from(((_a = ref.value) === null || _a === void 0 ? void 0 : _a.classList) || []), defaultClasses).filter(function (c, i, self) { return !componentClasses.has(c) && self.indexOf(c) === i; });
+    return __spreadArray(__spreadArray([], Array.from(((_a = ref.value) === null || _a === void 0 ? void 0 : _a.classList) || [])), defaultClasses).filter(function (c, i, self) { return !componentClasses.has(c) && self.indexOf(c) === i; });
 };
 /**
 * Create a callback to define a Vue component wrapper around a Web Component.
@@ -56,7 +40,7 @@ export var defineContainer = function (name, componentProps, componentOptions) {
         var attrs = _a.attrs, slots = _a.slots, emit = _a.emit;
         var modelPropValue = props[modelProp];
         var containerRef = ref();
-        var classes = new Set(getComponentClasses(attrs["class"]));
+        var classes = new Set(getComponentClasses(attrs.class));
         var onVnodeBeforeMount = function (vnode) {
             // Add a listener to tell Vue to update the v-model
             if (vnode.el) {
@@ -97,7 +81,7 @@ export var defineContainer = function (name, componentProps, componentOptions) {
         };
         return function () {
             var _a;
-            getComponentClasses(attrs["class"]).forEach(function (value) {
+            getComponentClasses(attrs.class).forEach(function (value) {
                 classes.add(value);
             });
             var oldClick = props.onClick;
@@ -109,18 +93,19 @@ export var defineContainer = function (name, componentProps, componentOptions) {
                     handleRouterLink(ev);
                 }
             };
-            var propsToAdd = __assign(__assign({}, props), { ref: containerRef, "class": getElementClasses(containerRef, classes), onClick: handleClick, onVnodeBeforeMount: (modelUpdateEvent) ? onVnodeBeforeMount : undefined });
+            var propsToAdd = __assign(__assign({}, props), { ref: containerRef, class: getElementClasses(containerRef, classes), onClick: handleClick, onVnodeBeforeMount: (modelUpdateEvent) ? onVnodeBeforeMount : undefined });
             if (modelProp) {
                 propsToAdd = __assign(__assign({}, propsToAdd), (_a = {}, _a[modelProp] = props.hasOwnProperty('modelValue') ? props.modelValue : modelPropValue, _a));
             }
-            return h(name, propsToAdd, slots["default"] && slots["default"]());
+            return h(name, propsToAdd, slots.default && slots.default());
         };
     });
     Container.displayName = name;
-    Container.props = __spreadArrays(componentProps, [ROUTER_LINK_VALUE]);
+    Container.props = __spreadArray(__spreadArray([], componentProps), [ROUTER_LINK_VALUE]);
     if (modelProp) {
         Container.props.push(MODEL_VALUE);
         Container.emits = [UPDATE_VALUE_EVENT, modelUpdateEvent];
     }
     return Container;
 };
+//# sourceMappingURL=utils.js.map

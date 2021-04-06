@@ -1,7 +1,7 @@
 {
   "entries": [
-    "./components/backdrop/backdrop.js",
     "./components/button/button.js",
+    "./components/backdrop/backdrop.js",
     "./components/control/control.js",
     "./components/input/input.js",
     "./components/popover/popover.js",

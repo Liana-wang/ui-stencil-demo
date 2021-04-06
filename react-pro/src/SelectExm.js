@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { AiSelect, AiSelectOption } from '@ai/ui-components-react'
+import { AiSelect, AiSelectOption } from '@ai.s/ui-components-react'
 
 export default class SelectExm extends React.Component {
     state = {
@@ -34,6 +34,15 @@ export default class SelectExm extends React.Component {
         'Angular',
         'JavaScript',
     ]
+
+    componentDidMount() {
+        console.log('didmount')
+        this.componentDidUpdate()
+    }
+
+    componentDidUpdate() {
+        console.log('update')
+    }
 
     // componentDidMount() {
     //     setTimeout(() => {

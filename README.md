@@ -11,7 +11,7 @@ yarn link      // 创建软连接
 
 cd react-pro
 yarn install
-yarn link @ai/ui-components-react
+yarn link @ai.s/ui-components-react
 yarn start
 
 # 在vue中使用ui库
@@ -20,7 +20,7 @@ yarn link    // 创建软连接
 
 cd vue-pro
 yarn install
-yarn link @ai/ui-components-vue
+yarn link @ai.s/ui-components-vue
 yarn start
 
 # 在angular中使用ui库
@@ -29,6 +29,6 @@ yarn link    // 创建软连接
 
 cd ng-pro
 yarn install
-yarn link @ai/ui-components-angular
+yarn link @ai.s/ui-components-angular
 yarn start
 ```

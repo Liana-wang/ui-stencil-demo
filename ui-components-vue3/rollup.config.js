@@ -4,16 +4,16 @@ export default {
     input: 'dist-transpiled/index.js',
     output: [
         {
-            file: 'dist/index.js',
-            format: 'umd',
-            sourcemap: true
+            dir: 'dist/',
+            entryFileNames: '[name].esm.js',
+            chunkFileNames: '[name]-[hash].esm.js',
+            format: 'es',
         },
         {
-            file: 'dist/index.min.js',
-            format: 'umd',
-            sourcemap: true,
-            plugins: [terser()]
-        }
+            dir: 'dist/',
+            format: 'commonjs',
+            preferConst: false,
+        },
     ],
-    external: ['ui-components', 'ui-components/loader', 'vue']
+    external: ['vue']
 };

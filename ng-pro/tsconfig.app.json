@@ -7,7 +7,7 @@
   },
   "paths": {
     "@angular/*": ["node_modules/@angular/*"],
-    "@ai/*": ["node_modules/@ai/*"],
+    "@ai.s/*": ["node_modules/@ai.s/*"],
   },
   "files": [
     "src/main.ts",

@@ -1,6 +1,6 @@
 
 import { NgModule } from "@angular/core";
-import { defineCustomElements } from "@ai/ui-components/loader";
+import { defineCustomElements } from "@ai.s/ui-components/loader";
 import { TextValueAccessor } from './directives/text-value-accessor';
 import { AiButton, AiInput, AiControl, AiSelect, AiBackdrop, AiPopover, AiSelectOption, AiSelectPopover, AiStringfy } from './directives/proxies';
 

@@ -73,3 +73,8 @@ The first step for all three of these strategies is to [publish to NPM](https://
 - Run `npm install my-component --save`
 - Add an import to the npm packages `import my-component;`
 - Then you can use the element anywhere in your template, JSX, html etc
+
+
+### vue3 使用"@stencil/vue-output-target": "^0.2.2",
+
+### vue2 使用"@stencil/vue-output-target": "^0.0.3",

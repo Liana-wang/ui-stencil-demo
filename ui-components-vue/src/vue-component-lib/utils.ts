@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Vue, { VNode, CreateElement } from 'vue';
 
 export const createCommonRender = (tagName: string, eventNames: string[] = []) =>

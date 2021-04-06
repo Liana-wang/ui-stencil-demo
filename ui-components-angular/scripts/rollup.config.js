@@ -8,7 +8,7 @@ export default {
         format: 'es'
     },
     external: (id) => {
-        if (id === '@ai/ui-components') {
+        if (id === '@ai.s/ui-components') {
             return false;
         }
 

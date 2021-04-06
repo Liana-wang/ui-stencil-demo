@@ -17,7 +17,7 @@ export default {
             preferConst: false,
         },
     ],
-    external: ['react', 'react-dom', '@ai/ui-components/loader'],
+    external: ['react', 'react-dom', '@ai.s/ui-components/loader'],
     plugins: [
         resolve(),
         sourcemaps(),

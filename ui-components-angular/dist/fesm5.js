@@ -1,20 +1,19 @@
-import { __decorate, __metadata, __extends } from 'tslib';
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef, NgZone, HostListener, Directive, NgModule } from '@angular/core';
+import { Component, ChangeDetectorRef, ElementRef, HostListener, Directive, NgModule } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { defineCustomElements } from '@ai/ui-components/loader';
+import { defineCustomElements } from '@ai.s/ui-components/loader';
+import { __extends } from 'tslib';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-/** @type {?} */
-var proxyInputs = (/**
+/**
  * @param {?} Cmp
  * @param {?} inputs
  * @return {?}
  */
-function (Cmp, inputs) {
+function proxyInputs(Cmp, inputs) {
     /** @type {?} */
     var Prototype = Cmp.prototype;
     inputs.forEach((/**
@@ -26,30 +25,21 @@ function (Cmp, inputs) {
             get: /**
              * @return {?}
              */
-            function () {
-                return this.el[item];
-            },
+            function () { return this.el[item]; },
             set: /**
              * @param {?} val
              * @return {?}
              */
-            function (val) {
-                var _this = this;
-                this.z.runOutsideAngular((/**
-                 * @return {?}
-                 */
-                function () { return (_this.el[item] = val); }));
-            },
+            function (val) { this.el[item] = val; },
         });
     }));
-});
-/** @type {?} */
-var proxyMethods = (/**
+}
+/**
  * @param {?} Cmp
  * @param {?} methods
  * @return {?}
  */
-function (Cmp, methods) {
+function proxyMethods(Cmp, methods) {
     /** @type {?} */
     var Prototype = Cmp.prototype;
     methods.forEach((/**
@@ -61,314 +51,179 @@ function (Cmp, methods) {
          * @return {?}
          */
         function () {
-            var _this = this;
             /** @type {?} */
             var args = arguments;
-            return this.z.runOutsideAngular((/**
+            return this.el.componentOnReady().then((/**
+             * @param {?} el
              * @return {?}
              */
-            function () { return _this.el[methodName].apply(_this.el, args); }));
+            function (el) { return el[methodName].apply(el, args); }));
         });
     }));
-});
-/** @type {?} */
-var proxyOutputs = (/**
+}
+/**
  * @param {?} instance
  * @param {?} el
  * @param {?} events
  * @return {?}
  */
-function (instance, el, events) {
+function proxyOutputs(instance, el, events) {
     events.forEach((/**
      * @param {?} eventName
      * @return {?}
      */
-    function (eventName) { return (instance[eventName] = fromEvent(el, eventName)); }));
-});
-// tslint:disable-next-line: only-arrow-functions
-/**
- * @param {?} opts
- * @return {?}
- */
-function ProxyCmp(opts) {
-    /** @type {?} */
-    var decorator = (/**
-     * @param {?} cls
-     * @return {?}
-     */
-    function (cls) {
-        if (opts.inputs) {
-            proxyInputs(cls, opts.inputs);
-        }
-        if (opts.methods) {
-            proxyMethods(cls, opts.methods);
-        }
-        return cls;
-    });
-    return decorator;
+    function (eventName) { return instance[eventName] = fromEvent(el, eventName); }));
 }
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var AiBackdrop = /** @class */ (function () {
-    function AiBackdrop(c, r, z) {
-        this.z = z;
+    function AiBackdrop(c, r) {
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['aiBackdropTap']);
     }
     AiBackdrop.decorators = [
-        { type: Component, args: [{
-                    selector: 'ai-backdrop',
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    template: '<ng-content></ng-content>',
-                    inputs: ['stopPropagation', 'tappable', 'visible'],
-                    outputs: ['aiBackdropTap']
-                },] },
+        { type: Component, args: [{ selector: 'ai-backdrop', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['stopPropagation', 'tappable', 'visible'] },] },
     ];
     /** @nocollapse */
     AiBackdrop.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef },
-        { type: NgZone }
+        { type: ElementRef }
     ]; };
-    AiBackdrop = __decorate([
-        ProxyCmp({
-            inputs: ['stopPropagation', 'tappable', 'visible']
-        }),
-        __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-    ], AiBackdrop);
     return AiBackdrop;
 }());
+proxyInputs(AiBackdrop, ['stopPropagation', 'tappable', 'visible']);
 var AiButton = /** @class */ (function () {
-    function AiButton(c, r, z) {
-        this.z = z;
+    function AiButton(c, r) {
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['aiClick']);
     }
     AiButton.decorators = [
-        { type: Component, args: [{
-                    selector: 'ai-button',
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    template: '<ng-content></ng-content>',
-                    inputs: ['btnValue', 'disabled', 'text'],
-                    outputs: ['aiClick']
-                },] },
+        { type: Component, args: [{ selector: 'ai-button', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['block', 'danger', 'disabled', 'ghost', 'href', 'htmlType', 'shap', 'size', 'target', 'type'] },] },
     ];
     /** @nocollapse */
     AiButton.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef },
-        { type: NgZone }
+        { type: ElementRef }
     ]; };
-    AiButton = __decorate([
-        ProxyCmp({
-            inputs: ['btnValue', 'disabled', 'text']
-        }),
-        __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-    ], AiButton);
     return AiButton;
 }());
+proxyInputs(AiButton, ['block', 'danger', 'disabled', 'ghost', 'href', 'htmlType', 'shap', 'size', 'target', 'type']);
 var AiControl = /** @class */ (function () {
-    function AiControl(c, r, z) {
-        this.z = z;
+    function AiControl(c, r) {
         c.detach();
         this.el = r.nativeElement;
     }
     AiControl.decorators = [
-        { type: Component, args: [{
-                    selector: 'ai-control',
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    template: '<ng-content></ng-content>'
-                },] },
+        { type: Component, args: [{ selector: 'ai-control', changeDetection: 0, template: '<ng-content></ng-content>' },] },
     ];
     /** @nocollapse */
     AiControl.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef },
-        { type: NgZone }
+        { type: ElementRef }
     ]; };
     return AiControl;
 }());
 var AiInput = /** @class */ (function () {
-    function AiInput(c, r, z) {
-        this.z = z;
+    function AiInput(c, r) {
         c.detach();
         this.el = r.nativeElement;
-        proxyOutputs(this, this.el, ['aiChange', 'aiInput', 'aiBlur']);
+        proxyOutputs(this, this.el, ['aiChange', 'aiInput', 'aiBlur', 'aiFocus']);
     }
     AiInput.decorators = [
-        { type: Component, args: [{
-                    selector: 'ai-input',
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    template: '<ng-content></ng-content>',
-                    inputs: ['defaultValue', 'placeholder', 'type', 'value'],
-                    outputs: ['aiChange', 'aiInput', 'aiBlur']
-                },] },
+        { type: Component, args: [{ selector: 'ai-input', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'placeholder', 'readonly', 'type', 'value'] },] },
     ];
     /** @nocollapse */
     AiInput.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef },
-        { type: NgZone }
+        { type: ElementRef }
     ]; };
-    AiInput = __decorate([
-        ProxyCmp({
-            inputs: ['defaultValue', 'placeholder', 'type', 'value']
-        }),
-        __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-    ], AiInput);
     return AiInput;
 }());
+proxyInputs(AiInput, ['disabled', 'placeholder', 'readonly', 'type', 'value']);
 var AiPopover = /** @class */ (function () {
-    function AiPopover(c, r, z) {
-        this.z = z;
+    function AiPopover(c, r) {
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['aiPopoverDidPresent', 'aiPopoverWillPresent', 'aiPopoverWillDismiss', 'aiPopoverDidDismiss']);
     }
     AiPopover.decorators = [
-        { type: Component, args: [{
-                    selector: 'ai-popover',
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    template: '<ng-content></ng-content>',
-                    inputs: ['backdropDismiss', 'component', 'componentProps', 'event'],
-                    outputs: ['aiPopoverDidPresent', 'aiPopoverWillPresent', 'aiPopoverWillDismiss', 'aiPopoverDidDismiss']
-                },] },
+        { type: Component, args: [{ selector: 'ai-popover', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['backdropDismiss', 'component', 'componentProps', 'event', 'overlayIndex', 'showBackdrop'] },] },
     ];
     /** @nocollapse */
     AiPopover.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef },
-        { type: NgZone }
+        { type: ElementRef }
     ]; };
-    AiPopover = __decorate([
-        ProxyCmp({
-            inputs: ['backdropDismiss', 'component', 'componentProps', 'event'],
-            methods: ['present', 'dismiss', 'onDidDismiss', 'onWillDismiss']
-        }),
-        __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-    ], AiPopover);
     return AiPopover;
 }());
+proxyMethods(AiPopover, ['present', 'dismiss', 'onDidDismiss', 'onWillDismiss']);
+proxyInputs(AiPopover, ['backdropDismiss', 'component', 'componentProps', 'event', 'overlayIndex', 'showBackdrop']);
 var AiSelect = /** @class */ (function () {
-    function AiSelect(c, r, z) {
-        this.z = z;
+    function AiSelect(c, r) {
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['aiChange', 'aiCancel', 'aiFocus', 'aiBlur', 'aiStyle']);
     }
     AiSelect.decorators = [
-        { type: Component, args: [{
-                    selector: 'ai-select',
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    template: '<ng-content></ng-content>',
-                    inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
-                    outputs: ['aiChange', 'aiCancel', 'aiFocus', 'aiBlur', 'aiStyle']
-                },] },
+        { type: Component, args: [{ selector: 'ai-select', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['compareWith', 'disabled', 'placeholder', 'selected'] },] },
     ];
     /** @nocollapse */
     AiSelect.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef },
-        { type: NgZone }
+        { type: ElementRef }
     ]; };
-    AiSelect = __decorate([
-        ProxyCmp({
-            inputs: ['compareWith', 'disabled', 'placeholder', 'selected'],
-            methods: ['open']
-        }),
-        __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-    ], AiSelect);
     return AiSelect;
 }());
+proxyMethods(AiSelect, ['open']);
+proxyInputs(AiSelect, ['compareWith', 'disabled', 'placeholder', 'selected']);
 var AiSelectOption = /** @class */ (function () {
-    function AiSelectOption(c, r, z) {
-        this.z = z;
+    function AiSelectOption(c, r) {
         c.detach();
         this.el = r.nativeElement;
     }
     AiSelectOption.decorators = [
-        { type: Component, args: [{
-                    selector: 'ai-select-option',
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    template: '<ng-content></ng-content>',
-                    inputs: ['disabled', 'option']
-                },] },
+        { type: Component, args: [{ selector: 'ai-select-option', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'option'] },] },
     ];
     /** @nocollapse */
     AiSelectOption.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef },
-        { type: NgZone }
+        { type: ElementRef }
     ]; };
-    AiSelectOption = __decorate([
-        ProxyCmp({
-            inputs: ['disabled', 'option']
-        }),
-        __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-    ], AiSelectOption);
     return AiSelectOption;
 }());
+proxyInputs(AiSelectOption, ['disabled', 'option']);
 var AiSelectPopover = /** @class */ (function () {
-    function AiSelectPopover(c, r, z) {
-        this.z = z;
+    function AiSelectPopover(c, r) {
         c.detach();
         this.el = r.nativeElement;
     }
     AiSelectPopover.decorators = [
-        { type: Component, args: [{
-                    selector: 'ai-select-popover',
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    template: '<ng-content></ng-content>',
-                    inputs: ['options']
-                },] },
+        { type: Component, args: [{ selector: 'ai-select-popover', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['options'] },] },
     ];
     /** @nocollapse */
     AiSelectPopover.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef },
-        { type: NgZone }
+        { type: ElementRef }
     ]; };
-    AiSelectPopover = __decorate([
-        ProxyCmp({
-            inputs: ['options']
-        }),
-        __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-    ], AiSelectPopover);
     return AiSelectPopover;
 }());
+proxyInputs(AiSelectPopover, ['options']);
 var AiStringfy = /** @class */ (function () {
-    function AiStringfy(c, r, z) {
-        this.z = z;
+    function AiStringfy(c, r) {
         c.detach();
         this.el = r.nativeElement;
     }
     AiStringfy.decorators = [
-        { type: Component, args: [{
-                    selector: 'ai-stringfy',
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    template: '<ng-content></ng-content>',
-                    inputs: ['data']
-                },] },
+        { type: Component, args: [{ selector: 'ai-stringfy', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['data'] },] },
     ];
     /** @nocollapse */
     AiStringfy.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef },
-        { type: NgZone }
+        { type: ElementRef }
     ]; };
-    AiStringfy = __decorate([
-        ProxyCmp({
-            inputs: ['data']
-        }),
-        __metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
-    ], AiStringfy);
     return AiStringfy;
 }());
+proxyInputs(AiStringfy, ['data']);
 
 /**
  * @fileoverview added by tsickle
@@ -442,17 +297,6 @@ var ValueAccessor = /** @class */ (function () {
     function (fn) {
         this.onTouched = fn;
     };
-    /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    ValueAccessor.prototype.setDisabledState = /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    function (isDisabled) {
-        this.el.nativeElement.disabled = isDisabled;
-    };
     ValueAccessor.propDecorators = {
         _handleBlurEvent: [{ type: HostListener, args: ['focusout',] }]
     };
@@ -525,4 +369,4 @@ var ComponentNgModule = /** @class */ (function () {
     return ComponentNgModule;
 }());
 
-export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, AiStringfy, ComponentNgModule, ProxyCmp as ɵa, TextValueAccessor as ɵb, ValueAccessor as ɵc };
+export { AiBackdrop, AiButton, AiControl, AiInput, AiPopover, AiSelect, AiSelectOption, AiSelectPopover, AiStringfy, ComponentNgModule, TextValueAccessor as ɵa, ValueAccessor as ɵb };

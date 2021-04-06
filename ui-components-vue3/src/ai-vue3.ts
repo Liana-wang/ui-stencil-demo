@@ -1,12 +1,12 @@
 import { App, Plugin } from 'vue';
-import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
+import { applyPolyfills, defineCustomElements } from '@ai.s/ui-components/loader';
 
 const ael = (el: any, eventName: string, cb: any, opts: any) => el.addEventListener(eventName.toLowerCase(), cb, opts);
 const rel = (el: any, eventName: string, cb: any, opts: any) => el.removeEventListener(eventName.toLowerCase(), cb, opts);
 
 export const AiVue3: Plugin = {
 
-    async install(_app: App) {
+    async install(_app: App, node: string) {
         if (typeof (window as any) !== 'undefined') {
             await applyPolyfills();
             await defineCustomElements(window, {
@@ -14,6 +14,7 @@ export const AiVue3: Plugin = {
                 ael,
                 rel
             } as any);
+            _app.mount(node)
         }
     }
 };

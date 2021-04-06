@@ -27,29 +27,29 @@ export const config: Config = {
   },
   outputTargets: [
     // angularOutputTarget({
-    //   componentCorePackage: '@ai/ui-components',
+    //   componentCorePackage: '@ai.s/ui-components',
     //   directivesProxyFile: '../ui-components-angular/src/directives/proxies.ts',
     //   valueAccessorConfigs: angularValueAccessorBindings
     // }),
-    reactOutputTarget({
-      componentCorePackage: '@ai/ui-components',
-      proxiesFile: '../ui-components-react/src/components.ts',
-      includePolyfills: true,
-      includeDefineCustomElements: true,
-    }),
-    // vueOutputTarget({
-    //   componentCorePackage: '@ai/ui-components',
-    //   proxiesFile: '../ui-components-vue3/src/proxies.ts',
+    // reactOutputTarget({
+    //   componentCorePackage: '@ai.s/ui-components',
+    //   proxiesFile: '../ui-components-react/src/components.ts',
     //   includePolyfills: true,
     //   includeDefineCustomElements: true,
-    //   componentModels: [
-    //     {
-    //       elements: ['ai-input'],
-    //       event: 'aiChange',
-    //       targetAttr: 'value',
-    //     },
-    //   ]
     // }),
+    vueOutputTarget({
+      componentCorePackage: '@ai.s/ui-components',
+      proxiesFile: '../ui-components-vue3/src/proxies.ts',
+      includePolyfills: true,
+      includeDefineCustomElements: true,
+      componentModels: [
+        {
+          elements: ['ai-input'],
+          event: 'aiChange',
+          targetAttr: 'value',
+        },
+      ]
+    }),
     {
       type: 'dist',
       esmLoaderPath: '../loader'

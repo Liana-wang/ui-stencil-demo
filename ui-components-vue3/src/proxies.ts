@@ -3,9 +3,9 @@
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
 
-import type { JSX } from '@ai/ui-components';
+import type { JSX } from '@ai.s/ui-components';
 
-import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
+import { applyPolyfills, defineCustomElements } from '@ai.s/ui-components/loader';
 
 applyPolyfills().then(() => defineCustomElements());
 
@@ -18,7 +18,15 @@ export const AiBackdrop = /*@__PURE__*/ defineContainer<JSX.AiBackdrop>('ai-back
 
 
 export const AiButton = /*@__PURE__*/ defineContainer<JSX.AiButton>('ai-button', [
-  'text',
+  'type',
+  'htmlType',
+  'size',
+  'danger',
+  'ghost',
+  'block',
+  'shap',
+  'href',
+  'target',
   'disabled',
   'aiClick'
 ]);

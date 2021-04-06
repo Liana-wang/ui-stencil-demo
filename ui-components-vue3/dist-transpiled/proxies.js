@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
-import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
+import { applyPolyfills, defineCustomElements } from '@ai.s/ui-components/loader';
 applyPolyfills().then(function () { return defineCustomElements(); });
 export var AiBackdrop = /*@__PURE__*/ defineContainer('ai-backdrop', [
     'visible',
@@ -11,7 +11,15 @@ export var AiBackdrop = /*@__PURE__*/ defineContainer('ai-backdrop', [
     'aiBackdropTap'
 ]);
 export var AiButton = /*@__PURE__*/ defineContainer('ai-button', [
-    'text',
+    'type',
+    'htmlType',
+    'size',
+    'danger',
+    'ghost',
+    'block',
+    'shap',
+    'href',
+    'target',
     'disabled',
     'aiClick'
 ]);
@@ -63,3 +71,4 @@ export var AiSelectPopover = /*@__PURE__*/ defineContainer('ai-select-popover', 
 export var AiStringfy = /*@__PURE__*/ defineContainer('ai-stringfy', [
     'data'
 ]);
+//# sourceMappingURL=proxies.js.map

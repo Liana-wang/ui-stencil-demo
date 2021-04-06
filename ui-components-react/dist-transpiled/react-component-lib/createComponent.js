@@ -27,7 +27,7 @@ export var createReactComponent = function (tagName, ReactComponentContext, mani
                         acc[name] = cProps[name];
                     }
                 }
-                else if (typeof cProps[name] === 'string') {
+                else if (['string', 'boolean', 'number'].includes(typeof cProps[name])) {
                     acc[camelToDashCase(name)] = cProps[name];
                 }
                 return acc;

@@ -1,9 +1,7 @@
 {
-  "name": "@ai/ui-components",
+  "name": "@ai.s/ui-components",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/ui-components/ui-components.esm.js",
@@ -21,12 +19,13 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/angular-output-target": "^0.0.5",
+    "@stencil/angular-output-target": "^0.0.1",
     "@stencil/core": "^2.1.2",
     "@stencil/react-output-target": "^0.0.9",
     "@stencil/vue-output-target": "^0.2.2",
     "@types/node": "^14.6.0"
   },
   "dependencies": {},
-  "license": "MIT"
+  "license": "MIT",
+  "author": ""
 }

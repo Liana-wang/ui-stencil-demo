@@ -1,11 +1,12 @@
+import { __spreadArrays } from "tslib";
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated vue proxies */
 import Vue from 'vue';
 import { createCommonRender, createCommonMethod } from './vue-component-lib/utils';
-import { applyPolyfills, defineCustomElements } from '@ai/ui-components/loader';
-applyPolyfills().then(() => defineCustomElements());
-const customElementTags = [
+import { applyPolyfills, defineCustomElements } from '@ai.s/ui-components/loader';
+applyPolyfills().then(function () { return defineCustomElements(); });
+var customElementTags = [
     'ai-backdrop',
     'ai-button',
     'ai-control',
@@ -16,8 +17,8 @@ const customElementTags = [
     'ai-select-popover',
     'ai-stringfy',
 ];
-Vue.config.ignoredElements = [...Vue.config.ignoredElements, ...customElementTags];
-export const AiBackdrop = /*@__PURE__*/ Vue.extend({
+Vue.config.ignoredElements = __spreadArrays(Vue.config.ignoredElements, customElementTags);
+export var AiBackdrop = /*@__PURE__*/ Vue.extend({
     props: {
         visible: {},
         tappable: {},
@@ -25,21 +26,29 @@ export const AiBackdrop = /*@__PURE__*/ Vue.extend({
     },
     render: createCommonRender('ai-backdrop', ['aiBackdropTap']),
 });
-export const AiButton = /*@__PURE__*/ Vue.extend({
+export var AiButton = /*@__PURE__*/ Vue.extend({
     props: {
-        text: {},
+        type: {},
+        htmlType: {},
+        size: {},
+        danger: {},
+        ghost: {},
+        block: {},
+        shap: {},
+        href: {},
+        target: {},
         disabled: {},
-        btnValue: {},
     },
     render: createCommonRender('ai-button', ['aiClick']),
 });
-export const AiControl = /*@__PURE__*/ Vue.extend({
+export var AiControl = /*@__PURE__*/ Vue.extend({
     render: createCommonRender('ai-control', []),
 });
-export const AiInput = /*@__PURE__*/ Vue.extend({
+export var AiInput = /*@__PURE__*/ Vue.extend({
     props: {
-        defaultValue: {},
+        disabled: {},
         placeholder: {},
+        readonly: {},
         type: {},
         value: {},
     },
@@ -47,14 +56,15 @@ export const AiInput = /*@__PURE__*/ Vue.extend({
         prop: 'value',
         event: 'aiChange'
     },
-    render: createCommonRender('ai-input', ['aiChange', 'aiInput', 'aiBlur']),
+    render: createCommonRender('ai-input', ['aiChange', 'aiInput', 'aiBlur', 'aiFocus']),
 });
-export const AiPopover = /*@__PURE__*/ Vue.extend({
+export var AiPopover = /*@__PURE__*/ Vue.extend({
     props: {
         overlayIndex: {},
         component: {},
         componentProps: {},
         backdropDismiss: {},
+        showBackdrop: {},
         event: {},
     },
     methods: {
@@ -65,7 +75,7 @@ export const AiPopover = /*@__PURE__*/ Vue.extend({
     },
     render: createCommonRender('ai-popover', ['aiPopoverDidPresent', 'aiPopoverWillPresent', 'aiPopoverWillDismiss', 'aiPopoverDidDismiss']),
 });
-export const AiSelect = /*@__PURE__*/ Vue.extend({
+export var AiSelect = /*@__PURE__*/ Vue.extend({
     props: {
         disabled: {},
         placeholder: {},
@@ -77,20 +87,20 @@ export const AiSelect = /*@__PURE__*/ Vue.extend({
     },
     render: createCommonRender('ai-select', ['aiChange', 'aiCancel', 'aiFocus', 'aiBlur', 'aiStyle']),
 });
-export const AiSelectOption = /*@__PURE__*/ Vue.extend({
+export var AiSelectOption = /*@__PURE__*/ Vue.extend({
     props: {
         disabled: {},
         option: {},
     },
     render: createCommonRender('ai-select-option', []),
 });
-export const AiSelectPopover = /*@__PURE__*/ Vue.extend({
+export var AiSelectPopover = /*@__PURE__*/ Vue.extend({
     props: {
         options: {},
     },
     render: createCommonRender('ai-select-popover', []),
 });
-export const AiStringfy = /*@__PURE__*/ Vue.extend({
+export var AiStringfy = /*@__PURE__*/ Vue.extend({
     props: {
         data: {},
     },

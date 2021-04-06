@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
+import { Shap, Size, Type } from "./components/button/button";
 import { ComponentProps, ComponentRef } from "./interface";
 export namespace Components {
     interface AiBackdrop {
@@ -23,13 +24,45 @@ export namespace Components {
     }
     interface AiButton {
         /**
+          * 适应父元素的宽度
+         */
+        "block"?: boolean;
+        /**
+          * 警告按钮
+         */
+        "danger"?: boolean;
+        /**
           * 是否禁用
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
-          * 文字
+          * 幽灵按钮
          */
-        "text": string;
+        "ghost"?: boolean;
+        /**
+          * 点击跳转的地址，指定此属性 button 的行为和 a 链接一致
+         */
+        "href"?: string;
+        /**
+          * 设置 button 原生的 type 值
+         */
+        "htmlType"?: string;
+        /**
+          * 按钮形状
+         */
+        "shap"?: Shap;
+        /**
+          * 尺寸
+         */
+        "size"?: Size;
+        /**
+          * 相当于 a 链接的 target 属性，href 存在时生效
+         */
+        "target"?: string;
+        /**
+          * 类型
+         */
+        "type"?: Type;
     }
     interface AiControl {
     }
@@ -230,17 +263,49 @@ declare namespace LocalJSX {
     }
     interface AiButton {
         /**
+          * 适应父元素的宽度
+         */
+        "block"?: boolean;
+        /**
+          * 警告按钮
+         */
+        "danger"?: boolean;
+        /**
           * 是否禁用
          */
         "disabled"?: boolean;
+        /**
+          * 幽灵按钮
+         */
+        "ghost"?: boolean;
+        /**
+          * 点击跳转的地址，指定此属性 button 的行为和 a 链接一致
+         */
+        "href"?: string;
+        /**
+          * 设置 button 原生的 type 值
+         */
+        "htmlType"?: string;
         /**
           * 点击
          */
         "onAiClick"?: (event: CustomEvent<MouseEvent>) => void;
         /**
-          * 文字
+          * 按钮形状
          */
-        "text"?: string;
+        "shap"?: Shap;
+        /**
+          * 尺寸
+         */
+        "size"?: Size;
+        /**
+          * 相当于 a 链接的 target 属性，href 存在时生效
+         */
+        "target"?: string;
+        /**
+          * 类型
+         */
+        "type"?: Type;
     }
     interface AiControl {
     }

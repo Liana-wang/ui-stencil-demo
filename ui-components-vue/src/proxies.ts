@@ -68,10 +68,15 @@ export const AiControl = /*@__PURE__*/ Vue.extend({
 export const AiInput = /*@__PURE__*/ Vue.extend({
 
   props: {
+    allowClear: {} as PropOptions<Components.AiInput['allowClear']>,
+    bordered: {} as PropOptions<Components.AiInput['bordered']>,
+    defaultValue: {} as PropOptions<Components.AiInput['defaultValue']>,
     disabled: {} as PropOptions<Components.AiInput['disabled']>,
+    maxLength: {} as PropOptions<Components.AiInput['maxLength']>,
+    hasPrefix: {} as PropOptions<Components.AiInput['hasPrefix']>,
+    hasSuffix: {} as PropOptions<Components.AiInput['hasSuffix']>,
     placeholder: {} as PropOptions<Components.AiInput['placeholder']>,
     readonly: {} as PropOptions<Components.AiInput['readonly']>,
-    type: {} as PropOptions<Components.AiInput['type']>,
     value: {} as PropOptions<Components.AiInput['value']>,
   },
 
@@ -80,7 +85,7 @@ export const AiInput = /*@__PURE__*/ Vue.extend({
     event: 'aiChange'
   },
 
-  render: createCommonRender('ai-input', ['aiChange', 'aiInput', 'aiBlur', 'aiFocus']),
+  render: createCommonRender('ai-input', ['aiChange', 'aiPressEnter', 'aiInput', 'aiBlur', 'aiFocus']),
 });
 
 

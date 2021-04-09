@@ -18,10 +18,15 @@ export declare const AiButton: import("vue/types/vue").ExtendedVue<Vue, unknown,
 }>;
 export declare const AiControl: import("vue/types/vue").ExtendedVue<Vue, unknown, unknown, unknown, Record<never, any>>;
 export declare const AiInput: import("vue/types/vue").ExtendedVue<Vue, unknown, unknown, unknown, {
-    disabled: boolean;
-    placeholder: string;
-    readonly: boolean;
-    type: string;
+    allowClear: boolean | undefined;
+    bordered: boolean | undefined;
+    defaultValue: string | undefined;
+    disabled: boolean | undefined;
+    maxLength: number | undefined;
+    hasPrefix: boolean | undefined;
+    hasSuffix: import("@ai.s/ui-components/dist/types/stencil-public-runtime").JSX.Element | undefined;
+    placeholder: string | undefined;
+    readonly: boolean | undefined;
     value: string;
 }>;
 export declare const AiPopover: import("vue/types/vue").ExtendedVue<Vue, unknown, {

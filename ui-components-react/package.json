@@ -14,8 +14,12 @@
     "bundle": "rollup -c",
     "start": "npm run build:rollup"
   },
+  "files": [
+      "dist/"
+  ],
   "dependencies": {
-    "tslib": "*"
+    "tslib": "*",
+    "@ai.s/ui-components": "^0.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

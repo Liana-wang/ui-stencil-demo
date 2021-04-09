@@ -24,6 +24,7 @@ export declare interface AiInput extends Components.AiInput {
 }
 export declare class AiInput {
     aiChange: EventEmitter<CustomEvent>;
+    aiPressEnter: EventEmitter<CustomEvent>;
     aiInput: EventEmitter<CustomEvent>;
     aiBlur: EventEmitter<CustomEvent>;
     aiFocus: EventEmitter<CustomEvent>;

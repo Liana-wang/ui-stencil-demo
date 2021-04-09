@@ -16,6 +16,9 @@
         "css/"
     ],
     "license": "MIT",
+    "dependencies": {
+      "@ai.s/ui-components": "^0.0.1"
+    },
     "devDependencies": {
         "@babel/cli": "^7.12.10",
         "@babel/core": "^7.12.10",

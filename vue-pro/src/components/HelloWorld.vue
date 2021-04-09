@@ -40,6 +40,8 @@
     </div>
     <hr />
     <BtnTest />
+    <hr />
+    <InputTest />
   </div>
 </template>
 
@@ -52,6 +54,7 @@ import {
   AiStringfy,
 } from "@ai.s/ui-components-vue";
 import BtnTest from "./BtnTest";
+import InputTest from "./InputTest";
 
 export default {
   name: "HelloWorld",
@@ -62,6 +65,7 @@ export default {
     AiSelectOption,
     AiStringfy,
     BtnTest,
+    InputTest,
   },
   data() {
     return {

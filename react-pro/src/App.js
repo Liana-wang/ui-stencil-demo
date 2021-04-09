@@ -4,6 +4,7 @@ import { AiButton, AiInput, AiStringfy } from '@ai.s/ui-components-react'
 import './App.css'
 import SelectExm from './SelectExm'
 import BtnTest from './BtnTest'
+import InputTest from './InputTest'
 
 export default function App() {
   const [name, setName] = useState('')
@@ -52,6 +53,10 @@ export default function App() {
         <hr />
         <div>
           <BtnTest />
+        </div>
+        <hr />
+        <div>
+          <InputTest />
         </div>
       </div>
     </div>

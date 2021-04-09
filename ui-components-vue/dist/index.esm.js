@@ -112,17 +112,22 @@ var AiControl = /*@__PURE__*/Vue.extend({
 });
 var AiInput = /*@__PURE__*/Vue.extend({
   props: {
+    allowClear: {},
+    bordered: {},
+    defaultValue: {},
     disabled: {},
+    maxLength: {},
+    hasPrefix: {},
+    hasSuffix: {},
     placeholder: {},
     readonly: {},
-    type: {},
     value: {}
   },
   model: {
     prop: 'value',
     event: 'aiChange'
   },
-  render: createCommonRender('ai-input', ['aiChange', 'aiInput', 'aiBlur', 'aiFocus'])
+  render: createCommonRender('ai-input', ['aiChange', 'aiPressEnter', 'aiInput', 'aiBlur', 'aiFocus'])
 });
 var AiPopover = /*@__PURE__*/Vue.extend({
   props: {

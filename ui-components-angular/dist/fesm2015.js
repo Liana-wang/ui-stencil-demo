@@ -139,18 +139,18 @@ class AiInput {
     constructor(c, r) {
         c.detach();
         this.el = r.nativeElement;
-        proxyOutputs(this, this.el, ['aiChange', 'aiInput', 'aiBlur', 'aiFocus']);
+        proxyOutputs(this, this.el, ['aiChange', 'aiPressEnter', 'aiInput', 'aiBlur', 'aiFocus']);
     }
 }
 AiInput.decorators = [
-    { type: Component, args: [{ selector: 'ai-input', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'placeholder', 'readonly', 'type', 'value'] },] },
+    { type: Component, args: [{ selector: 'ai-input', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allowClear', 'bordered', 'defaultValue', 'disabled', 'hasPrefix', 'hasSuffix', 'maxLength', 'placeholder', 'readonly', 'value'] },] },
 ];
 /** @nocollapse */
 AiInput.ctorParameters = () => [
     { type: ChangeDetectorRef },
     { type: ElementRef }
 ];
-proxyInputs(AiInput, ['disabled', 'placeholder', 'readonly', 'type', 'value']);
+proxyInputs(AiInput, ['allowClear', 'bordered', 'defaultValue', 'disabled', 'hasPrefix', 'hasSuffix', 'maxLength', 'placeholder', 'readonly', 'value']);
 class AiPopover {
     /**
      * @param {?} c

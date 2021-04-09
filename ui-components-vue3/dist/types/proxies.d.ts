@@ -50,18 +50,24 @@ export declare const AiInput: import("vue").DefineComponent<JSX.AiInput & import
     toLocaleString?: string | undefined;
     disabled?: boolean | undefined;
     readonly?: boolean | undefined;
-    type?: string | undefined;
     value?: string | undefined;
     constructor?: Function | undefined;
     modelValue?: string | boolean | undefined;
     hasOwnProperty?: ((v: PropertyKey) => boolean) | undefined;
     isPrototypeOf?: ((v: Object) => boolean) | undefined;
     propertyIsEnumerable?: ((v: PropertyKey) => boolean) | undefined;
+    allowClear?: boolean | undefined;
+    bordered?: boolean | undefined;
+    defaultValue?: string | undefined;
+    maxLength?: number | undefined;
+    hasPrefix?: boolean | undefined;
+    hasSuffix?: unknown;
     placeholder?: string | undefined;
-    onAiBlur?: ((event: CustomEvent<void>) => void) | undefined;
+    onAiBlur?: ((event: CustomEvent<MouseEvent>) => void) | undefined;
     onAiChange?: ((event: CustomEvent<any>) => void) | undefined;
-    onAiFocus?: ((event: CustomEvent<void>) => void) | undefined;
+    onAiFocus?: ((event: CustomEvent<MouseEvent>) => void) | undefined;
     onAiInput?: ((event: CustomEvent<KeyboardEvent>) => void) | undefined;
+    onAiPressEnter?: ((event: CustomEvent<KeyboardEvent>) => void) | undefined;
 }>, {}>;
 export declare const AiPopover: import("vue").DefineComponent<JSX.AiPopover & import("./vue-component-lib/utils").InputProps, object, {}, import("vue").ComputedOptions, import("vue").MethodOptions, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     event: any;

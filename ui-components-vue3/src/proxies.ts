@@ -36,12 +36,18 @@ export const AiControl = /*@__PURE__*/ defineContainer<JSX.AiControl>('ai-contro
 
 
 export const AiInput = /*@__PURE__*/ defineContainer<JSX.AiInput>('ai-input', [
+  'allowClear',
+  'bordered',
+  'defaultValue',
   'disabled',
+  'maxLength',
+  'hasPrefix',
+  'hasSuffix',
   'placeholder',
   'readonly',
-  'type',
   'value',
   'aiChange',
+  'aiPressEnter',
   'aiInput',
   'aiBlur',
   'aiFocus'

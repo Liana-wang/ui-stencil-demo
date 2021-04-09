@@ -137,12 +137,18 @@ var AiButton = /*@__PURE__*/ defineContainer('ai-button', [
 ]);
 var AiControl = /*@__PURE__*/ defineContainer('ai-control');
 var AiInput = /*@__PURE__*/ defineContainer('ai-input', [
+    'allowClear',
+    'bordered',
+    'defaultValue',
     'disabled',
+    'maxLength',
+    'hasPrefix',
+    'hasSuffix',
     'placeholder',
     'readonly',
-    'type',
     'value',
     'aiChange',
+    'aiPressEnter',
     'aiInput',
     'aiBlur',
     'aiFocus'

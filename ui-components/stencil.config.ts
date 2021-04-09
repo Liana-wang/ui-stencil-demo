@@ -39,7 +39,7 @@ export const config: Config = {
     // }),
     vueOutputTarget({
       componentCorePackage: '@ai.s/ui-components',
-      proxiesFile: '../ui-components-vue3/src/proxies.ts',
+      proxiesFile: '../ui-components-vue/src/proxies.ts',
       includePolyfills: true,
       includeDefineCustomElements: true,
       componentModels: [

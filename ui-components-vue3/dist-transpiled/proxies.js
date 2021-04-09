@@ -25,12 +25,18 @@ export var AiButton = /*@__PURE__*/ defineContainer('ai-button', [
 ]);
 export var AiControl = /*@__PURE__*/ defineContainer('ai-control');
 export var AiInput = /*@__PURE__*/ defineContainer('ai-input', [
+    'allowClear',
+    'bordered',
+    'defaultValue',
     'disabled',
+    'maxLength',
+    'hasPrefix',
+    'hasSuffix',
     'placeholder',
     'readonly',
-    'type',
     'value',
     'aiChange',
+    'aiPressEnter',
     'aiInput',
     'aiBlur',
     'aiFocus'

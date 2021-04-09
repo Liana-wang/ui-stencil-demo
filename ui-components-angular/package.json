@@ -24,7 +24,8 @@
         "dist/"
     ],
     "dependencies": {
-        "tslib": "^1.9.3"
+        "tslib": "^1.9.3",
+        "@ai.s/ui-components": "^0.0.1"
     },
     "peerDependencies": {
         "@angular-devkit/core": "^7.2.1",

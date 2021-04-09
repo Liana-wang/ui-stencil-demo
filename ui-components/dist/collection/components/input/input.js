@@ -4,7 +4,11 @@ export class AiInput {
     /**
      * 是否聚焦
      */
-    this.hasFocus = false;
+    this.focused = false;
+    /**
+     * 是否有边框
+     */
+    this.bordered = true;
     /**
      * 是否禁用
      */
@@ -18,13 +22,12 @@ export class AiInput {
      */
     this.readonly = false;
     /**
-     * 类型
-     */
-    this.type = 'text';
-    /**
      * 输入值
      */
     this.value = '';
+    /**
+     * 输入值改变
+     */
     this.onInput = (ev) => {
       const input = ev.target;
       if (input) {
@@ -33,45 +36,59 @@ export class AiInput {
       this.aiInput.emit(ev);
     };
     /**
+     * 点击清除按钮
+     */
+    this.onClear = () => {
+      this.value = '';
+      this.input.focus();
+    };
+    /**
      * 失焦
      */
-    this.onBlur = () => {
-      this.hasFocus = false;
-      this.aiBlur.emit();
+    this.onBlur = (e) => {
+      this.focused = false;
+      this.aiBlur.emit(e);
     };
     /**
      * 聚焦
      */
-    this.onFocus = () => {
-      this.hasFocus = true;
-      this.aiFocus.emit();
+    this.onFocus = (e) => {
+      this.focused = true;
+      this.aiFocus.emit(e);
+    };
+    /**
+     * 按下键盘键
+     */
+    this.handleKeyDown = (e) => {
+      if (this.aiPressEnter && e.keyCode === 13) {
+        this.aiPressEnter.emit(e);
+      }
     };
   }
   valueChanged() {
-    console.log('value', this.value);
     this.aiChange.emit({ value: this.value });
   }
-  /**
-   * 获取输入框的值
-   */
-  getValue() {
-    return this.value || '';
-  }
-  /**
-   * 输入框是否有值
-   */
-  hasValue() {
-    return this.getValue().length > 0;
+  connectedCallback() {
+    this.value = typeof this.defaultValue !== 'undefined' ? this.defaultValue : this.value;
   }
   render() {
-    return (h(Host, { class: {
-        'has-value': this.hasValue(),
-        'has-focus': this.hasFocus
-      } },
-      h("div", { class: 'box' },
-        h("input", { class: 'ai-input', type: this.type, placeholder: this.placeholder, onInput: this.onInput, value: this.value, readOnly: this.readonly, onBlur: this.onBlur, onFocus: this.onFocus }))));
+    const renderInput = () => (h("input", { ref: (input) => this.input = input, class: 'ai-input', type: 'text', placeholder: this.placeholder, onInput: this.onInput, value: this.value, disabled: this.disabled, readOnly: this.readonly, maxLength: this.maxLength, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.handleKeyDown }));
+    return (h(Host, null,
+      h("span", { class: {
+          'input-affix-wrapper': true,
+          'input-affix-wrapper-focus': this.focused,
+          'input-disabled': this.disabled,
+          'input-boderless': !this.bordered,
+        } },
+        this.hasPrefix && h("span", { class: 'input-prefix' },
+          h("slot", { name: 'prefix' })),
+        renderInput(),
+        this.allowClear && this.value !== '' && h("span", { class: 'input-clear-icon', onClick: this.onClear }, "x"),
+        this.hasSuffix && h("span", { class: 'input-suffix' },
+          h("slot", { name: 'suffix' })))));
   }
   static get is() { return "ai-input"; }
+  static get encapsulation() { return "shadow"; }
   static get originalStyleUrls() { return {
     "$": ["input.css"]
   }; }
@@ -79,7 +96,7 @@ export class AiInput {
     "$": ["input.css"]
   }; }
   static get properties() { return {
-    "disabled": {
+    "allowClear": {
       "type": "boolean",
       "mutable": false,
       "complexType": {
@@ -88,7 +105,59 @@ export class AiInput {
         "references": {}
       },
       "required": false,
-      "optional": false,
+      "optional": true,
+      "docs": {
+        "tags": [],
+        "text": "\u53EF\u4EE5\u70B9\u51FB\u6E05\u9664\u56FE\u6807\u5220\u9664\u5185\u5BB9"
+      },
+      "attribute": "allow-clear",
+      "reflect": false
+    },
+    "bordered": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": true,
+      "docs": {
+        "tags": [],
+        "text": "\u662F\u5426\u6709\u8FB9\u6846"
+      },
+      "attribute": "bordered",
+      "reflect": false,
+      "defaultValue": "true"
+    },
+    "defaultValue": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": true,
+      "docs": {
+        "tags": [],
+        "text": "\u8F93\u5165\u6846\u9ED8\u8BA4\u5185\u5BB9"
+      },
+      "attribute": "default-value",
+      "reflect": false
+    },
+    "disabled": {
+      "type": "boolean",
+      "mutable": true,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": true,
       "docs": {
         "tags": [],
         "text": "\u662F\u5426\u7981\u7528"
@@ -96,6 +165,60 @@ export class AiInput {
       "attribute": "disabled",
       "reflect": false,
       "defaultValue": "false"
+    },
+    "maxLength": {
+      "type": "number",
+      "mutable": false,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "required": false,
+      "optional": true,
+      "docs": {
+        "tags": [],
+        "text": "\u6700\u5927\u957F\u5EA6"
+      },
+      "attribute": "max-length",
+      "reflect": false
+    },
+    "hasPrefix": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": true,
+      "docs": {
+        "tags": [],
+        "text": "\u662F\u5426\u5E26\u6709\u524D\u7F00\u7684 input"
+      },
+      "attribute": "has-prefix",
+      "reflect": false
+    },
+    "hasSuffix": {
+      "type": "unknown",
+      "mutable": false,
+      "complexType": {
+        "original": "JSX.Element",
+        "resolved": "Element",
+        "references": {
+          "JSX": {
+            "location": "import",
+            "path": "@stencil/core"
+          }
+        }
+      },
+      "required": false,
+      "optional": true,
+      "docs": {
+        "tags": [],
+        "text": "\u662F\u5426\u5E26\u6709\u540E\u7F00\u7684 input"
+      }
     },
     "placeholder": {
       "type": "string",
@@ -106,7 +229,7 @@ export class AiInput {
         "references": {}
       },
       "required": false,
-      "optional": false,
+      "optional": true,
       "docs": {
         "tags": [],
         "text": "\u9884\u8BBE\u6587\u6848"
@@ -124,7 +247,7 @@ export class AiInput {
         "references": {}
       },
       "required": false,
-      "optional": false,
+      "optional": true,
       "docs": {
         "tags": [],
         "text": "\u662F\u5426\u53EA\u8BFB"
@@ -132,24 +255,6 @@ export class AiInput {
       "attribute": "readonly",
       "reflect": false,
       "defaultValue": "false"
-    },
-    "type": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": "\u7C7B\u578B"
-      },
-      "attribute": "type",
-      "reflect": false,
-      "defaultValue": "'text'"
     },
     "value": {
       "type": "string",
@@ -171,7 +276,7 @@ export class AiInput {
     }
   }; }
   static get states() { return {
-    "hasFocus": {}
+    "focused": {}
   }; }
   static get events() { return [{
       "method": "aiChange",
@@ -187,6 +292,25 @@ export class AiInput {
         "original": "any",
         "resolved": "any",
         "references": {}
+      }
+    }, {
+      "method": "aiPressEnter",
+      "name": "aiPressEnter",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": "\u6309\u4E0B\u56DE\u8F66\u7684\u56DE\u8C03"
+      },
+      "complexType": {
+        "original": "KeyboardEvent",
+        "resolved": "KeyboardEvent",
+        "references": {
+          "KeyboardEvent": {
+            "location": "global"
+          }
+        }
       }
     }, {
       "method": "aiInput",
@@ -218,9 +342,13 @@ export class AiInput {
         "text": "\u5931\u7126"
       },
       "complexType": {
-        "original": "void",
-        "resolved": "void",
-        "references": {}
+        "original": "MouseEvent",
+        "resolved": "MouseEvent",
+        "references": {
+          "MouseEvent": {
+            "location": "global"
+          }
+        }
       }
     }, {
       "method": "aiFocus",
@@ -233,9 +361,13 @@ export class AiInput {
         "text": "\u805A\u7126"
       },
       "complexType": {
-        "original": "void",
-        "resolved": "void",
-        "references": {}
+        "original": "MouseEvent",
+        "resolved": "MouseEvent",
+        "references": {
+          "MouseEvent": {
+            "location": "global"
+          }
+        }
       }
     }]; }
   static get watchers() { return [{

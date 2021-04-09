@@ -4,18 +4,22 @@
     <HelloWorld />
     <hr />
     <BtnTest />
+    <hr />
+    <InputTest />
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import BtnTest from "./components/BtnTest.vue";
+import InputTest from "./components/InputTest";
 
 export default {
   name: "App",
   components: {
     HelloWorld,
     BtnTest,
+    InputTest,
   },
   data() {
     return {

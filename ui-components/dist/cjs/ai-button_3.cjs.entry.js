@@ -62,19 +62,24 @@ const AiButton = class {
 };
 AiButton.style = buttonCss;
 
-const inputCss = ":host{display:block}:host(.has-focus.has-value){visibility:visible}:host(.has-focus){pointer-events:none}.box{position:relative;display:inline-block;width:198px;padding:4px 10px 5px 10px;border:1px solid #d3d4db;border-radius:4px;background-color:#fff}.ai-input{padding:0;margin:0;-webkit-box-shadow:none;box-shadow:none;border:none;line-height:normal;font-size:13px;outline:none}";
+const inputCss = ":host{display:inline-block;width:100%}::-webkit-input-placeholder{color:#c9c9c9}:-moz-placeholder{color:#c9c9c9}::-moz-placeholder{color:#c9c9c9}:-ms-input-placeholder{color:#c9c9c9}.ai-input:-moz-placeholder-shown{text-overflow:ellipsis}.ai-input:-ms-input-placeholder{text-overflow:ellipsis}.ai-input:placeholder-shown{text-overflow:ellipsis}.ai-input{position:relative;display:inline-block;width:100%;min-width:0;padding:4px 11px;margin:0;font-variant:tabular-nums;list-style:none;-webkit-font-feature-settings:'tnum';font-feature-settings:'tnum';color:rgba(0, 0, 0, 0.85);font-size:14px;line-height:1.5715;background-color:#fff;background-image:none;border:1px solid #d9d9d9;-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:2px;-webkit-transition:all 0.3s;transition:all 0.3s}.input-affix-wrapper{position:relative;display:-ms-inline-flexbox;display:inline-flex;width:100%;min-width:0;padding:4px 11px;color:rgba(0, 0, 0, .85);font-size:14px;line-height:1.5715;background-color:#fff;background-image:none;border:1px solid #d9d9d9;border-radius:2px;-webkit-transition:all .3s;transition:all .3s;-webkit-box-sizing:border-box;box-sizing:border-box}.input-affix-wrapper:hover,.input-affix-wrapper:focus,.input-affix-wrapper:active{border-color:#1890ff;border-right-width:1px;outline:none}.input-affix-wrapper:focus,.input-affix-wrapper:active{-webkit-box-shadow:0 0 0 2px #1890ff33;box-shadow:0 0 0 2px #1890ff33}.input-affix-wrapper.input-affix-wrapper-focus{border-color:#1890ff;border-right-width:1px;-webkit-box-shadow:0 0 0 2px #1890ff33;box-shadow:0 0 0 2px #1890ff33;outline:none}.ai-input[disabled],.input-affix-wrapper.input-disabled{color:rgba(0, 0, 0, .25);background-color:#f5f5f5;border-color:#d9d9d9;-webkit-box-shadow:none;box-shadow:none;cursor:not-allowed;opacity:1}.input-affix-wrapper.input-boderless,.input-affix-wrapper.input-boderless.input-disabled,.input-affix-wrapper.input-boderless>.ai-input[disabled],.input-affix-wrapper.input-boderless:focus,.input-affix-wrapper.input-boderless:hover{background-color:transparent;border:none;-webkit-box-shadow:none;box-shadow:none}.input-affix-wrapper>input.ai-input,.input-affix-wrapper>input.ai-input:focus{padding:0;border:none;-webkit-box-shadow:none;box-shadow:none;outline:none}.input-prefix,.input-suffix{display:-ms-flexbox;display:flex;-ms-flex:none;flex:none;-ms-flex-align:center;align-items:center}.input-prefix{margin-right:4px}.input-suffix{margin-left:4px}.input-clear-icon{position:relative;display:inline-block;color:inherit;font-style:normal;text-align:center;text-transform:none;margin:0 4px;color:#fff;vertical-align:-1px;cursor:pointer;-webkit-transition:color 0.3s;transition:color 0.3s;background-color:rgba(0, 0, 0, 0.25);border:1px solid transparent;border-radius:50%;width:15px;height:15px;line-height:1;top:3px}.input-clear-icon:hover{background-color:rgba(0, 0, 0, 0.5)}";
 
 const AiInput = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.aiChange = index.createEvent(this, "aiChange", 7);
+    this.aiPressEnter = index.createEvent(this, "aiPressEnter", 7);
     this.aiInput = index.createEvent(this, "aiInput", 7);
     this.aiBlur = index.createEvent(this, "aiBlur", 7);
     this.aiFocus = index.createEvent(this, "aiFocus", 7);
     /**
      * 是否聚焦
      */
-    this.hasFocus = false;
+    this.focused = false;
+    /**
+     * 是否有边框
+     */
+    this.bordered = true;
     /**
      * 是否禁用
      */
@@ -88,13 +93,12 @@ const AiInput = class {
      */
     this.readonly = false;
     /**
-     * 类型
-     */
-    this.type = 'text';
-    /**
      * 输入值
      */
     this.value = '';
+    /**
+     * 输入值改变
+     */
     this.onInput = (ev) => {
       const input = ev.target;
       if (input) {
@@ -103,41 +107,49 @@ const AiInput = class {
       this.aiInput.emit(ev);
     };
     /**
+     * 点击清除按钮
+     */
+    this.onClear = () => {
+      this.value = '';
+      this.input.focus();
+    };
+    /**
      * 失焦
      */
-    this.onBlur = () => {
-      this.hasFocus = false;
-      this.aiBlur.emit();
+    this.onBlur = (e) => {
+      this.focused = false;
+      this.aiBlur.emit(e);
     };
     /**
      * 聚焦
      */
-    this.onFocus = () => {
-      this.hasFocus = true;
-      this.aiFocus.emit();
+    this.onFocus = (e) => {
+      this.focused = true;
+      this.aiFocus.emit(e);
+    };
+    /**
+     * 按下键盘键
+     */
+    this.handleKeyDown = (e) => {
+      if (this.aiPressEnter && e.keyCode === 13) {
+        this.aiPressEnter.emit(e);
+      }
     };
   }
   valueChanged() {
-    console.log('value', this.value);
     this.aiChange.emit({ value: this.value });
   }
-  /**
-   * 获取输入框的值
-   */
-  getValue() {
-    return this.value || '';
-  }
-  /**
-   * 输入框是否有值
-   */
-  hasValue() {
-    return this.getValue().length > 0;
+  connectedCallback() {
+    this.value = typeof this.defaultValue !== 'undefined' ? this.defaultValue : this.value;
   }
   render() {
-    return (index.h(index.Host, { class: {
-        'has-value': this.hasValue(),
-        'has-focus': this.hasFocus
-      } }, index.h("div", { class: 'box' }, index.h("input", { class: 'ai-input', type: this.type, placeholder: this.placeholder, onInput: this.onInput, value: this.value, readOnly: this.readonly, onBlur: this.onBlur, onFocus: this.onFocus }))));
+    const renderInput = () => (index.h("input", { ref: (input) => this.input = input, class: 'ai-input', type: 'text', placeholder: this.placeholder, onInput: this.onInput, value: this.value, disabled: this.disabled, readOnly: this.readonly, maxLength: this.maxLength, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.handleKeyDown }));
+    return (index.h(index.Host, null, index.h("span", { class: {
+        'input-affix-wrapper': true,
+        'input-affix-wrapper-focus': this.focused,
+        'input-disabled': this.disabled,
+        'input-boderless': !this.bordered,
+      } }, this.hasPrefix && index.h("span", { class: 'input-prefix' }, index.h("slot", { name: 'prefix' })), renderInput(), this.allowClear && this.value !== '' && index.h("span", { class: 'input-clear-icon', onClick: this.onClear }, "x"), this.hasSuffix && index.h("span", { class: 'input-suffix' }, index.h("slot", { name: 'suffix' })))));
   }
   static get watchers() { return {
     "value": ["valueChanged"]

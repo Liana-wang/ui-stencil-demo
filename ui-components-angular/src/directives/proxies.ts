@@ -66,9 +66,10 @@ export class AiControl {
 }
 
 export declare interface AiInput extends Components.AiInput {}
-@Component({ selector: 'ai-input', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['disabled', 'placeholder', 'readonly', 'type', 'value'] })
+@Component({ selector: 'ai-input', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['allowClear', 'bordered', 'defaultValue', 'disabled', 'hasPrefix', 'hasSuffix', 'maxLength', 'placeholder', 'readonly', 'value'] })
 export class AiInput {
   aiChange!: EventEmitter<CustomEvent>;
+  aiPressEnter!: EventEmitter<CustomEvent>;
   aiInput!: EventEmitter<CustomEvent>;
   aiBlur!: EventEmitter<CustomEvent>;
   aiFocus!: EventEmitter<CustomEvent>;
@@ -76,10 +77,10 @@ export class AiInput {
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['aiChange', 'aiInput', 'aiBlur', 'aiFocus']);
+    proxyOutputs(this, this.el, ['aiChange', 'aiPressEnter', 'aiInput', 'aiBlur', 'aiFocus']);
   }
 }
-proxyInputs(AiInput, ['disabled', 'placeholder', 'readonly', 'type', 'value']);
+proxyInputs(AiInput, ['allowClear', 'bordered', 'defaultValue', 'disabled', 'hasPrefix', 'hasSuffix', 'maxLength', 'placeholder', 'readonly', 'value']);
 
 export declare interface AiPopover extends Components.AiPopover {}
 @Component({ selector: 'ai-popover', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['backdropDismiss', 'component', 'componentProps', 'event', 'overlayIndex', 'showBackdrop'] })

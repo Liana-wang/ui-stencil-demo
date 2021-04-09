@@ -1,31 +1,152 @@
 :host {
-  display: block;
-}
-
-:host(.has-focus.has-value) {
-  visibility: visible;
-}
-
-:host(.has-focus) {
-  pointer-events: none;
-}
-
-.box {
-  position: relative;
   display: inline-block;
-  width: 198px;
-  padding: 4px 10px 5px 10px;
-  border: 1px solid #d3d4db;
-  border-radius: 4px;
-  background-color: #fff;
+  width: 100%;
+}
+
+::-webkit-input-placeholder {
+  color: #c9c9c9;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #c9c9c9;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #c9c9c9;
+}
+
+:-ms-input-placeholder {
+  color: #c9c9c9;
+}
+
+.ai-input:placeholder-shown {
+  text-overflow: ellipsis;
 }
 
 .ai-input {
-  padding: 0;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  padding: 4px 11px;
   margin: 0;
-  box-shadow: none;
-  border: none;
-  line-height: normal;
-  font-size: 13px;
+  font-variant: tabular-nums;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.input-affix-wrapper {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  padding: 4px 11px;
+  color: rgba(0, 0, 0, .85);
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  transition: all .3s;
+  box-sizing: border-box;
+}
+
+.input-affix-wrapper:hover,
+.input-affix-wrapper:focus,
+.input-affix-wrapper:active {
+  border-color: #1890ff;
+  border-right-width: 1px;
   outline: none;
+}
+
+.input-affix-wrapper:focus,
+.input-affix-wrapper:active {
+  box-shadow: 0 0 0 2px #1890ff33;
+}
+
+.input-affix-wrapper.input-affix-wrapper-focus {
+  border-color: #1890ff;
+  border-right-width: 1px;
+  box-shadow: 0 0 0 2px #1890ff33;
+  outline: none;
+}
+
+.ai-input[disabled],
+.input-affix-wrapper.input-disabled {
+  color: rgba(0, 0, 0, .25);
+  background-color: #f5f5f5;
+  border-color: #d9d9d9;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.input-affix-wrapper.input-boderless,
+.input-affix-wrapper.input-boderless.input-disabled,
+.input-affix-wrapper.input-boderless>.ai-input[disabled],
+.input-affix-wrapper.input-boderless:focus,
+.input-affix-wrapper.input-boderless:hover {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.input-affix-wrapper>input.ai-input,
+.input-affix-wrapper>input.ai-input:focus {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.input-prefix,
+.input-suffix {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+
+.input-prefix {
+  margin-right: 4px;
+}
+
+.input-suffix {
+  margin-left: 4px;
+}
+
+.input-clear-icon {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  margin: 0 4px;
+  color: #fff;
+  vertical-align: -1px;
+  cursor: pointer;
+  transition: color 0.3s;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid transparent;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  line-height: 1;
+  top: 3px;
+}
+
+.input-clear-icon:hover {
+  background-color: rgba(0, 0, 0, 0.5);
 }

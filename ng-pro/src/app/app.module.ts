@@ -4,11 +4,13 @@ import { ComponentNgModule } from '@ai.s/ui-components-angular'
 
 import { AppComponent } from './app.component';
 import { BtnTest } from './BtnTest/btn.test'
+import { InputTest } from './InputTest/input.test'
 
 @NgModule({
   declarations: [
     AppComponent,
-    BtnTest
+    BtnTest,
+    InputTest
   ],
   imports: [
     BrowserModule,

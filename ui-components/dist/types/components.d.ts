@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { Shap, Size, Type } from "./components/button/button";
+import { JSX } from "./stencil-public-runtime";
 import { ComponentProps, ComponentRef } from "./interface";
 export namespace Components {
     interface AiBackdrop {
@@ -68,21 +69,41 @@ export namespace Components {
     }
     interface AiInput {
         /**
+          * 可以点击清除图标删除内容
+         */
+        "allowClear"?: boolean;
+        /**
+          * 是否有边框
+         */
+        "bordered"?: boolean;
+        /**
+          * 输入框默认内容
+         */
+        "defaultValue"?: string;
+        /**
           * 是否禁用
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
+        /**
+          * 是否带有前缀的 input
+         */
+        "hasPrefix"?: boolean;
+        /**
+          * 是否带有后缀的 input
+         */
+        "hasSuffix"?: JSX.Element;
+        /**
+          * 最大长度
+         */
+        "maxLength"?: number;
         /**
           * 预设文案
          */
-        "placeholder": string;
+        "placeholder"?: string;
         /**
           * 是否只读
          */
-        "readonly": boolean;
-        /**
-          * 类型
-         */
-        "type": string;
+        "readonly"?: boolean;
         /**
           * 输入值
          */
@@ -311,13 +332,37 @@ declare namespace LocalJSX {
     }
     interface AiInput {
         /**
+          * 可以点击清除图标删除内容
+         */
+        "allowClear"?: boolean;
+        /**
+          * 是否有边框
+         */
+        "bordered"?: boolean;
+        /**
+          * 输入框默认内容
+         */
+        "defaultValue"?: string;
+        /**
           * 是否禁用
          */
         "disabled"?: boolean;
         /**
+          * 是否带有前缀的 input
+         */
+        "hasPrefix"?: boolean;
+        /**
+          * 是否带有后缀的 input
+         */
+        "hasSuffix"?: JSX.Element;
+        /**
+          * 最大长度
+         */
+        "maxLength"?: number;
+        /**
           * 失焦
          */
-        "onAiBlur"?: (event: CustomEvent<void>) => void;
+        "onAiBlur"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * 值改变
          */
@@ -325,11 +370,15 @@ declare namespace LocalJSX {
         /**
           * 聚焦
          */
-        "onAiFocus"?: (event: CustomEvent<void>) => void;
+        "onAiFocus"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * 改变值
          */
         "onAiInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * 按下回车的回调
+         */
+        "onAiPressEnter"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * 预设文案
          */
@@ -338,10 +387,6 @@ declare namespace LocalJSX {
           * 是否只读
          */
         "readonly"?: boolean;
-        /**
-          * 类型
-         */
-        "type"?: string;
         /**
           * 输入值
          */

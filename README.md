@@ -6,29 +6,26 @@
 
 ``` bash
 # 在react中使用ui库
-cd ui-components-react
-yarn link      // 创建软连接
-
 cd react-pro
 yarn install
-yarn link @ai.s/ui-components-react
+yarn add @ai.s/ui-components-react
 yarn start
 
 # 在vue中使用ui库
-cd ui-components-vue
-yarn link    // 创建软连接
-
 cd vue-pro
 yarn install
-yarn link @ai.s/ui-components-vue
+yarn add @ai.s/ui-components-vue
 yarn start
 
-# 在angular中使用ui库
-cd ui-components-angular
-yarn link    // 创建软连接
+# 在Vue3中使用ui库
+cd vue3-pro
+yarn install
+yarn add @ai.s/ui-components-vue3
+yarn serve
 
+# 在angular中使用ui库
 cd ng-pro
 yarn install
-yarn link @ai.s/ui-components-angular
+yarn add @ai.s/ui-components-angular
 yarn start
 ```

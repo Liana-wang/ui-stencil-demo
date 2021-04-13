@@ -278,15 +278,12 @@ export class AiSelect implements ComponentInterface {
       <Host
         onClick={this.onClick}
         role="button"
-        aria-haspopup="listbox"
-        aria-disabled={disabled ? 'true' : null}
-        aria-label={displayLabel}
         class={{
           'select-disabled': disabled,
           'ai-focused': isExpanded,
         }}
       >
-        <div aria-hidden="true" class={selectTextClasses} part={textPart}>
+        <div class={selectTextClasses} part={textPart}>
           {selectText}
         </div>
         <div class="select-icon" role="presentation" part="icon">
@@ -299,8 +296,6 @@ export class AiSelect implements ComponentInterface {
           type="button"
           disabled={disabled}
           id={inputId}
-          aria-haspopup="listbox"
-          aria-expanded={`${isExpanded}`}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           ref={(focusEl => this.focusEl = focusEl)}

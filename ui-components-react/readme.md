@@ -1,3 +1,5 @@
+ui-components-react
+
 ## 构建ui-components-react
 
 1、yarn install   安装依赖

@@ -1,6 +1,6 @@
 {
   "name": "@ai.s/ui-components-angular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "build": "npm run build.ng",
@@ -64,5 +64,5 @@
     "zone.js": "^0.8.28"
   },
   "author": "",
-  "description": ""
+  "description": "ui-components-angular"
 }

@@ -1,3 +1,4 @@
+ui-components-angular
 ## 构建ui-components-angular
 
 1、yarn install  安装依赖

@@ -1,3 +1,5 @@
+ui-components-vue
+
 ## 构建ui-components-vue
 
 1、yarn install

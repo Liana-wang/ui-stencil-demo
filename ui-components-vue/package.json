@@ -1,6 +1,6 @@
 {
   "name": "@ai.s/ui-components-vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "build": "npm run clean && npm run compile && npm run bundle",
     "compile": "npm run tsc",
@@ -17,6 +17,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "tslib": "^2.2.0",
     "@ai.s/ui-components": "^0.0.2"
   },
   "devDependencies": {
@@ -30,12 +31,11 @@
     "rimraf": "^2.6.3",
     "rollup": "^1.21.2",
     "rollup-plugin-sourcemaps": "^0.6.2",
-    "tslib": "^2.2.0",
     "typescript": "^3.3.4000",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-template-compiler": "^2.6.11"
   },
   "author": "",
-  "description": ""
+  "description": "1、yarn install"
 }

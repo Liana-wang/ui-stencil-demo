@@ -4,49 +4,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <title>Stencil Component Starter</title>
+  <title>UI Components</title>
 
   <script type="module" src="/build/ui-components.esm.js"></script>
   <script nomodule src="/build/ui-components.js"></script>
 </head>
 
 <body>
-  <ai-button onclick="handleclick(event)">aaa</ai-button>
-  <ai-input oninput="handleInput(event)"></ai-input>
-  <ai-select options="options"></ai-select>
+  <p id="count">点击次数: 0</p>
+  <ai-button id="btn-1">aaa</ai-button>
+  <ai-button type="primary">hhh</ai-button>
+
+  <ai-input></ai-input>
+  <ai-input disabled></ai-input>
+  <ai-input readonly></ai-input>
+  <ai-input id="pre"><span slot="prefix">@</span></ai-input>
+
+  <ai-select selected="aa">
+    <ai-select-option option="aa">aa</ai-select-option>
+    <ai-select-option option="bb">bb</ai-select-option>
+    <ai-select-option option="cc">bb</ai-select-option>
+  </ai-select>
+
+  <ai-stringfy></ai-stringfy>
 </body>
 <script type="text/javascript">
-  const options = [
-    'react',
-    'vue',
-    'angular'
-  ]
-  function handleclick(event) {
-    console.log(event)
+  let count = 0
+  const btns = document.getElementsByTagName('ai-button')
+  for(let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('aiClick', (e) => {
+      document.getElementById('count').innerHTML = `点击次数: ${++count}`; 
+      console.log(count)
+    })
   }
 
-  function handleInput(event) {
-    console.log(event)
+  const inputs = document.getElementsByTagName('ai-input')
+  for(let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('aiChange', (e) => console.log({e}))
+    inputs[i].defaultValue='aaa'
   }
+  document.getElementById('pre').hasPrefix = true
 
   const select = document.getElementsByTagName('ai-select')[0]
-  console.log(select)
-  select.setAttribute('options', options)
-  select.addEventListener('optionRenderer', (option) => option)
-  select.addEventListener('initializer', (options) => 'React')
-  select.addEventListener('selection', (ev) => console.log(ev.detail))
+  select.addEventListener('aiChange', (ev) => console.log(ev.detail))
 
-  function renderOption(option) {
-    return option
+  const stringfys = document.getElementsByTagName('ai-stringfy')
+  for(let i = 0; i < stringfys.length; i++) {
+    stringfys[i].data={a: 111, b:'ccc'}
   }
-
-  function initOption() {
-    return React
-  }
-
-  function selectChange(ev) { 
-    console.log(ev.detail)
-   }
 </script>
 
 </html>

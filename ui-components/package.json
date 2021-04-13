@@ -1,6 +1,6 @@
 {
   "name": "@ai.s/ui-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stencil Component Starter",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",

@@ -15,11 +15,11 @@
     "start": "npm run build:rollup"
   },
   "files": [
-      "dist/"
+    "dist/"
   ],
   "dependencies": {
     "tslib": "*",
-    "@ai.s/ui-components": "^0.0.1"
+    "@ai.s/ui-components": "^0.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -48,5 +48,7 @@
     "last 2 versions",
     "Android >= 3.2",
     "iOS >= 7"
-  ]
+  ],
+  "author": "",
+  "license": "ISC"
 }
